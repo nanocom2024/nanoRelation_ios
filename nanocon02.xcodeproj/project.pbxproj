@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947374A2C787E6300EA38EB /* nanocon02App.swift */; };
+		4947374D2C787E6300EA38EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947374C2C787E6300EA38EB /* ContentView.swift */; };
+		4947374F2C787E6600EA38EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4947374E2C787E6600EA38EB /* Assets.xcassets */; };
+		494737522C787E6600EA38EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494737512C787E6600EA38EB /* Preview Assets.xcassets */; };
+		494737592C7883B100EA38EB /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737582C7883B100EA38EB /* SecondView.swift */; };
+		4947375B2C78854000EA38EB /* FriendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947375A2C78854000EA38EB /* FriendList.swift */; };
+		4947376B2C7AE8B400EA38EB /* charleyrivers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4947375C2C7AE8B400EA38EB /* charleyrivers.jpg */; };
+		4947376C2C7AE8B400EA38EB /* chilkoottrail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4947375D2C7AE8B400EA38EB /* chilkoottrail.jpg */; };
+		4947376D2C7AE8B400EA38EB /* chincoteague.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4947375E2C7AE8B400EA38EB /* chincoteague.jpg */; };
+		4947376E2C7AE8B400EA38EB /* hiddenlake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4947375F2C7AE8B400EA38EB /* hiddenlake.jpg */; };
+		4947376F2C7AE8B400EA38EB /* hikeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 494737602C7AE8B400EA38EB /* hikeData.json */; };
+		494737702C7AE8B400EA38EB /* icybay.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 494737612C7AE8B400EA38EB /* icybay.jpg */; };
+		494737712C7AE8B400EA38EB /* lakemcdonald.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 494737622C7AE8B400EA38EB /* lakemcdonald.jpg */; };
+		494737722C7AE8B400EA38EB /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = 494737632C7AE8B400EA38EB /* landmarkData.json */; };
+		494737732C7AE8B400EA38EB /* rainbowlake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 494737642C7AE8B400EA38EB /* rainbowlake.jpg */; };
+		494737742C7AE8B400EA38EB /* silversalmoncreek.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 494737652C7AE8B400EA38EB /* silversalmoncreek.jpg */; };
+		494737752C7AE8B400EA38EB /* stmarylake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 494737662C7AE8B400EA38EB /* stmarylake.jpg */; };
+		494737762C7AE8B400EA38EB /* turtlerock.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 494737672C7AE8B400EA38EB /* turtlerock.jpg */; };
+		494737772C7AE8B400EA38EB /* twinlake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 494737682C7AE8B400EA38EB /* twinlake.jpg */; };
+		494737782C7AE8B400EA38EB /* umbagog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 494737692C7AE8B400EA38EB /* umbagog.jpg */; };
+		494737802C7AFB3000EA38EB /* LostChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947377F2C7AFB3000EA38EB /* LostChildren.swift */; };
+		494737A12C7D73A600EA38EB /* MyChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A02C7D73A600EA38EB /* MyChildren.swift */; };
+		494737A32C7D740D00EA38EB /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A22C7D740D00EA38EB /* ThirdView.swift */; };
+		494737A52C7D74BA00EA38EB /* MyPlofile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A42C7D74BA00EA38EB /* MyPlofile.swift */; };
+		494737A72C7D754800EA38EB /* FourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A62C7D754800EA38EB /* FourthView.swift */; };
+		494737A92C7D899600EA38EB /* Talk01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A82C7D899600EA38EB /* Talk01.swift */; };
+		494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AA2C7D954D00EA38EB /* Talk02.swift */; };
+		494737AD2C7D9EC000EA38EB /* Talk03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* Talk03.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		494737472C787E6300EA38EB /* nanocon02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nanocon02.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4947374A2C787E6300EA38EB /* nanocon02App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanocon02App.swift; sourceTree = "<group>"; };
+		4947374C2C787E6300EA38EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4947374E2C787E6600EA38EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		494737512C787E6600EA38EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		494737582C7883B100EA38EB /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		4947375A2C78854000EA38EB /* FriendList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendList.swift; sourceTree = "<group>"; };
+		4947375C2C7AE8B400EA38EB /* charleyrivers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = charleyrivers.jpg; sourceTree = "<group>"; };
+		4947375D2C7AE8B400EA38EB /* chilkoottrail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chilkoottrail.jpg; sourceTree = "<group>"; };
+		4947375E2C7AE8B400EA38EB /* chincoteague.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chincoteague.jpg; sourceTree = "<group>"; };
+		4947375F2C7AE8B400EA38EB /* hiddenlake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hiddenlake.jpg; sourceTree = "<group>"; };
+		494737602C7AE8B400EA38EB /* hikeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hikeData.json; sourceTree = "<group>"; };
+		494737612C7AE8B400EA38EB /* icybay.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icybay.jpg; sourceTree = "<group>"; };
+		494737622C7AE8B400EA38EB /* lakemcdonald.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lakemcdonald.jpg; sourceTree = "<group>"; };
+		494737632C7AE8B400EA38EB /* landmarkData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = landmarkData.json; sourceTree = "<group>"; };
+		494737642C7AE8B400EA38EB /* rainbowlake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rainbowlake.jpg; sourceTree = "<group>"; };
+		494737652C7AE8B400EA38EB /* silversalmoncreek.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = silversalmoncreek.jpg; sourceTree = "<group>"; };
+		494737662C7AE8B400EA38EB /* stmarylake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stmarylake.jpg; sourceTree = "<group>"; };
+		494737672C7AE8B400EA38EB /* turtlerock.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtlerock.jpg; sourceTree = "<group>"; };
+		494737682C7AE8B400EA38EB /* twinlake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = twinlake.jpg; sourceTree = "<group>"; };
+		494737692C7AE8B400EA38EB /* umbagog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = umbagog.jpg; sourceTree = "<group>"; };
+		4947377F2C7AFB3000EA38EB /* LostChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostChildren.swift; sourceTree = "<group>"; };
+		494737A02C7D73A600EA38EB /* MyChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildren.swift; sourceTree = "<group>"; };
+		494737A22C7D740D00EA38EB /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		494737A42C7D74BA00EA38EB /* MyPlofile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlofile.swift; sourceTree = "<group>"; };
+		494737A62C7D754800EA38EB /* FourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthView.swift; sourceTree = "<group>"; };
+		494737A82C7D899600EA38EB /* Talk01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk01.swift; sourceTree = "<group>"; };
+		494737AA2C7D954D00EA38EB /* Talk02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk02.swift; sourceTree = "<group>"; };
+		494737AC2C7D9EC000EA38EB /* Talk03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk03.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		494737442C787E6300EA38EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4947373E2C787E6300EA38EB = {
+			isa = PBXGroup;
+			children = (
+				4947376A2C7AE8B400EA38EB /* Resources */,
+				494737492C787E6300EA38EB /* nanocon02 */,
+				494737482C787E6300EA38EB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		494737482C787E6300EA38EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				494737472C787E6300EA38EB /* nanocon02.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		494737492C787E6300EA38EB /* nanocon02 */ = {
+			isa = PBXGroup;
+			children = (
+				4947374C2C787E6300EA38EB /* ContentView.swift */,
+				494737582C7883B100EA38EB /* SecondView.swift */,
+				494737A22C7D740D00EA38EB /* ThirdView.swift */,
+				494737A62C7D754800EA38EB /* FourthView.swift */,
+				4947375A2C78854000EA38EB /* FriendList.swift */,
+				4947377F2C7AFB3000EA38EB /* LostChildren.swift */,
+				494737A02C7D73A600EA38EB /* MyChildren.swift */,
+				494737A42C7D74BA00EA38EB /* MyPlofile.swift */,
+				494737A82C7D899600EA38EB /* Talk01.swift */,
+				494737AA2C7D954D00EA38EB /* Talk02.swift */,
+				494737AC2C7D9EC000EA38EB /* Talk03.swift */,
+				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
+				4947374E2C787E6600EA38EB /* Assets.xcassets */,
+				494737502C787E6600EA38EB /* Preview Content */,
+			);
+			path = nanocon02;
+			sourceTree = "<group>";
+		};
+		494737502C787E6600EA38EB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				494737512C787E6600EA38EB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4947376A2C7AE8B400EA38EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4947375C2C7AE8B400EA38EB /* charleyrivers.jpg */,
+				4947375D2C7AE8B400EA38EB /* chilkoottrail.jpg */,
+				4947375E2C7AE8B400EA38EB /* chincoteague.jpg */,
+				4947375F2C7AE8B400EA38EB /* hiddenlake.jpg */,
+				494737602C7AE8B400EA38EB /* hikeData.json */,
+				494737612C7AE8B400EA38EB /* icybay.jpg */,
+				494737622C7AE8B400EA38EB /* lakemcdonald.jpg */,
+				494737632C7AE8B400EA38EB /* landmarkData.json */,
+				494737642C7AE8B400EA38EB /* rainbowlake.jpg */,
+				494737652C7AE8B400EA38EB /* silversalmoncreek.jpg */,
+				494737662C7AE8B400EA38EB /* stmarylake.jpg */,
+				494737672C7AE8B400EA38EB /* turtlerock.jpg */,
+				494737682C7AE8B400EA38EB /* twinlake.jpg */,
+				494737692C7AE8B400EA38EB /* umbagog.jpg */,
+			);
+			name = Resources;
+			path = ../../../../../Desktop/Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		494737462C787E6300EA38EB /* nanocon02 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 494737552C787E6600EA38EB /* Build configuration list for PBXNativeTarget "nanocon02" */;
+			buildPhases = (
+				494737432C787E6300EA38EB /* Sources */,
+				494737442C787E6300EA38EB /* Frameworks */,
+				494737452C787E6300EA38EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = nanocon02;
+			productName = nanocon02;
+			productReference = 494737472C787E6300EA38EB /* nanocon02.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4947373F2C787E6300EA38EB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					494737462C787E6300EA38EB = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 494737422C787E6300EA38EB /* Build configuration list for PBXProject "nanocon02" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4947373E2C787E6300EA38EB;
+			productRefGroup = 494737482C787E6300EA38EB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				494737462C787E6300EA38EB /* nanocon02 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		494737452C787E6300EA38EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				494737732C7AE8B400EA38EB /* rainbowlake.jpg in Resources */,
+				4947376B2C7AE8B400EA38EB /* charleyrivers.jpg in Resources */,
+				494737762C7AE8B400EA38EB /* turtlerock.jpg in Resources */,
+				4947376C2C7AE8B400EA38EB /* chilkoottrail.jpg in Resources */,
+				494737752C7AE8B400EA38EB /* stmarylake.jpg in Resources */,
+				494737702C7AE8B400EA38EB /* icybay.jpg in Resources */,
+				494737772C7AE8B400EA38EB /* twinlake.jpg in Resources */,
+				494737722C7AE8B400EA38EB /* landmarkData.json in Resources */,
+				494737712C7AE8B400EA38EB /* lakemcdonald.jpg in Resources */,
+				494737522C787E6600EA38EB /* Preview Assets.xcassets in Resources */,
+				4947374F2C787E6600EA38EB /* Assets.xcassets in Resources */,
+				4947376E2C7AE8B400EA38EB /* hiddenlake.jpg in Resources */,
+				494737782C7AE8B400EA38EB /* umbagog.jpg in Resources */,
+				494737742C7AE8B400EA38EB /* silversalmoncreek.jpg in Resources */,
+				4947376F2C7AE8B400EA38EB /* hikeData.json in Resources */,
+				4947376D2C7AE8B400EA38EB /* chincoteague.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		494737432C787E6300EA38EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */,
+				494737A32C7D740D00EA38EB /* ThirdView.swift in Sources */,
+				494737592C7883B100EA38EB /* SecondView.swift in Sources */,
+				494737802C7AFB3000EA38EB /* LostChildren.swift in Sources */,
+				494737A52C7D74BA00EA38EB /* MyPlofile.swift in Sources */,
+				494737A92C7D899600EA38EB /* Talk01.swift in Sources */,
+				494737A12C7D73A600EA38EB /* MyChildren.swift in Sources */,
+				4947374D2C787E6300EA38EB /* ContentView.swift in Sources */,
+				4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */,
+				494737A72C7D754800EA38EB /* FourthView.swift in Sources */,
+				494737AD2C7D9EC000EA38EB /* Talk03.swift in Sources */,
+				4947375B2C78854000EA38EB /* FriendList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		494737532C787E6600EA38EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		494737542C787E6600EA38EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		494737562C787E6600EA38EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"nanocon02/Preview Content\"";
+				DEVELOPMENT_TEAM = UDNCFQBWHP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon02;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		494737572C787E6600EA38EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"nanocon02/Preview Content\"";
+				DEVELOPMENT_TEAM = UDNCFQBWHP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon02;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		494737422C787E6300EA38EB /* Build configuration list for PBXProject "nanocon02" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				494737532C787E6600EA38EB /* Debug */,
+				494737542C787E6600EA38EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		494737552C787E6600EA38EB /* Build configuration list for PBXNativeTarget "nanocon02" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				494737562C787E6600EA38EB /* Debug */,
+				494737572C787E6600EA38EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4947373F2C787E6300EA38EB /* Project object */;
+}

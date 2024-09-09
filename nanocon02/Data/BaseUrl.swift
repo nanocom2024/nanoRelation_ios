@@ -8,5 +8,5 @@
 import Foundation
 
 class BaseUrl {
-    static let url: String = "http://10.0.2.117:8181"
+    static let url: String = "http://10.0.3.48:8181"
 }

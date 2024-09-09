@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct nanocon02App: App {
+    // Attach AppDelegate to the SwiftUI app
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
+                .environmentObject(NavigationModel())
         }
     }
 }

@@ -88,7 +88,7 @@ struct SignupView: View {
             navigationModel.path.append("test")
         }
         .onChange(of: signupViewModel.errorMessage ?? "") { _, msg in
-            if msg.isEmpty {
+            if !msg.isEmpty {
                 errorMessage = msg
             }
         }

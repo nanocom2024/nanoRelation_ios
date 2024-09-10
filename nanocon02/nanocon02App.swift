@@ -14,7 +14,7 @@ struct nanocon02App: App {
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            HomeView()
                 .environmentObject(NavigationModel())
         }
     }

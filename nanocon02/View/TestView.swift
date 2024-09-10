@@ -19,7 +19,7 @@ struct TestView: View {
                 Spacer()
                 Button(action: {
                     testViewModel.signout()
-                    navigationModel.path.removeLast(navigationModel.path.count)
+                    navigationModel.path.removeLast(navigationModel.path.count-1)
                 }, label: {
                     Text("signout")
                 })
@@ -44,6 +44,8 @@ struct TestView: View {
                 .buttonStyle(PlainButtonStyle())
             }
         }
+        // 戻るボタンを非表示にする
+        .navigationBarBackButtonHidden(true)
     }
 }
 

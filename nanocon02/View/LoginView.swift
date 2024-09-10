@@ -15,7 +15,7 @@ struct LoginView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
 
     var body: some View {
-        NavigationStack(path: $navigationModel.path) {
+        Group {
             if loginViewModel.isLoading {
                 VStack(alignment: .center) {
                     ProgressView("Logging in...")
@@ -84,15 +84,6 @@ struct LoginView: View {
                     
                     Spacer()
                 }
-                .navigationDestination(for: String.self) { value in
-                    switch value {
-                    case "test":
-                        TestView()
-                    default:
-                        Text("Unknown destination")
-                    }
-                }
-
             }
         }
         .onChange(of: loginViewModel.loginSuccess) { _, success in
@@ -105,6 +96,8 @@ struct LoginView: View {
                 errorMessage = msg
             }
         }
+        // 戻るボタンを非表示にする
+        .navigationBarBackButtonHidden(true)
     }
 }
 

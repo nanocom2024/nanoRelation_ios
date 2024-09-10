@@ -84,7 +84,7 @@ struct DeleteView: View {
             }
         }
         .onChange(of: deleteViewModel.errorMessage ?? "") { _, msg in
-            if msg.isEmpty {
+            if !msg.isEmpty {
                 errorMessage = msg
             }
         }

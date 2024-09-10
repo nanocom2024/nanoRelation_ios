@@ -25,4 +25,69 @@ class Auth {
     static func deleteToken() {
         cookieManager.removeCookie(name: "authtoken", url: url)
     }
+    
+    static func auth_check(completion: @escaping (Bool) -> Void) {
+        var done = false
+        let auth_check_url = URL(string: BaseUrl.url + "/pairing/auth_check")!
+        var request = URLRequest(url: auth_check_url)
+        // Postリクエストを送る(このコードがないとGetリクエストになる)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var params = Dictionary<String, String>()
+        guard let token = getToken() else {
+            done = true
+            completion(false)
+            return
+        }
+        params["token"] = token
+        
+        do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: params)
+        }catch{
+            print("Invalid JSON format.")
+            done = true
+            completion(false)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print("No data received.")
+                done = true
+                completion(false)
+                return
+            }
+            
+            if let error = error {
+                print(error.localizedDescription)
+                done = true
+                completion(false)
+                return
+            }
+            
+            do {
+                // JSONデータを辞書形式に変換
+                if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let token = object["token"] as? String { // トークンを取得
+                    // クッキーを設定
+                    Auth.setToken(token: token)
+                    done = true
+                    completion(true)
+                    
+                } else {
+                    print("Invalid login credentials.")
+                    done = true
+                    completion(false)
+                }
+            } catch let error {
+                print(error.localizedDescription)
+                done = true
+                completion(false)
+            }
+        }
+        task.resume()
+        if !done {
+            completion(false)
+        }
+    }
 }

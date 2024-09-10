@@ -34,6 +34,7 @@
 		C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEFB2C8DB9B8006335C2 /* DeleteViewModel.swift */; };
 		C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEFD2C8DD2B1006335C2 /* NavigationModel.swift */; };
 		C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEFF2C8E80FD006335C2 /* BaseUrl.swift */; };
+		C1D8CF022C8FD492006335C2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF012C8FD492006335C2 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		C1D8CEFB2C8DB9B8006335C2 /* DeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewModel.swift; sourceTree = "<group>"; };
 		C1D8CEFD2C8DD2B1006335C2 /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 		C1D8CEFF2C8E80FD006335C2 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
+		C1D8CF012C8FD492006335C2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				C1D8CEEE2C8D5479006335C2 /* SignupView.swift */,
 				C1D8CEF22C8D60F8006335C2 /* TestView.swift */,
 				C1D8CEF92C8DB94A006335C2 /* DeleteView.swift */,
+				C1D8CF012C8FD492006335C2 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				C1D8CEF82C8DB02E006335C2 /* TestViewModel.swift in Sources */,
 				C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */,
 				C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */,
+				C1D8CF022C8FD492006335C2 /* HomeView.swift in Sources */,
 				4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */,
 				C1D8CEF62C8D9158006335C2 /* Auth.swift in Sources */,
 				C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */,

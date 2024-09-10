@@ -95,6 +95,6 @@ struct SignupView: View {
     }
 }
 
-//#Preview {
-//    LoginView()
-//}
+#Preview {
+    LoginView()
+}

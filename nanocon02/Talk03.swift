@@ -26,14 +26,15 @@ struct Talk03: View {
                 HStack{//プロフィール
                     Image("hiddenlake")
                         .resizable()
-                        .frame(width: 60, height: 60)
+                        .frame(width: 50, height: 50)
                         .clipShape(Circle())
                         .padding(.leading,20)
-                    Text("なまえ")
-                        .font(.title)
-                        .fontWeight(.semibold)
+                    Text("名前") // 配列内のメッセージを表示
+                        .font(.headline)
+                        .foregroundColor(.black)
                     Spacer()
                 }
+                
                 ScrollView {//スクロールする領域を指定
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
                     ForEach(messages) { message in//ForEach　配列の要素を構成するとき使い回しするもの
@@ -41,28 +42,31 @@ struct Talk03: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 30)
                                     .fill(message.color)
-                                    .frame(width: 370, height: 50)
-                                
+                                    .frame(width: 330, height: 37)
+
                                 Text(message.text) // 配列内のメッセージを表示
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
+                                    .lineSpacing(-10) // 改行の行間を詰める
+                                    .font(.body)
+//                                    .fontWeight(.semibold)
+                                
+                                HStack{//未読メッセージアイコン
+                                    Image(systemName: "exclamationmark.circle.fill")
+                                        .font(Font.system(size: 20, weight: .medium))
+                                        .foregroundColor(.red)
+                                        .padding(.top,-20)
+                                        .padding(.leading,20)
+                                    Spacer()
+                                }//未読メッセージアイコン
                             }
+                            .padding(.top,10)
                             
                             HStack { // 日時
                                 Spacer()
                                 Text(dateFormatter.string(from: message.date))
                                     .padding(.top, -10)
-                                    .padding(.trailing, 25)
+                                    .padding(.trailing, 40)
+
                             } // 日時
-                            
-                            HStack{//未読メッセージアイコン
-                                Image(systemName: "exclamationmark.circle.fill")
-                                    .font(Font.system(size: 30, weight: .medium))
-                                    .foregroundColor(.red)
-                                    .padding(.top,-100)
-                                    .padding(.leading,5)
-                                Spacer()
-                            }//未読メッセージアイコン
                         } // メッセージ全体ーーーーーーーーーーーーー
                     }// messages配列の中身を表示
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー

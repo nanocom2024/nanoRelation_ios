@@ -30,11 +30,12 @@
 		494737802C7AFB3000EA38EB /* LostChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947377F2C7AFB3000EA38EB /* LostChildren.swift */; };
 		494737A12C7D73A600EA38EB /* MyChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A02C7D73A600EA38EB /* MyChildren.swift */; };
 		494737A32C7D740D00EA38EB /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A22C7D740D00EA38EB /* ThirdView.swift */; };
-		494737A52C7D74BA00EA38EB /* MyPlofile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A42C7D74BA00EA38EB /* MyPlofile.swift */; };
+		494737A52C7D74BA00EA38EB /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A42C7D74BA00EA38EB /* MyProfile.swift */; };
 		494737A72C7D754800EA38EB /* FourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A62C7D754800EA38EB /* FourthView.swift */; };
 		494737A92C7D899600EA38EB /* Talk01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A82C7D899600EA38EB /* Talk01.swift */; };
 		494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AA2C7D954D00EA38EB /* Talk02.swift */; };
 		494737AD2C7D9EC000EA38EB /* Talk03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* Talk03.swift */; };
+		499A72EB2C903ED0004984E6 /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A72EA2C903ED0004984E6 /* NavigationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,11 +63,12 @@
 		4947377F2C7AFB3000EA38EB /* LostChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostChildren.swift; sourceTree = "<group>"; };
 		494737A02C7D73A600EA38EB /* MyChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildren.swift; sourceTree = "<group>"; };
 		494737A22C7D740D00EA38EB /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
-		494737A42C7D74BA00EA38EB /* MyPlofile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlofile.swift; sourceTree = "<group>"; };
+		494737A42C7D74BA00EA38EB /* MyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		494737A62C7D754800EA38EB /* FourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthView.swift; sourceTree = "<group>"; };
 		494737A82C7D899600EA38EB /* Talk01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk01.swift; sourceTree = "<group>"; };
 		494737AA2C7D954D00EA38EB /* Talk02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk02.swift; sourceTree = "<group>"; };
 		494737AC2C7D9EC000EA38EB /* Talk03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk03.swift; sourceTree = "<group>"; };
+		499A72EA2C903ED0004984E6 /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,11 +109,12 @@
 				4947375A2C78854000EA38EB /* FriendList.swift */,
 				4947377F2C7AFB3000EA38EB /* LostChildren.swift */,
 				494737A02C7D73A600EA38EB /* MyChildren.swift */,
-				494737A42C7D74BA00EA38EB /* MyPlofile.swift */,
+				494737A42C7D74BA00EA38EB /* MyProfile.swift */,
 				494737A82C7D899600EA38EB /* Talk01.swift */,
 				494737AA2C7D954D00EA38EB /* Talk02.swift */,
 				494737AC2C7D9EC000EA38EB /* Talk03.swift */,
 				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
+				499A72EA2C903ED0004984E6 /* NavigationModel.swift */,
 				4947374E2C787E6600EA38EB /* Assets.xcassets */,
 				494737502C787E6600EA38EB /* Preview Content */,
 			);
@@ -236,12 +239,13 @@
 				494737A32C7D740D00EA38EB /* ThirdView.swift in Sources */,
 				494737592C7883B100EA38EB /* SecondView.swift in Sources */,
 				494737802C7AFB3000EA38EB /* LostChildren.swift in Sources */,
-				494737A52C7D74BA00EA38EB /* MyPlofile.swift in Sources */,
+				494737A52C7D74BA00EA38EB /* MyProfile.swift in Sources */,
 				494737A92C7D899600EA38EB /* Talk01.swift in Sources */,
 				494737A12C7D73A600EA38EB /* MyChildren.swift in Sources */,
 				4947374D2C787E6300EA38EB /* ContentView.swift in Sources */,
 				4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */,
 				494737A72C7D754800EA38EB /* FourthView.swift in Sources */,
+				499A72EB2C903ED0004984E6 /* NavigationModel.swift in Sources */,
 				494737AD2C7D9EC000EA38EB /* Talk03.swift in Sources */,
 				4947375B2C78854000EA38EB /* FriendList.swift in Sources */,
 			);

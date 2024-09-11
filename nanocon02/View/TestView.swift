@@ -19,7 +19,7 @@ struct TestView: View {
                 Spacer()
                 Button(action: {
                     testViewModel.signout()
-                    navigationModel.path.removeLast(navigationModel.path.count-1)
+                    navigationModel.path.removeLast(navigationModel.path.count)
                 }, label: {
                     Text("signout")
                 })
@@ -30,6 +30,16 @@ struct TestView: View {
             Spacer()
             
             VStack {
+                Spacer()
+                
+                Button(action: {
+                    navigationModel.path.append("search device")
+                }, label: {
+                    Text("search Device")
+                })
+                
+                Spacer()
+                
                 NavigationLink(
                     destination: DeleteView(),
                     label: {

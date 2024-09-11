@@ -27,6 +27,10 @@ struct HomeView: View {
                     LoginView()
                 case "test":
                     TestView()
+                case "search device":
+                    SearchDeviceView()
+                case "device pairing success":
+                    DevicePairingSuccessView()
                 default:
                     Text("Unknown destination")
                 }

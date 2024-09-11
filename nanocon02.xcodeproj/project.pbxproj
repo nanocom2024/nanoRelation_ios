@@ -35,6 +35,15 @@
 		C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEFD2C8DD2B1006335C2 /* NavigationModel.swift */; };
 		C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEFF2C8E80FD006335C2 /* BaseUrl.swift */; };
 		C1D8CF022C8FD492006335C2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF012C8FD492006335C2 /* HomeView.swift */; };
+		C1D8CF042C912F28006335C2 /* DeviceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF032C912F28006335C2 /* DeviceConfig.swift */; };
+		C1D8CF062C913241006335C2 /* UserBleCharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF052C913241006335C2 /* UserBleCharacteristic.swift */; };
+		C1D8CF082C913277006335C2 /* UserBleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF072C913277006335C2 /* UserBleService.swift */; };
+		C1D8CF0A2C91329B006335C2 /* UserBlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF092C91329B006335C2 /* UserBlePeripheral.swift */; };
+		C1D8CF0C2C913318006335C2 /* BleCommViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF0B2C913318006335C2 /* BleCommViewModel.swift */; };
+		C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF0D2C9137A3006335C2 /* SearchDeviceView.swift */; };
+		C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */; };
+		C1D8CF122C913A20006335C2 /* CharacteristicPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */; };
+		C1D8CF142C9197E4006335C2 /* DevicePairingSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +76,15 @@
 		C1D8CEFD2C8DD2B1006335C2 /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 		C1D8CEFF2C8E80FD006335C2 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
 		C1D8CF012C8FD492006335C2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C1D8CF032C912F28006335C2 /* DeviceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConfig.swift; sourceTree = "<group>"; };
+		C1D8CF052C913241006335C2 /* UserBleCharacteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBleCharacteristic.swift; sourceTree = "<group>"; };
+		C1D8CF072C913277006335C2 /* UserBleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBleService.swift; sourceTree = "<group>"; };
+		C1D8CF092C91329B006335C2 /* UserBlePeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBlePeripheral.swift; sourceTree = "<group>"; };
+		C1D8CF0B2C913318006335C2 /* BleCommViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleCommViewModel.swift; sourceTree = "<group>"; };
+		C1D8CF0D2C9137A3006335C2 /* SearchDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeviceView.swift; sourceTree = "<group>"; };
+		C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
+		C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicPropertyView.swift; sourceTree = "<group>"; };
+		C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePairingSuccessView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +165,10 @@
 				C1D8CEF22C8D60F8006335C2 /* TestView.swift */,
 				C1D8CEF92C8DB94A006335C2 /* DeleteView.swift */,
 				C1D8CF012C8FD492006335C2 /* HomeView.swift */,
+				C1D8CF0D2C9137A3006335C2 /* SearchDeviceView.swift */,
+				C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */,
+				C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */,
+				C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,6 +180,7 @@
 				C1D8CEF02C8D54E5006335C2 /* SignupViewModel.swift */,
 				C1D8CEF72C8DB02E006335C2 /* TestViewModel.swift */,
 				C1D8CEFB2C8DB9B8006335C2 /* DeleteViewModel.swift */,
+				C1D8CF0B2C913318006335C2 /* BleCommViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -168,6 +191,10 @@
 				C1D8CEF52C8D9158006335C2 /* Auth.swift */,
 				C1D8CEFD2C8DD2B1006335C2 /* NavigationModel.swift */,
 				C1D8CEFF2C8E80FD006335C2 /* BaseUrl.swift */,
+				C1D8CF032C912F28006335C2 /* DeviceConfig.swift */,
+				C1D8CF052C913241006335C2 /* UserBleCharacteristic.swift */,
+				C1D8CF072C913277006335C2 /* UserBleService.swift */,
+				C1D8CF092C91329B006335C2 /* UserBlePeripheral.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -246,20 +273,29 @@
 				494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */,
 				494737A32C7D740D00EA38EB /* ThirdView.swift in Sources */,
 				494737592C7883B100EA38EB /* SecondView.swift in Sources */,
+				C1D8CF142C9197E4006335C2 /* DevicePairingSuccessView.swift in Sources */,
 				494737802C7AFB3000EA38EB /* LostChildren.swift in Sources */,
 				C1D8CEED2C8D5292006335C2 /* LoginViewModel.swift in Sources */,
+				C1D8CF122C913A20006335C2 /* CharacteristicPropertyView.swift in Sources */,
+				C1D8CF0A2C91329B006335C2 /* UserBlePeripheral.swift in Sources */,
 				C1D8CEEF2C8D5479006335C2 /* SignupView.swift in Sources */,
 				494737A52C7D74BA00EA38EB /* MyPlofile.swift in Sources */,
 				494737A92C7D899600EA38EB /* Talk01.swift in Sources */,
+				C1D8CF062C913241006335C2 /* UserBleCharacteristic.swift in Sources */,
 				494737A12C7D73A600EA38EB /* MyChildren.swift in Sources */,
+				C1D8CF0C2C913318006335C2 /* BleCommViewModel.swift in Sources */,
 				4947374D2C787E6300EA38EB /* ContentView.swift in Sources */,
 				C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */,
+				C1D8CF042C912F28006335C2 /* DeviceConfig.swift in Sources */,
+				C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */,
 				C1D8CEF82C8DB02E006335C2 /* TestViewModel.swift in Sources */,
 				C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */,
+				C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */,
 				C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */,
 				C1D8CF022C8FD492006335C2 /* HomeView.swift in Sources */,
 				4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */,
 				C1D8CEF62C8D9158006335C2 /* Auth.swift in Sources */,
+				C1D8CF082C913277006335C2 /* UserBleService.swift in Sources */,
 				C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */,
 				C1D8CEF32C8D60F8006335C2 /* TestView.swift in Sources */,
 				494737A72C7D754800EA38EB /* FourthView.swift in Sources */,
@@ -404,6 +440,7 @@
 				DEVELOPMENT_TEAM = JSGGNXCXA4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -433,6 +470,7 @@
 				DEVELOPMENT_TEAM = JSGGNXCXA4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

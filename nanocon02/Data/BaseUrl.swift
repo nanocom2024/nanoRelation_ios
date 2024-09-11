@@ -8,5 +8,6 @@
 import Foundation
 
 class BaseUrl {
+    // nanoRelation Server ip address -> 10.0.3.48:8181
     static let url: String = "http://10.0.3.48:8181"
 }

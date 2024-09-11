@@ -20,6 +20,7 @@ class Auth {
     
     static func setToken(token: String) {
         cookieManager.setCookie(url: url, key: "authtoken", value: token)
+        AppDelegate.storeCookies()
     }
     
     static func deleteToken() {
@@ -35,6 +36,7 @@ class Auth {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         var params = Dictionary<String, String>()
         guard let token = getToken() else {
+            print("token is not found")
             done = true
             completion(false)
             return
@@ -73,7 +75,6 @@ class Auth {
                     Auth.setToken(token: token)
                     done = true
                     completion(true)
-                    
                 } else {
                     print("Invalid login credentials.")
                     done = true
@@ -84,10 +85,12 @@ class Auth {
                 done = true
                 completion(false)
             }
+            
+            if !done {
+                print("cannot done")
+                completion(false)
+            }
         }
         task.resume()
-        if !done {
-            completion(false)
-        }
     }
 }

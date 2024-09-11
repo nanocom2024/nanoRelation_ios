@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     // UserDefaultにクッキーを保存するメソッド
-    private func storeCookies() {
+    static func storeCookies() {
         // 現在保持されているクッキーを取り出します
         guard let cookies = HTTPCookieStorage.shared.cookies else { return }
         // UserDefaultsに保存できるデータ型に変換していきます
@@ -50,14 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // バックグラウンドに入った時
     func applicationDidEnterBackground(_ application: UIApplication) {
         // クッキー保存
-        storeCookies()
+        AppDelegate.storeCookies()
         print("store Cookie")
     }
 
     // アプリがkillされた時
     func applicationWillTerminate(_ application: UIApplication) {
         // クッキー保存
-        storeCookies()
+        AppDelegate.storeCookies()
         print("store Cookie")
     }
 }

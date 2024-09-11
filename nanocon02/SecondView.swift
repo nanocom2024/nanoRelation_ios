@@ -8,69 +8,136 @@
 import SwiftUI
 
 struct SecondView: View {
+    @EnvironmentObject private var navigationModel: NavigationModel
     var body: some View {
-        NavigationView{
-            LostChildren()
-                .toolbar{
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        
-                        
-                        NavigationLink(destination: ContentView()) {//下部アイコン01
-                            VStack{
-                                Image(systemName: "person.fill")
-                                    .font(Font.system(size: 40))
-                                    .padding(.bottom, -10)
-                                Text("友達")
-                            }
-                            .foregroundColor(.gray)
-                        }//下部アイコン01
-                        .padding(EdgeInsets(top:0,leading: 15,bottom: -10,trailing:0))
-                        Spacer()
-                        
-//                        NavigationLink(destination: SecondView()) {//下部アイコン02
-                            VStack{
-                                Image(systemName: "person.2.slash.fill")
-                                    .font(Font.system(size: 35))
-                                    .padding(.bottom, -17)
-                                Text("迷子リスト")
-                            }
-                            .foregroundColor(.blue)
-//                        }//下部アイコン02
-                        .padding(.bottom, -10)
-                        Spacer()
-                        
-                        NavigationLink(destination: ThirdView()) {//下部アイコン03
-                            VStack{
-                                Image(systemName: "figure.and.child.holdinghands")
-                                    .font(Font.system(size: 35))
-                                    .padding(.bottom, -10)
-                                Text("子供")
-                            }
-                            .foregroundColor(.gray)
-                        }//下部アイコン03
-                        .padding(.bottom, -10)
-                        Spacer()
-                        
-                        NavigationLink(destination: FourthView()) {//下部アイコン04
-                            VStack{
-                                Image(systemName: "person.circle.fill")
-                                    .font(Font.system(size: 40))
-                                    .padding(.bottom, -10)
-                                Text("自分")
-                            }
-                            .foregroundColor(.gray)
-                        }//下部アイコン04
-                        .padding(EdgeInsets(top:0,leading: 0,bottom: -10,trailing:15))
-                        
-                    }//ToolbarItemGroup
-                }//.toolbar
-        }//NavigationView
-        .navigationBarBackButtonHidden(true)
-
         
+        NavigationStack(path: $navigationModel.path) {
+            LostChildren()
+            HStack{
+                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                Button(action: {
+                    var transaction = Transaction()
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) {
+                        navigationModel.path.append("Content")
+                    }
+                },
+                       label: {
+                    VStack {
+                        Image(systemName: "person.fill")
+                            .font(.system(size: 25))
+                            .padding(.bottom, -5)
+                        Text("友達")
+                            .fontWeight(.light)
+                            .font(.subheadline)
+                    }
+                    .foregroundColor(.gray)
+//                    .foregroundColor(.blue)
+                })
+                Spacer()
+                
+                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                
+                Button(action: {
+                    var transaction = Transaction()
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) {
+                        navigationModel.path.append("Second")
+                    }
+                },
+                       label: {
+                    VStack{
+                        Image(systemName: "person.2.slash.fill")
+                            .font(Font.system(size: 25))
+                            .padding(.bottom, -10)
+                        Text("迷子リスト")
+                            .fontWeight(.light)
+                            .font(.subheadline)
+
+
+                    }
+//                    .foregroundColor(.gray)
+                    .foregroundColor(.blue)
+                    
+                })
+                Spacer()
+
+                
+                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                
+                Button(action: {
+                    var transaction = Transaction()
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) {
+                        navigationModel.path.append("Third")
+                    }
+                },
+                       label: {
+                    VStack{
+                        Image(systemName: "figure.and.child.holdinghands")
+                            .font(Font.system(size: 25))
+                            .padding(.bottom, -5)
+                        Text("子供")
+                            .fontWeight(.light)
+                            .font(.subheadline)
+
+                    }
+                    .foregroundColor(.gray)
+//                    .foregroundColor(.blue)
+                    
+                })
+                Spacer()
+
+                
+                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                
+                Button(action: {
+                    var transaction = Transaction()
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) {
+                        navigationModel.path.append("Fourth")
+                    }
+                },
+                       label: {
+                    VStack{
+                        Image(systemName: "person.circle.fill")
+                            .font(Font.system(size: 25))
+                            .padding(.bottom, -5)
+                        Text("自分")
+                            .fontWeight(.light)
+                            .font(.subheadline)
+
+                    }
+                    .foregroundColor(.gray)
+//                    .foregroundColor(.blue)
+                    
+                })
+
+                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                
+                .navigationDestination(for: String.self) { value in
+                    switch value {
+                    case "Content":
+                        ContentView()
+                    case "Second":
+                        SecondView()
+                    case "Third":
+                        ThirdView()
+                    case "Fourth":
+                        FourthView()
+                    default:
+                        Text("Unknown destination")
+                    }
+                }
+            }
+            .padding(EdgeInsets(top:0,leading: 40,bottom: 10,trailing: 40))
+        }
+        .navigationViewStyle(StackNavigationViewStyle()) // スタックスタイルを使用
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
     SecondView()
+        .environmentObject(NavigationModel())
 }

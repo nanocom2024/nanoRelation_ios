@@ -1,5 +1,5 @@
 //
-//  MyPlofile.swift
+//  MyProfile.swift
 //  nanocon02
 //
 //  Created by X22049xx on 2024/08/27.
@@ -7,29 +7,30 @@
 
 import SwiftUI
 
-struct MyPlofile: View {
+struct MyProfile: View {
     var body: some View {
         VStack{//全体の縦構造
             VStack{//プロフィール
                 Image("chincoteague")//アイコン
                     .resizable()
-                    .frame(width: 220, height: 220)
+                    .frame(width: 150, height: 150)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white,lineWidth: 4))
                     .shadow(radius: 10)
                 Text("わたし")//名前
                     .font(.title)
-                    .fontWeight(.black)
+//                    .fontWeight(.black)
                     .padding(.top, 10.0)
                 
                 ZStack {//子供追加ボタン
                     RoundedRectangle(cornerRadius: 30)
                         .fill(Color.gray)
-                        .frame(width: 370, height: 50)
+                        .frame(width: 200, height: 40)
                     
                     Text("子供追加する") // メッセージ
-                        .font(.title)
-                        .fontWeight(.medium)
+                        .font(.body)
+                        .foregroundColor(.white)
+//                        .fontWeight(.medium)
                 }
                 
             }
@@ -46,5 +47,5 @@ struct MyPlofile: View {
 }
 
 #Preview {
-    MyPlofile()
+    MyProfile()
 }

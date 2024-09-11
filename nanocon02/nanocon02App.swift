@@ -12,6 +12,7 @@ struct nanocon02App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(NavigationModel())
         }
     }
 }

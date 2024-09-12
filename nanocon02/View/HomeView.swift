@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     // 認証結果を保持する状態プロパティ
     @State private var isAuthenticated: Bool = false
+    @ObservedObject private var beaconReceiver = BeaconReceiver()
     @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
@@ -31,6 +32,9 @@ struct HomeView: View {
                     SearchDeviceView()
                 case "device pairing success":
                     DevicePairingSuccessView()
+                case "beacon":
+                    BeaconView()
+                        .environmentObject(beaconReceiver)
                 default:
                     Text("Unknown destination")
                 }

@@ -40,6 +40,14 @@ struct TestView: View {
                 
                 Spacer()
                 
+                Button(action: {
+                    navigationModel.path.append("beacon")
+                }, label: {
+                    Text("iBeacon receive")
+                })
+                
+                Spacer()
+                
                 NavigationLink(
                     destination: DeleteView(),
                     label: {

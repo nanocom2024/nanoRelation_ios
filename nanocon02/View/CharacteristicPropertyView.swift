@@ -31,7 +31,7 @@ struct CharacteristicPropertyView: View {
             Spacer().frame(height: 20)
             
             if errorMessage != "" {
-                Text("error")
+                Text(errorMessage)
                     .foregroundStyle(Color.red)
             }
             
@@ -71,7 +71,7 @@ struct CharacteristicPropertyView: View {
             // read
             guard let recData = newVal else {
                 print("Received nil data")
-                errorMessage = "Received nil data"
+//                errorMessage = "Received nil data"
                 isPairingButtonDisabled = false
                 return
             }

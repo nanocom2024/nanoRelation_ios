@@ -44,6 +44,8 @@
 		C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */; };
 		C1D8CF122C913A20006335C2 /* CharacteristicPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */; };
 		C1D8CF142C9197E4006335C2 /* DevicePairingSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */; };
+		C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */; };
+		C1D8CF192C92E895006335C2 /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF182C92E895006335C2 /* BeaconView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
 		C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicPropertyView.swift; sourceTree = "<group>"; };
 		C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePairingSuccessView.swift; sourceTree = "<group>"; };
+		C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconReceiver.swift; sourceTree = "<group>"; };
+		C1D8CF182C92E895006335C2 /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 				C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */,
 				C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */,
 				C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */,
+				C1D8CF182C92E895006335C2 /* BeaconView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			children = (
 				C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */,
 				C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */,
+				C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -309,9 +315,11 @@
 				494737A72C7D754800EA38EB /* FourthView.swift in Sources */,
 				C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */,
 				C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */,
+				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,
 				C1D8CEFA2C8DB94A006335C2 /* DeleteView.swift in Sources */,
 				494737AD2C7D9EC000EA38EB /* Talk03.swift in Sources */,
 				4947375B2C78854000EA38EB /* FriendList.swift in Sources */,
+				C1D8CF192C92E895006335C2 /* BeaconView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +457,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we use iBeacon";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -479,6 +488,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we use iBeacon";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

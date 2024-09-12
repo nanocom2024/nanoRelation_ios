@@ -133,7 +133,6 @@
 				494737AA2C7D954D00EA38EB /* Talk02.swift */,
 				494737AC2C7D9EC000EA38EB /* Talk03.swift */,
 				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
-				499A72EA2C903ED0004984E6 /* NavigationModel.swift */,
 				4947374E2C787E6600EA38EB /* Assets.xcassets */,
 				494737502C787E6600EA38EB /* Preview Content */,
 				C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */,
@@ -452,7 +451,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon03;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon02;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -482,7 +481,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon03;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon02;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

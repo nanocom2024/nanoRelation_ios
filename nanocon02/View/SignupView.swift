@@ -14,6 +14,7 @@ struct SignupView: View {
     @State private var inputPassword: String = ""
     @State private var isLoggedIn: Bool = false
     @State private var errorMessage: String = ""
+    @State private var isButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
 
     var body: some View {
@@ -55,17 +56,22 @@ struct SignupView: View {
                 }
                 .frame(height: 200)
 
+                // create button
                 Button(action: {
+                    isButtonDisabled = true
                     if inputName.isEmpty {
                         errorMessage = "Missing name"
+                        isButtonDisabled = false
                         return
                     }
                     if inputEmail.isEmpty {
                         errorMessage = "Missing email"
+                        isButtonDisabled = false
                         return
                     }
                     if inputPassword.isEmpty {
                         errorMessage = "Missing password"
+                        isButtonDisabled = false
                         return
                     }
                     signupViewModel.signup(name: inputName, email: inputEmail, password: inputPassword)
@@ -79,6 +85,7 @@ struct SignupView: View {
                         .background(Color.accentColor)
                         .cornerRadius(8)
                 })
+                .disabled(isButtonDisabled)
                 
                 Spacer()
             }
@@ -86,15 +93,17 @@ struct SignupView: View {
         }
         .onChange(of: signupViewModel.signupSuccess) { _, success in
             navigationModel.path.append("test")
+            isButtonDisabled = false
         }
         .onChange(of: signupViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {
                 errorMessage = msg
+                isButtonDisabled = false
             }
         }
     }
 }
 
 #Preview {
-    LoginView()
+    SignupView()
 }

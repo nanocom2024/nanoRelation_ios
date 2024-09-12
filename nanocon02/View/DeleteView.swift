@@ -12,6 +12,7 @@ struct DeleteView: View {
     @State private var inputPassword: String = ""
     @State private var inputConfirmPassword: String = ""
     @State private var errorMessage: String = ""
+    @State private var isButtonDisabled = false
     @EnvironmentObject var navigationModel: NavigationModel
     
     var body: some View {
@@ -48,17 +49,22 @@ struct DeleteView: View {
                 }
                 .frame(height: 200)
 
+                // delete button
                 Button(action: {
+                    isButtonDisabled = true
                     if inputPassword.isEmpty {
                         errorMessage = "Missing password"
+                        isButtonDisabled = false
                         return
                     }
                     if inputConfirmPassword.isEmpty {
                         errorMessage = "Missing confirmPassword"
+                        isButtonDisabled = false
                         return
                     }
                     if inputPassword != inputConfirmPassword {
                         errorMessage = "Passwords do not match"
+                        isButtonDisabled = false
                         return
                     }
                     deleteViewModel.delete_account(password: inputPassword, confirmPassword: inputConfirmPassword)
@@ -72,6 +78,7 @@ struct DeleteView: View {
                         .background(Color.red)
                         .cornerRadius(8)
                 })
+                .disabled(isButtonDisabled)
                 
                 Spacer()
             }
@@ -81,11 +88,13 @@ struct DeleteView: View {
             if success {
                 // Navigate back to root
                 navigationModel.path.removeLast(navigationModel.path.count)
+                isButtonDisabled = false
             }
         }
         .onChange(of: deleteViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {
                 errorMessage = msg
+                isButtonDisabled = false
             }
         }
     }

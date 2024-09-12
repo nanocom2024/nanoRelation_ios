@@ -118,6 +118,7 @@
 		494737492C787E6300EA38EB /* nanocon02 */ = {
 			isa = PBXGroup;
 			children = (
+				C1D8CF152C92D47D006335C2 /* lib */,
 				C1D8CEF42C8D9140006335C2 /* Data */,
 				C1D8CEEB2C8D527F006335C2 /* ViewModel */,
 				C1D8CEE62C8D4C56006335C2 /* View */,
@@ -135,8 +136,6 @@
 				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
 				4947374E2C787E6600EA38EB /* Assets.xcassets */,
 				494737502C787E6600EA38EB /* Preview Content */,
-				C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */,
-				C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */,
 			);
 			path = nanocon02;
 			sourceTree = "<group>";
@@ -197,6 +196,15 @@
 				C1D8CF092C91329B006335C2 /* UserBlePeripheral.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		C1D8CF152C92D47D006335C2 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */,
+				C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

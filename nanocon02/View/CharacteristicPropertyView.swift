@@ -16,6 +16,8 @@ struct CharacteristicPropertyView: View {
     @StateObject var bleObj: BleCommViewModel
     @State private var showAlert = false
     @State private var showError = false
+    @State private var errorMessage = ""
+    @State private var isPairingButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
@@ -28,12 +30,19 @@ struct CharacteristicPropertyView: View {
         VStack (alignment: .center) {
             Spacer().frame(height: 20)
             
+            if errorMessage != "" {
+                Text("error")
+                    .foregroundStyle(Color.red)
+            }
+            
             // MARK: - pairing
             if isCharsReadable() && isCharsWriteable() {
                 HStack(alignment: .center) {
                     
                     Spacer().frame(width: 10)
                     Button(action: {
+                        isPairingButtonDisabled = true
+                        
                         // read
                         oneDevPeri.userPeripheral.readValue(for: oneChar.characteristic)
                         
@@ -45,6 +54,7 @@ struct CharacteristicPropertyView: View {
                             .background(Color.green)
                             .cornerRadius(8)
                     }
+                    .disabled(isPairingButtonDisabled)
                     
                 }
                 
@@ -61,6 +71,8 @@ struct CharacteristicPropertyView: View {
             // read
             guard let recData = newVal else {
                 print("Received nil data")
+                errorMessage = "Received nil data"
+                isPairingButtonDisabled = false
                 return
             }
             
@@ -68,6 +80,9 @@ struct CharacteristicPropertyView: View {
                 print("Received value: \(valStr)")
             } else {
                 print("Failed to decode data")
+                errorMessage = "Failed to decode data"
+                isPairingButtonDisabled = false
+                return
             }
             
             // write
@@ -89,6 +104,7 @@ struct CharacteristicPropertyView: View {
             if newValue {
                 navigationModel.path.append("device pairing success")
                 bleObj.initWriteSuccess = false
+                isPairingButtonDisabled = false
             }
         }
         .alert("Device disconnected", isPresented: $showAlert){

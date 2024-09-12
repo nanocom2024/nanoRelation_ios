@@ -14,7 +14,7 @@ struct SignupView: View {
     @State private var inputPassword: String = ""
     @State private var isLoggedIn: Bool = false
     @State private var errorMessage: String = ""
-    @State private var isButtonDisabled = false
+    @State private var isCreateButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
 
     var body: some View {
@@ -58,20 +58,20 @@ struct SignupView: View {
 
                 // create button
                 Button(action: {
-                    isButtonDisabled = true
+                    isCreateButtonDisabled = true
                     if inputName.isEmpty {
                         errorMessage = "Missing name"
-                        isButtonDisabled = false
+                        isCreateButtonDisabled = false
                         return
                     }
                     if inputEmail.isEmpty {
                         errorMessage = "Missing email"
-                        isButtonDisabled = false
+                        isCreateButtonDisabled = false
                         return
                     }
                     if inputPassword.isEmpty {
                         errorMessage = "Missing password"
-                        isButtonDisabled = false
+                        isCreateButtonDisabled = false
                         return
                     }
                     signupViewModel.signup(name: inputName, email: inputEmail, password: inputPassword)
@@ -85,7 +85,7 @@ struct SignupView: View {
                         .background(Color.accentColor)
                         .cornerRadius(8)
                 })
-                .disabled(isButtonDisabled)
+                .disabled(isCreateButtonDisabled)
                 
                 Spacer()
             }
@@ -93,12 +93,12 @@ struct SignupView: View {
         }
         .onChange(of: signupViewModel.signupSuccess) { _, success in
             navigationModel.path.append("test")
-            isButtonDisabled = false
+            isCreateButtonDisabled = false
         }
         .onChange(of: signupViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {
                 errorMessage = msg
-                isButtonDisabled = false
+                isCreateButtonDisabled = false
             }
         }
     }

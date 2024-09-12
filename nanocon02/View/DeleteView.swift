@@ -12,7 +12,7 @@ struct DeleteView: View {
     @State private var inputPassword: String = ""
     @State private var inputConfirmPassword: String = ""
     @State private var errorMessage: String = ""
-    @State private var isButtonDisabled = false
+    @State private var isDeleteButtonDisabled = false
     @EnvironmentObject var navigationModel: NavigationModel
     
     var body: some View {
@@ -51,20 +51,20 @@ struct DeleteView: View {
 
                 // delete button
                 Button(action: {
-                    isButtonDisabled = true
+                    isDeleteButtonDisabled = true
                     if inputPassword.isEmpty {
                         errorMessage = "Missing password"
-                        isButtonDisabled = false
+                        isDeleteButtonDisabled = false
                         return
                     }
                     if inputConfirmPassword.isEmpty {
                         errorMessage = "Missing confirmPassword"
-                        isButtonDisabled = false
+                        isDeleteButtonDisabled = false
                         return
                     }
                     if inputPassword != inputConfirmPassword {
                         errorMessage = "Passwords do not match"
-                        isButtonDisabled = false
+                        isDeleteButtonDisabled = false
                         return
                     }
                     deleteViewModel.delete_account(password: inputPassword, confirmPassword: inputConfirmPassword)
@@ -78,7 +78,7 @@ struct DeleteView: View {
                         .background(Color.red)
                         .cornerRadius(8)
                 })
-                .disabled(isButtonDisabled)
+                .disabled(isDeleteButtonDisabled)
                 
                 Spacer()
             }
@@ -88,13 +88,13 @@ struct DeleteView: View {
             if success {
                 // Navigate back to root
                 navigationModel.path.removeLast(navigationModel.path.count)
-                isButtonDisabled = false
+                isDeleteButtonDisabled = false
             }
         }
         .onChange(of: deleteViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {
                 errorMessage = msg
-                isButtonDisabled = false
+                isDeleteButtonDisabled = false
             }
         }
     }

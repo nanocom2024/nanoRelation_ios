@@ -12,7 +12,7 @@ struct LoginView: View {
     @State private var inputEmail: String = ""
     @State private var inputPassword: String = ""
     @State private var errorMessage: String = ""
-    @State private var isButtonDisabled = false
+    @State private var isLoginButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
 
     var body: some View {
@@ -55,15 +55,15 @@ struct LoginView: View {
                     
                     // login button
                     Button(action: {
-                        isButtonDisabled = true
+                        isLoginButtonDisabled = true
                         if inputEmail.isEmpty {
                             errorMessage = "Missing email"
-                            isButtonDisabled = false
+                            isLoginButtonDisabled = false
                             return
                         }
                         if inputPassword.isEmpty {
                             errorMessage = "Missing password"
-                            isButtonDisabled = false
+                            isLoginButtonDisabled = false
                             return
                         }
                         loginViewModel.signin(email: inputEmail, password: inputPassword)
@@ -77,7 +77,7 @@ struct LoginView: View {
                             .background(Color.accentColor)
                             .cornerRadius(8)
                     })
-                    .disabled(isButtonDisabled)
+                    .disabled(isLoginButtonDisabled)
                     
                     Spacer().frame(height: 20)
                     
@@ -95,13 +95,13 @@ struct LoginView: View {
         .onChange(of: loginViewModel.loginSuccess) { _, success in
             if success {
                 navigationModel.path.append("test")
-                isButtonDisabled = false
+                isLoginButtonDisabled = false
             }
         }
         .onChange(of: loginViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {
                 errorMessage = msg
-                isButtonDisabled = false
+                isLoginButtonDisabled = false
             }
         }
         // 戻るボタンを非表示にする

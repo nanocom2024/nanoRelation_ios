@@ -12,7 +12,10 @@ class CharacteristicPropertyViewModel: ObservableObject {
     
     func generate_writeString(device_id: String) async -> String? {
         do {
-            if let (private_key, public_key, major, minor) = try await generate_major_minor(device_id: device_id) {
+            if let (private_key, public_key, major, minor) = try await generate_major_minor(device_id: device_id),
+               let token = Auth.getToken(),
+               try await register_pairing(token: token, major: major, minor: minor)
+            {
                 let res = private_key + "," + public_key + "," + major + "," + minor
                 return res
             } else {
@@ -52,7 +55,6 @@ class CharacteristicPropertyViewModel: ObservableObject {
                let public_key = object["public_key"] as? String,
                let major = object["major"] as? String,
                let minor = object["minor"] as? String {
-                print("return device info")
                 return (private_key, public_key, major, minor)
             } else {
 //                print("Pairing fail")
@@ -64,4 +66,33 @@ class CharacteristicPropertyViewModel: ObservableObject {
         }
     }
 
+    private func register_pairing(token: String, major: String, minor: String) async throws -> Bool {
+        let url = URL(string: BaseUrl.url + "/pairing/register_pairing")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let params = ["token": token, "major": major, "minor": minor]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: params)
+        } catch {
+            print("Invalid JSON format.")
+            return false
+        }
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        do {
+            if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let done = object["done"] as? String {
+                return done == "pairing"
+            } else {
+                print("register fail")
+                return false
+            }
+        } catch {
+//            print(error.localizedDescription)
+            throw error
+        }
+    }
 }

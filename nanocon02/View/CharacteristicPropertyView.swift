@@ -105,6 +105,7 @@ struct CharacteristicPropertyView: View {
                         isPairingButtonDisabled = false
                         errorMessage = CharPropertyObj.errorString
                     }
+                    
                 }
             }
             
@@ -112,9 +113,20 @@ struct CharacteristicPropertyView: View {
         // write success event
         .onChange(of: bleObj.initWriteSuccess) { _, newValue in
             if newValue {
-                navigationModel.path.append("device pairing success")
-                bleObj.initWriteSuccess = false
-                isPairingButtonDisabled = false
+                Auth.auth_check { ok in
+                    // 認証結果に応じてisAuthenticatedを更新
+                    DispatchQueue.main.async {
+                        if ok {
+                            navigationModel.path.append("device pairing success")
+                            bleObj.initWriteSuccess = false
+                            isPairingButtonDisabled = false
+                        } else {
+                            navigationModel.path.removeLast(navigationModel.path.count)
+                            bleObj.initWriteSuccess = false
+                            isPairingButtonDisabled = false
+                        }
+                    }
+                }
             }
         }
         .alert("Device disconnected", isPresented: $showAlert){

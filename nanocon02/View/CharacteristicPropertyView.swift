@@ -13,13 +13,13 @@ struct CharacteristicPropertyView: View {
     
     @StateObject public var oneChar: UserBleCharacteristic
     @StateObject public var oneDevPeri: UserBlePeripheral
-    @StateObject var bleObj: BleCommViewModel
     @StateObject private var CharPropertyObj = CharacteristicPropertyViewModel()
     @State private var showAlert = false
     @State private var showError = false
     @State private var errorMessage = ""
     @State private var isPairingButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject var bleObj: BleCommViewModel
     
     var body: some View {
         
@@ -42,7 +42,7 @@ struct CharacteristicPropertyView: View {
                     
                     Spacer().frame(width: 10)
                     
-                    if isPairingButtonDisabled {
+                    if isPairingButtonDisabled && !CharPropertyObj.errorString.isEmpty {
                         ProgressView("initializing device...")
                             .progressViewStyle(CircularProgressViewStyle())
                             .padding()
@@ -114,11 +114,14 @@ struct CharacteristicPropertyView: View {
         .onChange(of: bleObj.initWriteSuccess) { _, newValue in
             if newValue {
                 Auth.auth_check { ok in
-                    // 認証結果に応じてisAuthenticatedを更新
+                    // 認証で問題がなければ次のViewへ
                     DispatchQueue.main.async {
                         if ok {
-                            navigationModel.path.append("device pairing success")
+                            bleObj.stopScanning()
                             bleObj.initWriteSuccess = false
+                            navigationModel.path.removeLast(min(navigationModel.path.count, 2))
+                            // next View
+                            navigationModel.path.append("device pairing success")
                             isPairingButtonDisabled = false
                         } else {
                             navigationModel.path.removeLast(navigationModel.path.count)

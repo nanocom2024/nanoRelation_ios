@@ -19,6 +19,8 @@ class BleCommViewModel: NSObject, ObservableObject {
     @Published var characteristicNameStr: String = "no-name"
     @Published var recValueData: Data?
     @Published var initWriteSuccess = false
+    
+    @Published var isScanning = false
         
     override init() {
         super.init()
@@ -33,7 +35,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("step 1")
         if(central.state == .poweredOn) {
-            self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
+            startScanning()
             print("step 2")
         }
         
@@ -43,8 +45,8 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
                 print("Power is Off")
                 
             case .poweredOn:
-                print("Power is On, scanning Ble devices")
-                self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
+                print("Power is On")
+                startScanning()
                 
             case .unsupported:
                 print("Unsupport")
@@ -61,6 +63,22 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
             @unknown default:
                 print("Error")
                 
+        }
+    }
+    
+    func startScanning() {
+        if !isScanning {
+            print("Starting scan")
+            self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
+            isScanning = true
+        }
+    }
+    
+    func stopScanning() {
+        if isScanning {
+            print("Stopping scan")
+            self.centralManager?.stopScan()
+            isScanning = false
         }
     }
     
@@ -236,8 +254,10 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         if let error = error {
             print("Write failed with error: \(error.localizedDescription)")
         } else {
-            initWriteSuccess = true
-            centralManager?.cancelPeripheralConnection(peripheral)
+            DispatchQueue.main.async {
+                self.initWriteSuccess = true
+                self.centralManager?.cancelPeripheralConnection(peripheral)
+            }
             print("Write successful for characteristic: \(characteristic.uuid)")
         }
     }

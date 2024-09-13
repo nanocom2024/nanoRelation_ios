@@ -19,7 +19,7 @@ struct DevicePairingSuccessView: View {
             Spacer().frame(height: 50)
             
             Button(action: {
-                navigationModel.path.removeLast(min(2, navigationModel.path.count))
+                navigationModel.path.removeLast()
             }, label: {
                 Text("home")
             })

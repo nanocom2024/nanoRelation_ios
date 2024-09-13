@@ -20,7 +20,8 @@ struct SearchDeviceView: View {
                 ForEach(bluetoothViewModel.foundPeripherals) { ele in
 
                     NavigationLink(destination: {
-                        DeviceDetailView(oneDev: ele, bleViewModel: bluetoothViewModel)
+                        DeviceDetailView(oneDev: ele)
+                            .environmentObject(bluetoothViewModel)
                     }, label: {
                         PeripheralCell(onePeri: ele)
                     })
@@ -46,7 +47,7 @@ struct SearchDeviceView: View {
     
     func goBack(){
         self.dismiss()
-        bluetoothViewModel.centralManager?.stopScan()
+        bluetoothViewModel.stopScanning()
     }
 }
 

@@ -68,3 +68,10 @@ struct PeripheralCell: View {
     }
         
 }
+
+#Preview {
+    // previewなどで見れるようにするにはMockが必要
+    SearchDeviceView()
+        .environmentObject(NavigationModel())
+        .environmentObject(BleCommViewModel())
+}

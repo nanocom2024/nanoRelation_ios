@@ -120,7 +120,7 @@ struct CharacteristicPropertyView: View {
                             bleObj.centralManager?.cancelPeripheralConnection(oneDevPeri.userPeripheral)
                             bleObj.stopScanning()
                             bleObj.initWriteSuccess = false
-                            navigationModel.path.removeLast(min(navigationModel.path.count, 2))
+                            navigationModel.path.removeLast(1)
                             // next View
                             navigationModel.path.append("device pairing success")
                             isPairingButtonDisabled = false

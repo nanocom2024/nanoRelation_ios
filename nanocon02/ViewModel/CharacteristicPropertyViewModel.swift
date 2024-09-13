@@ -87,6 +87,13 @@ class CharacteristicPropertyViewModel: ObservableObject {
                let done = object["done"] as? String {
                 return done == "pairing"
             } else {
+                // server res -> err
+                Task {
+                    if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let err = object["error"] as? String {
+                        print(err)
+                    }
+                }
                 print("register fail")
                 return false
             }

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SearchDeviceView: View {
 
-    @ObservedObject private var bluetoothViewModel = BleCommViewModel()
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var bluetoothViewModel: BleCommViewModel
     @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
@@ -46,7 +45,7 @@ struct SearchDeviceView: View {
     }
     
     func goBack(){
-        self.dismiss()
+        navigationModel.path.removeLast()
         bluetoothViewModel.stopScanning()
     }
 }

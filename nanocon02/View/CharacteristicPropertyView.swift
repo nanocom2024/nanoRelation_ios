@@ -117,6 +117,7 @@ struct CharacteristicPropertyView: View {
                     // 認証で問題がなければ次のViewへ
                     DispatchQueue.main.async {
                         if ok {
+                            bleObj.centralManager?.cancelPeripheralConnection(oneDevPeri.userPeripheral)
                             bleObj.stopScanning()
                             bleObj.initWriteSuccess = false
                             navigationModel.path.removeLast(min(navigationModel.path.count, 2))

@@ -85,9 +85,9 @@ class DeleteViewModel: ObservableObject {
                 } else {
                     DispatchQueue.main.async {
                         self.isLoading = false
-                        self.errorMessage = "Invalid login credentials."
+                        self.errorMessage = "Delete fail"
                     }
-                    print("Invalid login credentials.")
+                    print("Delete fail")
                 }
             } catch let error {
                 DispatchQueue.main.async {

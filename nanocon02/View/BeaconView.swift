@@ -28,5 +28,7 @@ struct BeaconView: View {
 }
 
 #Preview {
+    // 中身を見るにはMockが必要
     BeaconView()
+        .environmentObject(BeaconReceiver())
 }

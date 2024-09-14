@@ -113,6 +113,7 @@ struct DeviceDetailView: View {
 }
 
 //#Preview {
-//    DetailView()
+//    // previewを見れるようにするにはMockが必要
+//    DeviceDetailView()
 //}
 

@@ -161,6 +161,7 @@ struct CharacteristicPropertyView: View {
 }
 
 //#Preview {
+//    // previewを見れるようにするにはMockが必要
 //    CharacteristicPropertyView()
 //}
 

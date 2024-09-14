@@ -43,6 +43,7 @@ struct LoginView: View {
                     
                     VStack(spacing: 24) {
                         TextField("Mail address", text: $inputEmail)
+                            .autocapitalization(.none) // 自動大文字化を無効化
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(maxWidth: 280)
                         

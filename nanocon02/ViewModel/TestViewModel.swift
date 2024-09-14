@@ -50,7 +50,7 @@ class TestViewModel: ObservableObject {
                         return
                     }
                 } else {
-                    print("Invalid login credentials.")
+                    print("signout fail")
                     return
                 }
             } catch let error {

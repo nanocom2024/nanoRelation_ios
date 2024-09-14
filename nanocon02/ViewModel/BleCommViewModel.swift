@@ -19,8 +19,11 @@ class BleCommViewModel: NSObject, ObservableObject {
     @Published var characteristicNameStr: String = "no-name"
     @Published var recValueData: Data?
     @Published var initWriteSuccess = false
+    
+    static var isScanning = false
         
     override init() {
+        print("init BleCommViewModel")
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: .main)
     }
@@ -33,7 +36,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("step 1")
         if(central.state == .poweredOn) {
-            self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
+            startScanning()
             print("step 2")
         }
         
@@ -43,8 +46,8 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
                 print("Power is Off")
                 
             case .poweredOn:
-                print("Power is On, scanning Ble devices")
-                self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
+                print("Power is On")
+//                startScanning()
                 
             case .unsupported:
                 print("Unsupport")
@@ -61,6 +64,22 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
             @unknown default:
                 print("Error")
                 
+        }
+    }
+    
+    func startScanning() {
+        if !BleCommViewModel.isScanning {
+            print("Starting scan")
+            self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
+            BleCommViewModel.isScanning = true
+        }
+    }
+    
+    func stopScanning() {
+        if BleCommViewModel.isScanning {
+            print("Stopping scan")
+            self.centralManager?.stopScan()
+            BleCommViewModel.isScanning = false
         }
     }
     
@@ -236,8 +255,10 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         if let error = error {
             print("Write failed with error: \(error.localizedDescription)")
         } else {
-            initWriteSuccess = true
-            centralManager?.cancelPeripheralConnection(peripheral)
+            DispatchQueue.main.async {
+                self.initWriteSuccess = true
+                self.centralManager?.cancelPeripheralConnection(peripheral)
+            }
             print("Write successful for characteristic: \(characteristic.uuid)")
         }
     }

@@ -42,10 +42,12 @@ struct SignupView: View {
 
                 VStack(spacing: 24) {
                     TextField("Your name", text: $inputName)
+                        .autocapitalization(.none) // 自動大文字化を無効化
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
                     
                     TextField("Mail address", text: $inputEmail)
+                        .autocapitalization(.none) // 自動大文字化を無効化
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
 

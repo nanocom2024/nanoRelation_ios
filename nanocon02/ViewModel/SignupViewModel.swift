@@ -72,9 +72,9 @@ class SignupViewModel: ObservableObject {
                 } else {
                     DispatchQueue.main.async {
                         self.isLoading = false
-                        self.errorMessage = "Invalid login credentials."
+                        self.errorMessage = "Invalid request"
                     }
-                    print("Invalid login credentials.")
+                    print("Invalid request")
                 }
             } catch let error {
                 DispatchQueue.main.async {

@@ -41,6 +41,9 @@ struct SearchDeviceView: View {
                     }
                                     
                     )
+            .onDisappear {
+                bluetoothViewModel.stopScanning()
+            }
                         
     }
     

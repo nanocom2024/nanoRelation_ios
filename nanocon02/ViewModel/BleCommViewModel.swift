@@ -20,7 +20,7 @@ class BleCommViewModel: NSObject, ObservableObject {
     @Published var recValueData: Data?
     @Published var initWriteSuccess = false
     
-    @Published var isScanning = false
+    static var isScanning = false
         
     override init() {
         super.init()
@@ -46,7 +46,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
                 
             case .poweredOn:
                 print("Power is On")
-                startScanning()
+//                startScanning()
                 
             case .unsupported:
                 print("Unsupport")
@@ -67,18 +67,18 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func startScanning() {
-        if !isScanning {
+        if !BleCommViewModel.isScanning {
             print("Starting scan")
             self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
-            isScanning = true
+            BleCommViewModel.isScanning = true
         }
     }
     
     func stopScanning() {
-        if isScanning {
+        if BleCommViewModel.isScanning {
             print("Stopping scan")
             self.centralManager?.stopScan()
-            isScanning = false
+            BleCommViewModel.isScanning = false
         }
     }
     

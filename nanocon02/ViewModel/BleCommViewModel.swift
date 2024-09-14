@@ -23,6 +23,7 @@ class BleCommViewModel: NSObject, ObservableObject {
     static var isScanning = false
         
     override init() {
+        print("init BleCommViewModel")
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: .main)
     }

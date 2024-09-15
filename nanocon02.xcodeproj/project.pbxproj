@@ -47,6 +47,8 @@
 		C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */; };
 		C1D8CF192C92E895006335C2 /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF182C92E895006335C2 /* BeaconView.swift */; };
 		C1D8CF1B2C931126006335C2 /* CharacteristicPropertyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF1A2C931126006335C2 /* CharacteristicPropertyViewModel.swift */; };
+		C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF282C954F20006335C2 /* StreetPassView.swift */; };
+		C1D8CF2B2C954F4D006335C2 /* StreetPassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF2A2C954F4D006335C2 /* StreetPassViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconReceiver.swift; sourceTree = "<group>"; };
 		C1D8CF182C92E895006335C2 /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
 		C1D8CF1A2C931126006335C2 /* CharacteristicPropertyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicPropertyViewModel.swift; sourceTree = "<group>"; };
+		C1D8CF282C954F20006335C2 /* StreetPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPassView.swift; sourceTree = "<group>"; };
+		C1D8CF2A2C954F4D006335C2 /* StreetPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPassViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,7 @@
 				C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */,
 				C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */,
 				C1D8CF182C92E895006335C2 /* BeaconView.swift */,
+				C1D8CF282C954F20006335C2 /* StreetPassView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				C1D8CEFB2C8DB9B8006335C2 /* DeleteViewModel.swift */,
 				C1D8CF0B2C913318006335C2 /* BleCommViewModel.swift */,
 				C1D8CF1A2C931126006335C2 /* CharacteristicPropertyViewModel.swift */,
+				C1D8CF2A2C954F4D006335C2 /* StreetPassViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 				494737592C7883B100EA38EB /* SecondView.swift in Sources */,
 				C1D8CF142C9197E4006335C2 /* DevicePairingSuccessView.swift in Sources */,
 				494737802C7AFB3000EA38EB /* LostChildren.swift in Sources */,
+				C1D8CF2B2C954F4D006335C2 /* StreetPassViewModel.swift in Sources */,
 				C1D8CEED2C8D5292006335C2 /* LoginViewModel.swift in Sources */,
 				C1D8CF122C913A20006335C2 /* CharacteristicPropertyView.swift in Sources */,
 				C1D8CF0A2C91329B006335C2 /* UserBlePeripheral.swift in Sources */,
@@ -306,6 +313,7 @@
 				C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */,
 				C1D8CF042C912F28006335C2 /* DeviceConfig.swift in Sources */,
 				C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */,
+				C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */,
 				C1D8CEF82C8DB02E006335C2 /* TestViewModel.swift in Sources */,
 				C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */,
 				C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */,

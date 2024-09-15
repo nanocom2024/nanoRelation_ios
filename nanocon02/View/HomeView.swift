@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var isAuthenticated: Bool = false
     @ObservedObject private var beaconReceiver = BeaconReceiver()
     @EnvironmentObject private var navigationModel: NavigationModel
-    
+
     var body: some View {
         NavigationStack(path: $navigationModel.path) {
             Group {
@@ -36,6 +36,9 @@ struct HomeView: View {
                 case "beacon":
                     BeaconView()
                         .environmentObject(beaconReceiver)
+                case "street pass":
+                    StreetPassView()
+                        .environmentObject(beaconReceiver)
                 default:
                     Text("Unknown destination")
                 }
@@ -52,7 +55,7 @@ struct HomeView: View {
             }
         }
     }
-    
+
     private func authCheck() {
         Auth.auth_check { res in
             // 認証結果に応じてisAuthenticatedを更新

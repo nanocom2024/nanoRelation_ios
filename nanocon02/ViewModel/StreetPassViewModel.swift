@@ -12,6 +12,9 @@ class StreetPassViewModel: ObservableObject {
     @Published var errorString = ""
 
     func received_beacon(info: BeaconInfo) async {
+        if info.proximity == "Unknown" {
+            return
+        }
         do {
             if let token = Auth.getToken(),
                let pass = try await request_received_beacon(token: token, major: info.major, minor: info.minor)

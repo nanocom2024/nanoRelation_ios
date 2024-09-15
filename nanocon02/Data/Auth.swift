@@ -10,23 +10,23 @@ import Foundation
 class Auth {
     static private let cookieManager = CookieManager()
     static private let url = URL(string: BaseUrl.url + "/auth")!
-    
+
     static func getToken() -> String? {
         if cookieManager.isCookieSet(name: "authtoken", url: url) {
             return cookieManager.getCookie(name: "authtoken", url: url)
         }
         return nil
     }
-    
+
     static func setToken(token: String) {
         cookieManager.setCookie(url: url, key: "authtoken", value: token)
         AppDelegate.storeCookies()
     }
-    
+
     static func deleteToken() {
         cookieManager.removeCookie(name: "authtoken", url: url)
     }
-    
+
     static func auth_check(completion: @escaping (Bool) -> Void) {
         var done = false
         let auth_check_url = URL(string: BaseUrl.url + "/pairing/auth_check")!
@@ -42,7 +42,7 @@ class Auth {
             return
         }
         params["token"] = token
-        
+
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         }catch{
@@ -51,7 +51,7 @@ class Auth {
             completion(false)
             return
         }
-        
+
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 print("No data received.")
@@ -59,20 +59,22 @@ class Auth {
                 completion(false)
                 return
             }
-            
+
             if let error = error {
                 print(error.localizedDescription)
                 done = true
                 completion(false)
                 return
             }
-            
+
             do {
                 // JSONデータを辞書形式に変換
                 if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                    let token = object["token"] as? String { // トークンを取得
                     // クッキーを設定
-                    Auth.setToken(token: token)
+                    Task {
+                        Auth.setToken(token: token)
+                    }
                     done = true
                     completion(true)
                 } else {
@@ -85,7 +87,7 @@ class Auth {
                 done = true
                 completion(false)
             }
-            
+
             if !done {
                 print("cannot done")
                 completion(false)

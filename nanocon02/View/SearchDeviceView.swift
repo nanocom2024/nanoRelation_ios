@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchDeviceView: View {
 
     @EnvironmentObject private var bluetoothViewModel: BleCommViewModel
+    @EnvironmentObject private var beaconReceiver: BeaconReceiver
     @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
@@ -43,6 +44,10 @@ struct SearchDeviceView: View {
                     )
             .onDisappear {
                 bluetoothViewModel.stopScanning()
+                beaconReceiver.start_ranging()
+            }
+            .onAppear {
+                beaconReceiver.stop_ranging()
             }
                         
     }
@@ -77,4 +82,5 @@ struct PeripheralCell: View {
     SearchDeviceView()
         .environmentObject(NavigationModel())
         .environmentObject(BleCommViewModel())
+        .environmentObject(BeaconReceiver())
 }

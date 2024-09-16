@@ -60,7 +60,9 @@ class LoginViewModel: ObservableObject {
                    let token = object["token"] as? String { // トークンを取得
                         
                     // クッキーを設定
-                    Auth.setToken(token: token)
+                    Task {
+                        Auth.setToken(token: token)
+                    }
                     
                     // 成功を通知
                     DispatchQueue.main.async {

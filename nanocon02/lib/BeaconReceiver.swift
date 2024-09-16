@@ -29,7 +29,7 @@ class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
         beaconRegion = CLBeaconRegion(uuid: DeviceConfig.iBeacon_uuid, identifier: "MyBeacon")
 
         // レンジング（ビーコンとの距離測定）を開始
-        locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
+        start_ranging()
     }
 }
 
@@ -70,6 +70,15 @@ extension BeaconReceiver {
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error: \(error)")
+    }
+    
+    func start_ranging() {
+        // レンジング（ビーコンとの距離測定）を開始
+        locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
+    }
+    
+    func stop_ranging() {
+        locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
     }
 }
 

@@ -31,6 +31,7 @@ struct HomeView: View {
                 case "search device":
                     SearchDeviceView()
                         .environmentObject(BleCommViewModel())
+                        .environmentObject(beaconReceiver)
                 case "device pairing success":
                     DevicePairingSuccessView()
                 case "beacon":

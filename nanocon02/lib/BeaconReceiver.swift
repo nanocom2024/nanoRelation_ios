@@ -36,33 +36,40 @@ class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
 // CLLocationManagerDelegateメソッド
 extension BeaconReceiver {
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
-        if let beacon = beacons.first {
-            var proximityString: String
+        for beacon in beacons {
+            
+            Task {
+                let proximityString: String
 
-            switch beacon.proximity {
-            case .immediate:
-                proximityString = "Very Close"
-            case .near:
-                proximityString = "Near"
-            case .far:
-                proximityString = "Far Away"
-            default:
-                proximityString = "Unknown"
-            }
+                switch beacon.proximity {
+                case .immediate:
+                    proximityString = "Very Close"
+                case .near:
+                    proximityString = "Near"
+                case .far:
+                    proximityString = "Far Away"
+                default:
+                    proximityString = "Unknown"
+                }
 
-            latestBeaconInfo = BeaconInfo(
-                proximity: proximityString,
-                major: beacon.major.stringValue,
-                minor: beacon.minor.stringValue,
-                rssi: beacon.rssi
-            )
+                DispatchQueue.main.async {
+                    self.latestBeaconInfo = BeaconInfo(
+                        proximity: proximityString,
+                        major: beacon.major.stringValue,
+                        minor: beacon.minor.stringValue,
+                        rssi: beacon.rssi
+                    )
+                }
 
-            // ビーコンの詳細情報
-            let beaconInfo = "Proximity: \(proximityString),\nMajor: \(beacon.major), Minor: \(beacon.minor), RSSI: \(beacon.rssi)"
+                // ビーコンの詳細情報
+                let beaconInfo = "Proximity: \(proximityString),\nMajor: \(beacon.major), Minor: \(beacon.minor), RSSI: \(beacon.rssi)"
 
-            self.beaconHistory.append(beaconInfo)
-            if self.beaconHistory.count > 5 {
-                self.beaconHistory.removeFirst(self.beaconHistory.count - 5) // 最新5つのみ保持
+                DispatchQueue.main.async {
+                    self.beaconHistory.append(beaconInfo)
+                    if self.beaconHistory.count > 5 {
+                        self.beaconHistory.removeFirst(self.beaconHistory.count - 5) // 最新5つのみ保持
+                    }
+                }
             }
 
         }

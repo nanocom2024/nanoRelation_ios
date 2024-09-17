@@ -96,31 +96,15 @@ struct LoginView: View {
                         
                         Spacer().frame(height: 20)
                         
-                        Button(action: {
-                            var transaction = Transaction()
-                            transaction.disablesAnimations = true
-                            withTransaction(transaction) {
-                                navigationModel.path.append("signup")
-                            }
-                        },
-                               label: {
+                        NavigationLink(destination: SignupView()){
                             Text("新規登録")
                                 .fontWeight(.medium)
                                 .frame(minWidth: 160)
                                 .foregroundColor(.white)
                                 .padding(12)
-                                .background(Color.accentColor)
+                                .background(.blue)
                                 .cornerRadius(8)
-                        })
-                        .navigationDestination(for: String.self) { value in
-                            switch value {
-                            case "singup":
-                                SignupView()
-                            default:
-                                Text("Unknown destination")
-                            }
                         }
-                        
                         Spacer()
                 }
             }

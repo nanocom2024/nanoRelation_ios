@@ -46,7 +46,7 @@ struct DeleteView: View {
                         .frame(maxWidth: 280, alignment: .leading)
                         .padding(0)
                     
-                    TextField("Password", text: $inputPassword)
+                    SecureField("Password", text: $inputPassword)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
                         .padding(.top,-10)
@@ -58,7 +58,7 @@ struct DeleteView: View {
                         .frame(maxWidth: 280, alignment: .leading)
                         .padding(0)
                     
-                    TextField("ConfirmPassword", text: $inputConfirmPassword)
+                    SecureField("ConfirmPassword", text: $inputConfirmPassword)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
                         .padding(.top,-10)

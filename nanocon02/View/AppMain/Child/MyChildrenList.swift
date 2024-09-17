@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyChildren: View {
+struct MyChildrenList: View {
     // メッセージの構造体
     struct Child: Identifiable {
         let id = UUID()
@@ -102,5 +102,5 @@ struct MyChildren: View {
 
 
 #Preview {
-    MyChildren()
+    MyChildrenList()
 }

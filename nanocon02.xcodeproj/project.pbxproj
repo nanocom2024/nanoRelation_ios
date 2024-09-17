@@ -48,7 +48,7 @@
 		C1D8CF532C993907006335C2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF522C993907006335C2 /* ProfileView.swift */; };
 		C1D8CF552C9939E2006335C2 /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF542C9939E2006335C2 /* MyProfile.swift */; };
 		C1D8CF572C993BD8006335C2 /* ChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF562C993BD8006335C2 /* ChildView.swift */; };
-		C1D8CF592C993BF4006335C2 /* MyChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF582C993BF4006335C2 /* MyChildren.swift */; };
+		C1D8CF592C993BF4006335C2 /* MyChildrenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,7 +94,7 @@
 		C1D8CF522C993907006335C2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C1D8CF542C9939E2006335C2 /* MyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		C1D8CF562C993BD8006335C2 /* ChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildView.swift; sourceTree = "<group>"; };
-		C1D8CF582C993BF4006335C2 /* MyChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildren.swift; sourceTree = "<group>"; };
+		C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildrenList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,14 +172,7 @@
 				C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */,
 				C1D8CF182C92E895006335C2 /* BeaconView.swift */,
 				C1D8CF282C954F20006335C2 /* StreetPassView.swift */,
-				C1D8CF4A2C992136006335C2 /* FriendView.swift */,
-				C1D8CF4C2C9924BB006335C2 /* FriendList.swift */,
-				C1D8CF4E2C993612006335C2 /* LostChildView.swift */,
-				C1D8CF502C9936B0006335C2 /* LostChildrenList.swift */,
-				C1D8CF522C993907006335C2 /* ProfileView.swift */,
-				C1D8CF542C9939E2006335C2 /* MyProfile.swift */,
-				C1D8CF562C993BD8006335C2 /* ChildView.swift */,
-				C1D8CF582C993BF4006335C2 /* MyChildren.swift */,
+				C1D8CF5A2C993E3F006335C2 /* AppMain */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,6 +213,53 @@
 				C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		C1D8CF5A2C993E3F006335C2 /* AppMain */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF5B2C993E64006335C2 /* Friend */,
+				C1D8CF5C2C993E72006335C2 /* LostChild */,
+				C1D8CF5D2C993E80006335C2 /* Profile */,
+				C1D8CF5E2C993E8E006335C2 /* Child */,
+			);
+			path = AppMain;
+			sourceTree = "<group>";
+		};
+		C1D8CF5B2C993E64006335C2 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF4A2C992136006335C2 /* FriendView.swift */,
+				C1D8CF4C2C9924BB006335C2 /* FriendList.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		C1D8CF5C2C993E72006335C2 /* LostChild */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF4E2C993612006335C2 /* LostChildView.swift */,
+				C1D8CF502C9936B0006335C2 /* LostChildrenList.swift */,
+			);
+			path = LostChild;
+			sourceTree = "<group>";
+		};
+		C1D8CF5D2C993E80006335C2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF522C993907006335C2 /* ProfileView.swift */,
+				C1D8CF542C9939E2006335C2 /* MyProfile.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C1D8CF5E2C993E8E006335C2 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF562C993BD8006335C2 /* ChildView.swift */,
+				C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */,
+			);
+			path = Child;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,7 +348,7 @@
 				C1D8CF4D2C9924BB006335C2 /* FriendList.swift in Sources */,
 				C1D8CF532C993907006335C2 /* ProfileView.swift in Sources */,
 				494737A92C7D899600EA38EB /* Talk01.swift in Sources */,
-				C1D8CF592C993BF4006335C2 /* MyChildren.swift in Sources */,
+				C1D8CF592C993BF4006335C2 /* MyChildrenList.swift in Sources */,
 				C1D8CF062C913241006335C2 /* UserBleCharacteristic.swift in Sources */,
 				C1D8CF0C2C913318006335C2 /* BleCommViewModel.swift in Sources */,
 				C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */,

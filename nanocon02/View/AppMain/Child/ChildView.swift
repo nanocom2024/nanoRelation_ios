@@ -12,7 +12,7 @@ struct ChildView: View {
     var body: some View {
         
         VStack {
-            MyChildren()
+            MyChildrenList()
             HStack{
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 // Friend

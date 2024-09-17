@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct MyChildren: View {
     // メッセージの構造体
     struct Child: Identifiable {
@@ -19,13 +17,18 @@ struct MyChildren: View {
 
     // @Stateでメッセージのリストを管理
     @State private var children: [Child] = []
-    
+    @EnvironmentObject private var navigationModel: NavigationModel
     
     
     var body: some View {
-        VStack{//全体の縦構造
-            HStack{//検索バーの部分
+        // 全体の縦構造
+        VStack{
+
+            // MARK: ナビゲーションバー
+            HStack{
                 Spacer()
+                
+                // plus mark
                 Button(action: {
                     children.append(Child(text: "なまえ", image: Image("hiddenlake")))
                 }) {
@@ -34,14 +37,28 @@ struct MyChildren: View {
 //                        .foregroundColor(.gray)
                         .foregroundColor(.black)
                 }
+                
+                Spacer().frame(width: 10)
+                
+                // setting mark
+                Button(action: {
+                    // test viewへ
+                    navigationModel.path.append("test")
+                }) {
+                    Image(systemName: "gearshape")
+                        .font(Font.system(size: 30, weight: .light))
+                        .foregroundColor(.black)
+                }
+                
             }
+            // MARK: - END ナビゲーションバー
             
-            ScrollView {//スクロールする領域を指定
+            ScrollView { //スクロールする領域を指定
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
-                ForEach(children) { child in//ForEach　配列の要素を構成するとき使い回しするもの
+                ForEach(children) { child in //ForEach　配列の要素を構成するとき使い回しするもの
                 
                     NavigationLink(destination: Talk03()) {
-                        HStack{//各個人
+                        HStack{ //各個人
                             child.image
                                 .resizable()
                                 .frame(width: 55, height: 55)
@@ -73,13 +90,14 @@ struct MyChildren: View {
                         }
                         .padding(.bottom,15)
                     }
-                }// messages配列の中身を表示
+                } // messages配列の中身を表示
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
             } // ScrollView
             
-        }//var body: some View
+        }
         .padding(EdgeInsets(top:20,leading: 25,bottom: 0,trailing:25))
-    }//struct Talk01: View
+    }
+    // MARK: END - var body: some View
 }
 
 

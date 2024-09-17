@@ -1,5 +1,5 @@
 //
-//  SecondView.swift
+//  ContentView.swift
 //  nanocon02
 //
 //  Created by X22049xx on 2024/08/23.
@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-struct SecondView: View {
+struct FriendView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
     var body: some View {
         
-        NavigationStack(path: $navigationModel.path) {
-            LostChildren()
+        VStack {
+            FriendList()
             HStack{
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Friend
+                
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Content")
+                        navigationModel.path.append("Friend")
                     }
                 },
                        label: {
@@ -31,18 +33,19 @@ struct SecondView: View {
                             .fontWeight(.light)
                             .font(.subheadline)
                     }
-                    .foregroundColor(.gray)
-//                    .foregroundColor(.blue)
+                    //                    .foregroundColor(.gray)
+                    .foregroundColor(.blue)
                 })
                 Spacer()
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // LostChild
                 
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Second")
+                        navigationModel.path.append("LostChild")
                     }
                 },
                        label: {
@@ -53,23 +56,24 @@ struct SecondView: View {
                         Text("迷子リスト")
                             .fontWeight(.light)
                             .font(.subheadline)
-
-
+                        
+                        
                     }
-//                    .foregroundColor(.gray)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.gray)
+                    //                    .foregroundColor(.blue)
                     
                 })
                 Spacer()
-
+                
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Child
                 
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Third")
+                        navigationModel.path.append("Child")
                     }
                 },
                        label: {
@@ -80,22 +84,23 @@ struct SecondView: View {
                         Text("子供")
                             .fontWeight(.light)
                             .font(.subheadline)
-
+                        
                     }
                     .foregroundColor(.gray)
-//                    .foregroundColor(.blue)
+                    //                    .foregroundColor(.blue)
                     
                 })
                 Spacer()
-
+                
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Profile
                 
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Fourth")
+                        navigationModel.path.append("Profile")
                     }
                 },
                        label: {
@@ -106,31 +111,17 @@ struct SecondView: View {
                         Text("自分")
                             .fontWeight(.light)
                             .font(.subheadline)
-
+                        
                     }
                     .foregroundColor(.gray)
-//                    .foregroundColor(.blue)
+                    //                    .foregroundColor(.blue)
                     
                 })
-
+                
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 
-                .navigationDestination(for: String.self) { value in
-                    switch value {
-                    case "Content":
-                        ContentView()
-                    case "Second":
-                        SecondView()
-                    case "Third":
-                        ThirdView()
-                    case "Fourth":
-                        FourthView()
-                    default:
-                        Text("Unknown destination")
-                    }
-                }
             }
-            .padding(EdgeInsets(top:0,leading: 40,bottom: 10,trailing: 40))
+            .padding(EdgeInsets(top: 0, leading: 40, bottom: 10, trailing: 40))
         }
         .navigationViewStyle(StackNavigationViewStyle()) // スタックスタイルを使用
         .navigationBarBackButtonHidden(true)
@@ -138,6 +129,7 @@ struct SecondView: View {
 }
 
 #Preview {
-    SecondView()
+    FriendView()
         .environmentObject(NavigationModel())
 }
+

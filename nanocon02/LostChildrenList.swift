@@ -1,36 +1,36 @@
 //
-//  FriendList.swift
+//  LostChildren.swift
 //  nanocon02
 //
-//  Created by X22049xx on 2024/08/23.
+//  Created by X22049xx on 2024/08/25.
 //
 
 import SwiftUI
 
-struct FriendList: View {
+struct LostChildrenList: View {
     // メッセージの構造体
-    struct Friend: Identifiable {
+    struct LostChild: Identifiable {
         let id = UUID()
         let text: String
         let image: Image
     }
-    
+
     // @Stateでメッセージのリストを管理
-    @State private var friends: [Friend] = []
-    @EnvironmentObject private var navigationModel: NavigationModel
+    @State private var lostchildren: [LostChild] = []
     
     
     
     var body: some View {
         // 全体の縦構造
         VStack{
+
             // MARK: ナビゲーションバー
             HStack{
                 Spacer()
                 
                 // plus mark
                 Button(action: {
-                    friends.append(Friend(text: "なまえ", image: Image("charleyrivers")))
+                    lostchildren.append(LostChild(text: "なまえ", image: Image("chincoteague")))
                 }) {
                     Image(systemName: "plus.circle")
                         .font(Font.system(size: 30, weight: .light))
@@ -43,7 +43,7 @@ struct FriendList: View {
                 // setting mark
                 Button(action: {
                     // test viewへ
-                    navigationModel.path.append("test")
+//                    navigationModel.path.append("test")
                 }) {
                     Image(systemName: "gearshape")
                         .font(Font.system(size: 30, weight: .light))
@@ -55,18 +55,17 @@ struct FriendList: View {
             
             ScrollView { //スクロールする領域を指定
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
-                ForEach(friends) { friend in //ForEach　配列の要素を構成するとき使い回しするもの
+                ForEach(lostchildren) { lostchild in //ForEach　配列の要素を構成するとき使い回しするもの
                     
-                    NavigationLink(destination: Talk01()) {
-                        // 各個人
-                        HStack{
-                            friend.image
+                    NavigationLink(destination: Talk02()) {
+                        HStack{//各個人
+                            lostchild.image
                                 .resizable()
                                 .frame(width: 55, height: 55)
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading){
-                                Text(friend.text) // 配列内のメッセージを表示
+                                Text(lostchild.text) // 配列内のメッセージを表示
                                     .font(.subheadline)
                                     .foregroundColor(.black)
                                 Text("2024年10月20日 18時23分")
@@ -91,18 +90,17 @@ struct FriendList: View {
                         }
                         .padding(.bottom,15)
                     }
-                } // messages配列の中身を表示
+                }// messages配列の中身を表示
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
             } // ScrollView
             
         }
-        .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing:25))
-        
+        .padding(EdgeInsets(top:20,leading: 25,bottom: 0,trailing:25))
     }
     // MARK: END - var body: some View
 }
 
 
 #Preview {
-    FriendList()
+    LostChildrenList()
 }

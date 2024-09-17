@@ -40,6 +40,17 @@ struct HomeView: View {
                 case "street pass":
                     StreetPassView()
                         .environmentObject(beaconReceiver)
+                case "Friend":
+                    FriendView()
+                case "LostChild":
+                    LostChildView()
+                case "Child":
+                    ChildView()
+                case "Profile":
+                    ProfileView()
+                case "ChildLogin":
+                    ChildLoginView()
+                    
                 default:
                     Text("Unknown destination")
                 }
@@ -63,7 +74,7 @@ struct HomeView: View {
             DispatchQueue.main.async {
                 if res {
                     isAuthenticated = true
-                    navigationModel.path.append("test")
+                    navigationModel.path.append("Friend")
                     isAuthenticated = false
                 } else {
                     isAuthenticated = false

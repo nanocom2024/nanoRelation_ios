@@ -1,52 +1,71 @@
 //
-//  LostChildren.swift
+//  MyChildren.swift
 //  nanocon02
 //
-//  Created by X22049xx on 2024/08/25.
+//  Created by X22049xx on 2024/08/27.
 //
 
 import SwiftUI
 
-struct LostChildren: View {
+struct MyChildrenList: View {
     // メッセージの構造体
-    struct LostChild: Identifiable {
+    struct Child: Identifiable {
         let id = UUID()
         let text: String
         let image: Image
     }
 
     // @Stateでメッセージのリストを管理
-    @State private var lostchildren: [LostChild] = []
-    
+    @State private var children: [Child] = []
+    @EnvironmentObject private var navigationModel: NavigationModel
     
     
     var body: some View {
-        VStack{//全体の縦構造
-            HStack{//検索バーの部分
+        // 全体の縦構造
+        VStack{
+
+            // MARK: ナビゲーションバー
+            HStack{
                 Spacer()
+                
+                // plus mark
                 Button(action: {
-                    lostchildren.append(LostChild(text: "なまえ", image: Image("chincoteague")))
+                    children.append(Child(text: "なまえ", image: Image("hiddenlake")))
                 }) {
                     Image(systemName: "plus.circle")
                         .font(Font.system(size: 30, weight: .light))
 //                        .foregroundColor(.gray)
                         .foregroundColor(.black)
                 }
+                
+                Spacer().frame(width: 10)
+                
+                // setting mark
+                Button(action: {
+                    // test viewへ
+                    navigationModel.path.append("test")
+                }) {
+                    Image(systemName: "gearshape")
+                        .font(Font.system(size: 30, weight: .light))
+                        .foregroundColor(.black)
+                }
+                
             }
+            // MARK: - END ナビゲーションバー
             
-            ScrollView {//スクロールする領域を指定
+            ScrollView { //スクロールする領域を指定
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
-                ForEach(lostchildren) { lostchild in//ForEach　配列の要素を構成するとき使い回しするもの
-                    
-                    NavigationLink(destination: Talk02()) {
-                        HStack{//各個人
-                            lostchild.image
+                ForEach(children) { child in //ForEach　配列の要素を構成するとき使い回しするもの
+                
+                    NavigationLink(destination: Talk03()) {
+                        HStack{ //各個人
+                            child.image
                                 .resizable()
                                 .frame(width: 55, height: 55)
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading){
-                                Text(lostchild.text) // 配列内のメッセージを表示
+                                Text(child.text) // 配列内のメッセージを表示
                                     .font(.subheadline)
                                     .foregroundColor(.black)
                                 Text("2024年10月20日 18時23分")
@@ -71,16 +90,17 @@ struct LostChildren: View {
                         }
                         .padding(.bottom,15)
                     }
-                }// messages配列の中身を表示
+                } // messages配列の中身を表示
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
             } // ScrollView
             
-        }//var body: some View
+        }
         .padding(EdgeInsets(top:20,leading: 25,bottom: 0,trailing:25))
-    }//struct Talk01: View
+    }
+    // MARK: END - var body: some View
 }
 
 
 #Preview {
-    LostChildren()
+    MyChildrenList()
 }

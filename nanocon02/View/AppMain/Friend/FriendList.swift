@@ -20,7 +20,6 @@ struct FriendList: View {
     @EnvironmentObject private var navigationModel: NavigationModel
     
     
-    
     var body: some View {
         // 全体の縦構造
         VStack{

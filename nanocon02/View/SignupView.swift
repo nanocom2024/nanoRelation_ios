@@ -14,6 +14,7 @@ struct SignupView: View {
     @State private var inputPassword: String = ""
     @State private var isLoggedIn: Bool = false
     @State private var errorMessage: String = ""
+    @State private var isCreateButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
 
     var body: some View {
@@ -49,6 +50,7 @@ struct SignupView: View {
                         .padding(0)
                     
                     TextField("Name", text: $inputName)
+                        .autocapitalization(.none) // 自動大文字化を無効化
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
                         .padding(.top,-10)
@@ -61,6 +63,7 @@ struct SignupView: View {
                         .padding(0)
                     
                     TextField("Email", text: $inputEmail)
+                        .autocapitalization(.none) // 自動大文字化を無効化
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
                         .padding(.top,-10)
@@ -81,17 +84,22 @@ struct SignupView: View {
                 }
                 .frame(height:230)
 
+                // create button
                 Button(action: {
+                    isCreateButtonDisabled = true
                     if inputName.isEmpty {
                         errorMessage = "名前を入力してください"
+                        isCreateButtonDisabled = false
                         return
                     }
                     if inputEmail.isEmpty {
                         errorMessage = "メールアドレスを入力してください"
+                        isCreateButtonDisabled = false
                         return
                     }
                     if inputPassword.isEmpty {
                         errorMessage = "パスワードを入力してください"
+                        isCreateButtonDisabled = false
                         return
                     }
                     signupViewModel.signup(name: inputName, email: inputEmail, password: inputPassword)
@@ -105,6 +113,7 @@ struct SignupView: View {
                         .background(Color.accentColor)
                         .cornerRadius(8)
                 })
+                .disabled(isCreateButtonDisabled)
                 
                 Spacer()
             }
@@ -112,10 +121,12 @@ struct SignupView: View {
         }
         .onChange(of: signupViewModel.signupSuccess) { _, success in
             navigationModel.path.append("test")
+            isCreateButtonDisabled = false
         }
         .onChange(of: signupViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {
                 errorMessage = msg
+                isCreateButtonDisabled = false
             }
         }
     }

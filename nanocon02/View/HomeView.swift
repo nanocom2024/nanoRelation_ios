@@ -10,8 +10,9 @@ import SwiftUI
 struct HomeView: View {
     // 認証結果を保持する状態プロパティ
     @State private var isAuthenticated: Bool = false
+    @ObservedObject private var beaconReceiver = BeaconReceiver()
     @EnvironmentObject private var navigationModel: NavigationModel
-    
+
     var body: some View {
         NavigationStack(path: $navigationModel.path) {
             Group {
@@ -29,8 +30,16 @@ struct HomeView: View {
                     TestView()
                 case "search device":
                     SearchDeviceView()
+                        .environmentObject(BleCommViewModel())
+                        .environmentObject(beaconReceiver)
                 case "device pairing success":
                     DevicePairingSuccessView()
+                case "beacon":
+                    BeaconView()
+                        .environmentObject(beaconReceiver)
+                case "street pass":
+                    StreetPassView()
+                        .environmentObject(beaconReceiver)
                 default:
                     Text("Unknown destination")
                 }
@@ -47,7 +56,7 @@ struct HomeView: View {
             }
         }
     }
-    
+
     private func authCheck() {
         Auth.auth_check { res in
             // 認証結果に応じてisAuthenticatedを更新

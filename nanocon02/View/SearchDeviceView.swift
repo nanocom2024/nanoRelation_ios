@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SearchDeviceView: View {
 
-    @ObservedObject private var bluetoothViewModel = BleCommViewModel()
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var bluetoothViewModel: BleCommViewModel
+    @EnvironmentObject private var beaconReceiver: BeaconReceiver
     @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
@@ -20,7 +20,8 @@ struct SearchDeviceView: View {
                 ForEach(bluetoothViewModel.foundPeripherals) { ele in
 
                     NavigationLink(destination: {
-                        DeviceDetailView(oneDev: ele, bleViewModel: bluetoothViewModel)
+                        DeviceDetailView(oneDev: ele)
+                            .environmentObject(bluetoothViewModel)
                     }, label: {
                         PeripheralCell(onePeri: ele)
                     })
@@ -41,12 +42,19 @@ struct SearchDeviceView: View {
                     }
                                     
                     )
+            .onDisappear {
+                bluetoothViewModel.stopScanning()
+                beaconReceiver.start_ranging()
+            }
+            .onAppear {
+                beaconReceiver.stop_ranging()
+            }
                         
     }
     
     func goBack(){
-        self.dismiss()
-        bluetoothViewModel.centralManager?.stopScan()
+        navigationModel.path.removeLast()
+        bluetoothViewModel.stopScanning()
     }
 }
 
@@ -67,4 +75,12 @@ struct PeripheralCell: View {
             
     }
         
+}
+
+#Preview {
+    // previewなどで見れるようにするにはMockが必要
+    SearchDeviceView()
+        .environmentObject(NavigationModel())
+        .environmentObject(BleCommViewModel())
+        .environmentObject(BeaconReceiver())
 }

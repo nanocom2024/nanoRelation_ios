@@ -12,6 +12,7 @@ struct DeleteView: View {
     @State private var inputPassword: String = ""
     @State private var inputConfirmPassword: String = ""
     @State private var errorMessage: String = ""
+    @State private var isDeleteButtonDisabled = false
     @EnvironmentObject var navigationModel: NavigationModel
     
     var body: some View {
@@ -66,17 +67,22 @@ struct DeleteView: View {
                 }
                 .frame(height: 200)
 
+                // delete button
                 Button(action: {
+                    isDeleteButtonDisabled = true
                     if inputPassword.isEmpty {
                         errorMessage = "パスワードを入力してください"
+                        isDeleteButtonDisabled = false
                         return
                     }
                     if inputConfirmPassword.isEmpty {
                         errorMessage = "確認用パスワードを入力してください"
+                        isDeleteButtonDisabled = false
                         return
                     }
                     if inputPassword != inputConfirmPassword {
                         errorMessage = "パスワードが一致していません"
+                        isDeleteButtonDisabled = false
                         return
                     }
                     deleteViewModel.delete_account(password: inputPassword, confirmPassword: inputConfirmPassword)
@@ -90,6 +96,7 @@ struct DeleteView: View {
                         .background(Color.red)
                         .cornerRadius(8)
                 })
+                .disabled(isDeleteButtonDisabled)
                 
                 Spacer()
             }
@@ -99,11 +106,13 @@ struct DeleteView: View {
             if success {
                 // Navigate back to root
                 navigationModel.path.removeLast(navigationModel.path.count)
+                isDeleteButtonDisabled = false
             }
         }
         .onChange(of: deleteViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {
                 errorMessage = msg
+                isDeleteButtonDisabled = false
             }
         }
     }

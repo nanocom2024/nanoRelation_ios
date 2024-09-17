@@ -11,10 +11,10 @@ import CoreBluetooth
 struct DeviceDetailView: View {
     
     @StateObject public var oneDev: UserBlePeripheral
-    @StateObject public var bleViewModel: BleCommViewModel
     @State var connectionStatus: String = "Connecting ..."
     @EnvironmentObject private var navigationModel: NavigationModel
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var bleViewModel: BleCommViewModel
     
     var body: some View {
         Group {
@@ -37,8 +37,9 @@ struct DeviceDetailView: View {
                             Divider().padding(.vertical, 2)
                             NavigationLink(destination: CharacteristicPropertyView(
                                 oneChar: userChar,
-                                oneDevPeri: bleViewModel.connectedUserBlePeripheral!,
-                                bleObj: bleViewModel)) {
+                                oneDevPeri: bleViewModel.connectedUserBlePeripheral!)
+                                .environmentObject(bleViewModel)
+                            ) {
                                     CharacteristicCell(onePeri: bleViewModel.connectedUserBlePeripheral!,
                                                        oneChar: userChar)
                             }
@@ -112,6 +113,7 @@ struct DeviceDetailView: View {
 }
 
 //#Preview {
-//    DetailView()
+//    // previewを見れるようにするにはMockが必要
+//    DeviceDetailView()
 //}
 

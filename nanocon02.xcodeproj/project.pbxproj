@@ -44,6 +44,11 @@
 		C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */; };
 		C1D8CF122C913A20006335C2 /* CharacteristicPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */; };
 		C1D8CF142C9197E4006335C2 /* DevicePairingSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */; };
+		C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */; };
+		C1D8CF192C92E895006335C2 /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF182C92E895006335C2 /* BeaconView.swift */; };
+		C1D8CF1B2C931126006335C2 /* CharacteristicPropertyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF1A2C931126006335C2 /* CharacteristicPropertyViewModel.swift */; };
+		C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF282C954F20006335C2 /* StreetPassView.swift */; };
+		C1D8CF2B2C954F4D006335C2 /* StreetPassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF2A2C954F4D006335C2 /* StreetPassViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +90,11 @@
 		C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailView.swift; sourceTree = "<group>"; };
 		C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicPropertyView.swift; sourceTree = "<group>"; };
 		C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePairingSuccessView.swift; sourceTree = "<group>"; };
+		C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconReceiver.swift; sourceTree = "<group>"; };
+		C1D8CF182C92E895006335C2 /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
+		C1D8CF1A2C931126006335C2 /* CharacteristicPropertyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicPropertyViewModel.swift; sourceTree = "<group>"; };
+		C1D8CF282C954F20006335C2 /* StreetPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPassView.swift; sourceTree = "<group>"; };
+		C1D8CF2A2C954F4D006335C2 /* StreetPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPassViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +128,7 @@
 		494737492C787E6300EA38EB /* nanocon02 */ = {
 			isa = PBXGroup;
 			children = (
+				C1D8CF152C92D47D006335C2 /* lib */,
 				C1D8CEF42C8D9140006335C2 /* Data */,
 				C1D8CEEB2C8D527F006335C2 /* ViewModel */,
 				C1D8CEE62C8D4C56006335C2 /* View */,
@@ -135,8 +146,6 @@
 				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
 				4947374E2C787E6600EA38EB /* Assets.xcassets */,
 				494737502C787E6600EA38EB /* Preview Content */,
-				C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */,
-				C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */,
 			);
 			path = nanocon02;
 			sourceTree = "<group>";
@@ -169,6 +178,8 @@
 				C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */,
 				C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */,
 				C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */,
+				C1D8CF182C92E895006335C2 /* BeaconView.swift */,
+				C1D8CF282C954F20006335C2 /* StreetPassView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,6 +192,8 @@
 				C1D8CEF72C8DB02E006335C2 /* TestViewModel.swift */,
 				C1D8CEFB2C8DB9B8006335C2 /* DeleteViewModel.swift */,
 				C1D8CF0B2C913318006335C2 /* BleCommViewModel.swift */,
+				C1D8CF1A2C931126006335C2 /* CharacteristicPropertyViewModel.swift */,
+				C1D8CF2A2C954F4D006335C2 /* StreetPassViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -197,6 +210,16 @@
 				C1D8CF092C91329B006335C2 /* UserBlePeripheral.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		C1D8CF152C92D47D006335C2 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */,
+				C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */,
+				C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,10 +298,12 @@
 				494737592C7883B100EA38EB /* SecondView.swift in Sources */,
 				C1D8CF142C9197E4006335C2 /* DevicePairingSuccessView.swift in Sources */,
 				494737802C7AFB3000EA38EB /* LostChildren.swift in Sources */,
+				C1D8CF2B2C954F4D006335C2 /* StreetPassViewModel.swift in Sources */,
 				C1D8CEED2C8D5292006335C2 /* LoginViewModel.swift in Sources */,
 				C1D8CF122C913A20006335C2 /* CharacteristicPropertyView.swift in Sources */,
 				C1D8CF0A2C91329B006335C2 /* UserBlePeripheral.swift in Sources */,
 				C1D8CEEF2C8D5479006335C2 /* SignupView.swift in Sources */,
+				C1D8CF1B2C931126006335C2 /* CharacteristicPropertyViewModel.swift in Sources */,
 				494737A52C7D74BA00EA38EB /* MyProfile.swift in Sources */,
 				494737A92C7D899600EA38EB /* Talk01.swift in Sources */,
 				C1D8CF062C913241006335C2 /* UserBleCharacteristic.swift in Sources */,
@@ -288,6 +313,7 @@
 				C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */,
 				C1D8CF042C912F28006335C2 /* DeviceConfig.swift in Sources */,
 				C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */,
+				C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */,
 				C1D8CEF82C8DB02E006335C2 /* TestViewModel.swift in Sources */,
 				C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */,
 				C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */,
@@ -301,9 +327,11 @@
 				494737A72C7D754800EA38EB /* FourthView.swift in Sources */,
 				C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */,
 				C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */,
+				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,
 				C1D8CEFA2C8DB94A006335C2 /* DeleteView.swift in Sources */,
 				494737AD2C7D9EC000EA38EB /* Talk03.swift in Sources */,
 				4947375B2C78854000EA38EB /* FriendList.swift in Sources */,
+				C1D8CF192C92E895006335C2 /* BeaconView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +469,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we use iBeacon";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -451,7 +480,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon03;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon02;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -471,6 +500,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we use iBeacon";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -481,7 +511,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon03;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon02;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -11,7 +11,7 @@ struct TestView: View {
     let cookieManager = CookieManager()
     @StateObject private var testViewModel = TestViewModel()
     @EnvironmentObject var navigationModel: NavigationModel
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -28,18 +28,34 @@ struct TestView: View {
             Spacer()
             Text(Auth.getToken() ?? "token not found")
             Spacer()
-            
+
             VStack {
                 Spacer()
-                
+
                 Button(action: {
                     navigationModel.path.append("search device")
                 }, label: {
                     Text("search Device")
                 })
+
+                Spacer().frame(height: 20)
+
+                Button(action: {
+                    navigationModel.path.append("beacon")
+                }, label: {
+                    Text("iBeacon receive")
+                })
                 
+                Spacer().frame(height: 20)
+
+                Button(action: {
+                    navigationModel.path.append("street pass")
+                }, label: {
+                    Text("street pass")
+                })
+
                 Spacer()
-                
+
                 NavigationLink(
                     destination: DeleteView(),
                     label: {

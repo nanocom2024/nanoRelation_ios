@@ -7,7 +7,7 @@
 
 import CoreBluetooth
 
-class UserBleService: Identifiable, ObservableObject {
+class UserBleService: Identifiable, ObservableObject, Hashable {
     
     var id: UUID
     var uuid: CBUUID
@@ -21,5 +21,13 @@ class UserBleService: Identifiable, ObservableObject {
         service = _service
         serviceName = _serviceName
         userCharacteristics = _userCharacteristics
+    }
+    
+    static func == (lhs: UserBleService, rhs: UserBleService) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

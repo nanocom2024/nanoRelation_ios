@@ -14,82 +14,98 @@ struct LoginView: View {
     @State private var errorMessage: String = ""
     @State private var isLoginButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
-
+    
+    
     var body: some View {
-        Group {
-            if loginViewModel.isLoading {
-                VStack(alignment: .center) {
-                    ProgressView("Logging in...")
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                }
-            } else {
-                VStack(alignment: .center) {
-                    Spacer()
-                    
-                    Text("NanoRelation-ios")
-                        .font(.system(size: 48,
-                                      weight: .heavy))
-                    
-                    Text("LoginView")
-                        .font(.system(size: 40,
-                                      weight: .heavy))
-                    
-                    if errorMessage != "" {
+            
+            Group {
+                if loginViewModel.isLoading {
+                    VStack(alignment: .center) {
+                        ProgressView("Logging in...")
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .padding()
+                    }
+                } else {
+                    VStack(alignment: .center) {
                         Spacer()
-                        Text(errorMessage)
-                            .foregroundStyle(Color.red)
-                    }
-                    
-                    VStack(spacing: 24) {
-                        TextField("Mail address", text: $inputEmail)
-                            .autocapitalization(.none) // 自動大文字化を無効化
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .frame(maxWidth: 280)
+                        //                    Text("NanoRelation")
+                        //                        .font(.system(size: 48,
+                        //                                      weight: .heavy))
+                        Text("ログイン")
+                            .font(.system(size: 40,
+                                          weight: .heavy))
                         
-                        SecureField("Password", text: $inputPassword)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .frame(maxWidth: 280)
+                        if errorMessage != "" {
+//                            Spacer()
+                            Text(errorMessage)
+                                .foregroundStyle(Color.red)
+                                .frame(width: 300, height: 10)
+
+                        }
                         
-                    }
-                    .frame(height: 200)
-                    
-                    // login button
-                    Button(action: {
-                        isLoginButtonDisabled = true
-                        if inputEmail.isEmpty {
-                            errorMessage = "Missing email"
-                            isLoginButtonDisabled = false
-                            return
+                        VStack{
+                            Text("メールアドレス")
+                                .font(.system(size: 20,
+                                              weight: .semibold))
+                                .frame(maxWidth: 280, alignment: .leading)
+                                .padding(0)
+                            
+                            TextField("Email", text: $inputEmail)
+                                .autocapitalization(.none) // 自動大文字化を無効化
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .frame(maxWidth: 280)
+                                .padding(.top,-10)
+                                .padding(.bottom,10)
+                            
+                            Text("パスワード")
+                                .font(.system(size: 20,
+                                              weight: .semibold))
+                                .frame(maxWidth: 280, alignment: .leading)
+                                .padding(0)
+                            SecureField("Password", text: $inputPassword)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .frame(maxWidth: 280)
+                                .padding(.top,-10)
+                            
                         }
-                        if inputPassword.isEmpty {
-                            errorMessage = "Missing password"
-                            isLoginButtonDisabled = false
-                            return
+                        .frame(height: 200)
+                        
+                        Button(action: {
+                            if inputEmail.isEmpty {
+                                errorMessage = "メールアドレスを入力してください"
+                                isLoginButtonDisabled = false
+                                return
+                            }
+                            if inputPassword.isEmpty {
+                                errorMessage = "パスワードを入力してください"
+                                isLoginButtonDisabled = false
+                                return
+                            }
+                            loginViewModel.signin(email: inputEmail, password: inputPassword)
+                        },
+                               label: {
+                            Text("ログインする")
+                                .fontWeight(.medium)
+                                .frame(minWidth: 160)
+                                .foregroundColor(.white)
+                                .padding(12)
+                                .background(Color.accentColor)
+                                .cornerRadius(8)
+                        })
+                        .disabled(isLoginButtonDisabled)
+                        
+                        Spacer().frame(height: 20)
+                        
+                        NavigationLink(destination: SignupView()){
+                            Text("新規登録")
+                                .fontWeight(.medium)
+                                .frame(minWidth: 160)
+                                .foregroundColor(.white)
+                                .padding(12)
+                                .background(.blue)
+                                .cornerRadius(8)
                         }
-                        loginViewModel.signin(email: inputEmail, password: inputPassword)
-                    },
-                           label: {
-                        Text("Login")
-                            .fontWeight(.medium)
-                            .frame(minWidth: 160)
-                            .foregroundColor(.white)
-                            .padding(12)
-                            .background(Color.accentColor)
-                            .cornerRadius(8)
-                    })
-                    .disabled(isLoginButtonDisabled)
-                    
-                    Spacer().frame(height: 20)
-                    
-                    NavigationLink(destination: SignupView()) {
-                        Text("create account")
-                            .font(.body)
-                            .foregroundColor(.blue)
-                            .underline()
-                    }
-                    
-                    Spacer()
+                        Spacer()
                 }
             }
         }
@@ -113,4 +129,6 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+        .environmentObject(NavigationModel())
+    
 }

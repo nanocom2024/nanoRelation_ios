@@ -27,7 +27,7 @@ struct MyProfile: View {
                         .fill(Color.gray)
                         .frame(width: 200, height: 40)
                     
-                    Text("子供追加する") // メッセージ
+                    Text("子供を追加する") // メッセージ
                         .font(.body)
                         .foregroundColor(.white)
 //                        .fontWeight(.medium)

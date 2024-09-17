@@ -25,53 +25,79 @@ struct SignupView: View {
             } else {
                 Spacer()
                 
-                Text("NanoRelation-ios")
-                    .font(.system(size: 48,
-                                  weight: .heavy))
-                
-                Text("SignupView")
+                Text("アカウント作成")
                     .font(.system(size: 40,
                                   weight: .heavy))
                 
+//                Text("SignupView")
+//                    .font(.system(size: 40,
+//                                  weight: .heavy))
+                
                 if errorMessage != "" {
-                    Spacer()
+//                    Spacer()
                     Text(errorMessage)
                         .foregroundStyle(Color.red)
+                        .frame(width: 300, height: 10) // 幅と高さを固定
+
                 }
 
-                VStack(spacing: 24) {
-                    TextField("Your name", text: $inputName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(maxWidth: 280)
+                VStack {
+                    Text("名前")
+                        .font(.system(size: 20,
+                                      weight: .semibold))
+                        .frame(maxWidth: 280, alignment: .leading)
+                        .padding(0)
                     
-                    TextField("Mail address", text: $inputEmail)
+                    TextField("Name", text: $inputName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
-
-                    SecureField("Password", text: $inputPassword)
+                        .padding(.top,-10)
+                        .padding(.bottom,10)
+                    
+                    Text("メールアドレス")
+                        .font(.system(size: 20,
+                                      weight: .semibold))
+                        .frame(maxWidth: 280, alignment: .leading)
+                        .padding(0)
+                    
+                    TextField("Email", text: $inputEmail)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
+                        .padding(.top,-10)
+                        .padding(.bottom,10)
+                    
+                    Text("パスワード")
+                        .font(.system(size: 20,
+                                      weight: .semibold))
+                        .frame(maxWidth: 280, alignment: .leading)
+                        .padding(0)
+                    
+                    TextField("Password", text: $inputPassword)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(maxWidth: 280)
+                        .padding(.top,-10)
+                    
 
                 }
-                .frame(height: 200)
+                .frame(height:230)
 
                 Button(action: {
                     if inputName.isEmpty {
-                        errorMessage = "Missing name"
+                        errorMessage = "名前を入力してください"
                         return
                     }
                     if inputEmail.isEmpty {
-                        errorMessage = "Missing email"
+                        errorMessage = "メールアドレスを入力してください"
                         return
                     }
                     if inputPassword.isEmpty {
-                        errorMessage = "Missing password"
+                        errorMessage = "パスワードを入力してください"
                         return
                     }
                     signupViewModel.signup(name: inputName, email: inputEmail, password: inputPassword)
                 },
                 label: {
-                    Text("create")
+                    Text("登録")
                         .fontWeight(.medium)
                         .frame(minWidth: 160)
                         .foregroundColor(.white)
@@ -96,5 +122,5 @@ struct SignupView: View {
 }
 
 #Preview {
-    LoginView()
+    SignupView()
 }

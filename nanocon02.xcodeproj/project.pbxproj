@@ -133,7 +133,6 @@
 				494737AA2C7D954D00EA38EB /* Talk02.swift */,
 				494737AC2C7D9EC000EA38EB /* Talk03.swift */,
 				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
-				499A72EA2C903ED0004984E6 /* NavigationModel.swift */,
 				4947374E2C787E6600EA38EB /* Assets.xcassets */,
 				494737502C787E6600EA38EB /* Preview Content */,
 				C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */,
@@ -438,7 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"nanocon02/Preview Content\"";
-				DEVELOPMENT_TEAM = JSGGNXCXA4;
+				DEVELOPMENT_TEAM = UDNCFQBWHP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
@@ -468,7 +467,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"nanocon02/Preview Content\"";
-				DEVELOPMENT_TEAM = JSGGNXCXA4;
+				DEVELOPMENT_TEAM = UDNCFQBWHP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";

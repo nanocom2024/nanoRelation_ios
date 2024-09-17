@@ -9,20 +9,24 @@ import SwiftUI
 
 struct MyProfile: View {
     var body: some View {
-        VStack{//全体の縦構造
-            VStack{//プロフィール
-                Image("chincoteague")//アイコン
+        // 全体の縦構造
+        VStack{
+            // プロフィール
+            VStack{
+                // アイコン
+                Image("chincoteague")
                     .resizable()
                     .frame(width: 150, height: 150)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white,lineWidth: 4))
                     .shadow(radius: 10)
-                Text("わたし")//名前
+                // 名前
+                Text("わたし")
                     .font(.title)
 //                    .fontWeight(.black)
                     .padding(.top, 10.0)
-                
-                ZStack {//子供追加ボタン
+                // 子供追加ボタン
+                ZStack {
                     RoundedRectangle(cornerRadius: 30)
                         .fill(Color.gray)
                         .frame(width: 200, height: 40)
@@ -40,7 +44,7 @@ struct MyProfile: View {
             
             
         }
-        .padding(EdgeInsets(top:-15,leading: 20,bottom: -20,trailing:20))
+        .padding(EdgeInsets(top: -15, leading: 20, bottom: -20, trailing:20))
 
     }
     

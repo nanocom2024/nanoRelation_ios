@@ -95,7 +95,7 @@ struct LoginView: View {
         }
         .onChange(of: loginViewModel.loginSuccess) { _, success in
             if success {
-                navigationModel.path.append("test")
+                navigationModel.path.append("Friend")
                 isLoginButtonDisabled = false
             }
         }

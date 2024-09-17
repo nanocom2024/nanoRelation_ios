@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-struct FourthView: View {
+struct ProfileView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
     var body: some View {
         
-        NavigationStack(path: $navigationModel.path) {
+        VStack {
             MyProfile()
             HStack{
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Friend
+                
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Content")
+                        navigationModel.path.append("Friend")
                     }
                 },
                        label: {
@@ -37,12 +39,13 @@ struct FourthView: View {
                 Spacer()
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // LostChild
                 
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Second")
+                        navigationModel.path.append("LostChild")
                     }
                 },
                        label: {
@@ -64,12 +67,13 @@ struct FourthView: View {
 
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Child
                 
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Third")
+                        navigationModel.path.append("Child")
                     }
                 },
                        label: {
@@ -90,12 +94,12 @@ struct FourthView: View {
 
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
-                
+                // Profile
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Fourth")
+                        navigationModel.path.append("Profile")
                     }
                 },
                        label: {
@@ -115,22 +119,8 @@ struct FourthView: View {
 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 
-                .navigationDestination(for: String.self) { value in
-                    switch value {
-                    case "Content":
-                        ContentView()
-                    case "Second":
-                        SecondView()
-                    case "Third":
-                        ThirdView()
-                    case "Fourth":
-                        FourthView()
-                    default:
-                        Text("Unknown destination")
-                    }
-                }
             }
-            .padding(EdgeInsets(top:0,leading: 40,bottom: 10,trailing: 40))
+            .padding(EdgeInsets(top: 0, leading: 40, bottom: 10, trailing: 40))
         }
         .navigationViewStyle(StackNavigationViewStyle()) // スタックスタイルを使用
         .navigationBarBackButtonHidden(true)
@@ -138,6 +128,6 @@ struct FourthView: View {
 }
 
 #Preview {
-    FourthView()
+    ProfileView()
         .environmentObject(NavigationModel())
 }

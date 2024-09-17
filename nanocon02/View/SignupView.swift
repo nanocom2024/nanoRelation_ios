@@ -94,7 +94,7 @@ struct SignupView: View {
             
         }
         .onChange(of: signupViewModel.signupSuccess) { _, success in
-            navigationModel.path.append("test")
+            navigationModel.path.append("Friend")
             isCreateButtonDisabled = false
         }
         .onChange(of: signupViewModel.errorMessage ?? "") { _, msg in

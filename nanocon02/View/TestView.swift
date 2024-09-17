@@ -71,7 +71,7 @@ struct TestView: View {
             }
         }
         // 戻るボタンを非表示にする
-        .navigationBarBackButtonHidden(true)
+//        .navigationBarBackButtonHidden(true)
     }
 }
 

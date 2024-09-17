@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LostChildren: View {
+struct LostChildrenList: View {
     // メッセージの構造体
     struct LostChild: Identifiable {
         let id = UUID()
@@ -21,9 +21,14 @@ struct LostChildren: View {
     
     
     var body: some View {
-        VStack{//全体の縦構造
-            HStack{//検索バーの部分
+        // 全体の縦構造
+        VStack{
+
+            // MARK: ナビゲーションバー
+            HStack{
                 Spacer()
+                
+                // plus mark
                 Button(action: {
                     lostchildren.append(LostChild(text: "なまえ", image: Image("chincoteague")))
                 }) {
@@ -32,11 +37,25 @@ struct LostChildren: View {
 //                        .foregroundColor(.gray)
                         .foregroundColor(.black)
                 }
+                
+                Spacer().frame(width: 10)
+                
+                // setting mark
+                Button(action: {
+                    // test viewへ
+//                    navigationModel.path.append("test")
+                }) {
+                    Image(systemName: "gearshape")
+                        .font(Font.system(size: 30, weight: .light))
+                        .foregroundColor(.black)
+                }
+                
             }
+            // MARK: - END ナビゲーションバー
             
-            ScrollView {//スクロールする領域を指定
+            ScrollView { //スクロールする領域を指定
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
-                ForEach(lostchildren) { lostchild in//ForEach　配列の要素を構成するとき使い回しするもの
+                ForEach(lostchildren) { lostchild in //ForEach　配列の要素を構成するとき使い回しするもの
                     
                     NavigationLink(destination: Talk02()) {
                         HStack{//各個人
@@ -75,12 +94,13 @@ struct LostChildren: View {
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
             } // ScrollView
             
-        }//var body: some View
+        }
         .padding(EdgeInsets(top:20,leading: 25,bottom: 0,trailing:25))
-    }//struct Talk01: View
+    }
+    // MARK: END - var body: some View
 }
 
 
 #Preview {
-    LostChildren()
+    LostChildrenList()
 }

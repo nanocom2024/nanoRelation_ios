@@ -1,25 +1,26 @@
 //
-//  ContentView.swift
+//  ThirdView.swift
 //  nanocon02
 //
-//  Created by X22049xx on 2024/08/23.
+//  Created by X22049xx on 2024/08/27.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct ChildView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
     var body: some View {
         
-        NavigationStack(path: $navigationModel.path) {
-            FriendList()
+        VStack {
+            MyChildren()
             HStack{
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Friend
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Content")
+                        navigationModel.path.append("Friend")
                     }
                 },
                        label: {
@@ -31,18 +32,19 @@ struct ContentView: View {
                             .fontWeight(.light)
                             .font(.subheadline)
                     }
-//                    .foregroundColor(.gray)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.gray)
+//                    .foregroundColor(.blue)
                 })
                 Spacer()
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // LostChild
                 
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Second")
+                        navigationModel.path.append("LostChild")
                     }
                 },
                        label: {
@@ -64,12 +66,13 @@ struct ContentView: View {
 
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Child
                 
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Third")
+                        navigationModel.path.append("Child")
                     }
                 },
                        label: {
@@ -82,20 +85,21 @@ struct ContentView: View {
                             .font(.subheadline)
 
                     }
-                    .foregroundColor(.gray)
-//                    .foregroundColor(.blue)
+//                    .foregroundColor(.gray)
+                    .foregroundColor(.blue)
                     
                 })
                 Spacer()
 
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Profile
                 
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
                     withTransaction(transaction) {
-                        navigationModel.path.append("Fourth")
+                        navigationModel.path.append("Profile")
                     }
                 },
                        label: {
@@ -115,22 +119,8 @@ struct ContentView: View {
 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 
-                .navigationDestination(for: String.self) { value in
-                    switch value {
-                    case "Content":
-                        ContentView()
-                    case "Second":
-                        SecondView()
-                    case "Third":
-                        ThirdView()
-                    case "Fourth":
-                        FourthView()
-                    default:
-                        Text("Unknown destination")
-                    }
-                }
             }
-            .padding(EdgeInsets(top:0,leading: 40,bottom: 10,trailing: 40))
+            .padding(EdgeInsets(top: 0, leading: 40, bottom: 10, trailing: 40))
         }
         .navigationViewStyle(StackNavigationViewStyle()) // スタックスタイルを使用
         .navigationBarBackButtonHidden(true)
@@ -138,7 +128,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ChildView()
         .environmentObject(NavigationModel())
 }
-

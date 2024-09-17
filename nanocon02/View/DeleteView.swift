@@ -24,28 +24,46 @@ struct DeleteView: View {
             } else {
                 Spacer()
                 
-                Text("NanoRelation-ios")
-                    .font(.system(size: 48,
-                                  weight: .heavy))
-                
-                Text("DeleteView")
+                Text("アカウントを削除")
                     .font(.system(size: 40,
                                   weight: .heavy))
                 
+//                Text("DeleteView")
+//                    .font(.system(size: 40,
+//                                  weight: .heavy))
+                
                 if errorMessage != "" {
-                    Spacer()
+//                    Spacer()
                     Text(errorMessage)
                         .foregroundStyle(Color.red)
+                        .frame(width: 300, height: 10) // 幅と高さを固定
                 }
 
-                VStack(spacing: 24) {
-                    SecureField("password", text: $inputPassword)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(maxWidth: 280)
+                VStack{
+                    Text("パスワード")
+                        .font(.system(size: 20,
+                                      weight: .semibold))
+                        .frame(maxWidth: 280, alignment: .leading)
+                        .padding(0)
                     
-                    SecureField("confirm password", text: $inputConfirmPassword)
+                    SecureField("Password", text: $inputPassword)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
+                        .padding(.top,-10)
+                        .padding(.bottom,10)
+                    
+                    Text("確認用パスワード")
+                        .font(.system(size: 20,
+                                      weight: .semibold))
+                        .frame(maxWidth: 280, alignment: .leading)
+                        .padding(0)
+                    
+                    SecureField("ConfirmPassword", text: $inputConfirmPassword)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(maxWidth: 280)
+                        .padding(.top,-10)
+                        .padding(.bottom,10)
+                    
                 }
                 .frame(height: 200)
 
@@ -53,24 +71,24 @@ struct DeleteView: View {
                 Button(action: {
                     isDeleteButtonDisabled = true
                     if inputPassword.isEmpty {
-                        errorMessage = "Missing password"
+                        errorMessage = "パスワードを入力してください"
                         isDeleteButtonDisabled = false
                         return
                     }
                     if inputConfirmPassword.isEmpty {
-                        errorMessage = "Missing confirmPassword"
+                        errorMessage = "確認用パスワードを入力してください"
                         isDeleteButtonDisabled = false
                         return
                     }
                     if inputPassword != inputConfirmPassword {
-                        errorMessage = "Passwords do not match"
+                        errorMessage = "パスワードが一致していません"
                         isDeleteButtonDisabled = false
                         return
                     }
                     deleteViewModel.delete_account(password: inputPassword, confirmPassword: inputConfirmPassword)
                 },
                 label: {
-                    Text("Delete Account")
+                    Text("アカウント削除")
                         .fontWeight(.medium)
                         .frame(minWidth: 160)
                         .foregroundColor(.white)

@@ -49,6 +49,8 @@
 		C1D8CF552C9939E2006335C2 /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF542C9939E2006335C2 /* MyProfile.swift */; };
 		C1D8CF572C993BD8006335C2 /* ChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF562C993BD8006335C2 /* ChildView.swift */; };
 		C1D8CF592C993BF4006335C2 /* MyChildrenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */; };
+		C1D8CF602C9948B8006335C2 /* ChildLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */; };
+		C1D8CF642C994975006335C2 /* ChildLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,8 @@
 		C1D8CF542C9939E2006335C2 /* MyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		C1D8CF562C993BD8006335C2 /* ChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildView.swift; sourceTree = "<group>"; };
 		C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildrenList.swift; sourceTree = "<group>"; };
+		C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildLoginView.swift; sourceTree = "<group>"; };
+		C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildLoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,7 @@
 		C1D8CEEB2C8D527F006335C2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C1D8CF612C994954006335C2 /* AppMain */,
 				C1D8CEEC2C8D5292006335C2 /* LoginViewModel.swift */,
 				C1D8CEF02C8D54E5006335C2 /* SignupViewModel.swift */,
 				C1D8CEF72C8DB02E006335C2 /* TestViewModel.swift */,
@@ -249,6 +254,7 @@
 			children = (
 				C1D8CF522C993907006335C2 /* ProfileView.swift */,
 				C1D8CF542C9939E2006335C2 /* MyProfile.swift */,
+				C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -260,6 +266,22 @@
 				C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */,
 			);
 			path = Child;
+			sourceTree = "<group>";
+		};
+		C1D8CF612C994954006335C2 /* AppMain */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF622C99495E006335C2 /* Profile */,
+			);
+			path = AppMain;
+			sourceTree = "<group>";
+		};
+		C1D8CF622C99495E006335C2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1D8CF572C993BD8006335C2 /* ChildView.swift in Sources */,
+				C1D8CF602C9948B8006335C2 /* ChildLoginView.swift in Sources */,
 				C1D8CEF12C8D54E5006335C2 /* SignupViewModel.swift in Sources */,
 				C1D8CF4B2C992137006335C2 /* FriendView.swift in Sources */,
 				494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */,
@@ -364,6 +387,7 @@
 				4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */,
 				C1D8CEF62C8D9158006335C2 /* Auth.swift in Sources */,
 				C1D8CF082C913277006335C2 /* UserBleService.swift in Sources */,
+				C1D8CF642C994975006335C2 /* ChildLoginViewModel.swift in Sources */,
 				C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */,
 				C1D8CEF32C8D60F8006335C2 /* TestView.swift in Sources */,
 				C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */,

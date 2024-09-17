@@ -48,6 +48,9 @@ struct HomeView: View {
                     ChildView()
                 case "Profile":
                     ProfileView()
+                case "ChildLogin":
+                    ChildLoginView()
+                    
                 default:
                     Text("Unknown destination")
                 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MyProfile: View {
+    @EnvironmentObject private var navigationModel: NavigationModel
+    
     var body: some View {
         // 全体の縦構造
         VStack{
@@ -26,16 +28,20 @@ struct MyProfile: View {
 //                    .fontWeight(.black)
                     .padding(.top, 10.0)
                 // 子供追加ボタン
-                ZStack {
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(Color.gray)
-                        .frame(width: 200, height: 40)
-                    
-                    Text("子供を追加する") // メッセージ
-                        .font(.body)
-                        .foregroundColor(.white)
-//                        .fontWeight(.medium)
-                }
+                Button(action: {
+                    navigationModel.path.append("ChildLogin")
+                }, label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 30)
+                            .fill(Color.gray)
+                            .frame(width: 200, height: 40)
+                        
+                        Text("子供を追加する") // メッセージ
+                            .font(.body)
+                            .foregroundColor(.white)
+    //                        .fontWeight(.medium)
+                    }
+                })
                 
             }
             .padding(.top, 100.0)

@@ -14,7 +14,7 @@ struct ChildLoginView: View {
     @State private var errorMessage: String = ""
     @State private var isLoginButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
-
+    
     var body: some View {
         Group {
             if childLoginViewModel.isLoading {
@@ -67,7 +67,7 @@ struct ChildLoginView: View {
                             isLoginButtonDisabled = false
                             return
                         }
-                        childLoginViewModel.signin(email: inputEmail, password: inputPassword)
+                        childLoginViewModel.register_child(email: inputEmail, password: inputPassword)
                     },
                            label: {
                         Text("Login")

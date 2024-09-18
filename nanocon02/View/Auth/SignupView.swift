@@ -75,7 +75,7 @@ struct SignupView: View {
                         .frame(maxWidth: 280, alignment: .leading)
                         .padding(0)
                     
-                    TextField("Password", text: $inputPassword)
+                    SecureField("Password", text: $inputPassword)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(maxWidth: 280)
                         .padding(.top,-10)

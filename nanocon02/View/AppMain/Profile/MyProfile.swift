@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyProfile: View {
     @EnvironmentObject private var navigationModel: NavigationModel
+    @State private var name = ""
     
     var body: some View {
         // 全体の縦構造
@@ -23,7 +24,7 @@ struct MyProfile: View {
                     .overlay(Circle().stroke(Color.white,lineWidth: 4))
                     .shadow(radius: 10)
                 // 名前
-                Text("わたし")
+                Text(name)
                     .font(.title)
 //                    .fontWeight(.black)
                     .padding(.top, 10.0)
@@ -49,6 +50,15 @@ struct MyProfile: View {
             Spacer()
             
             
+        }
+        .onAppear {
+            if Account.name == "no-name" {
+                Task {
+                    name = await Account.get_name()
+                }
+            } else {
+                name = Account.name
+            }
         }
         .padding(EdgeInsets(top: -15, leading: 20, bottom: -20, trailing:20))
 

@@ -83,7 +83,7 @@ struct Talk03: View {
                         }) {
                             Text("はぐれた")
                         }
-                        .padding()
+                        .frame(width: 100, height: 35) // ボタンのサイズを固定
                         .accentColor(Color.black)
                         .background(Color.yellow)
                         .cornerRadius(26)
@@ -98,7 +98,7 @@ struct Talk03: View {
                         }) {
                             Text("情報提供者")
                         }
-                        .padding()
+                        .frame(width: 130, height: 35) // ボタンのサイズを固定
                         .accentColor(Color.black)
                         .background(Color.green)
                         .cornerRadius(26)
@@ -126,7 +126,7 @@ struct Talk03: View {
                             //.fontWeight(.semibold)
                             //.frame(width: 370, height: 60)
                         }
-                        .padding()
+                        .frame(width: 130, height: 35) // ボタンのサイズを固定
                         .accentColor(Color.white)
                         .background(isButtonTapped ? Color.blue : Color.red)
                         .cornerRadius(26)

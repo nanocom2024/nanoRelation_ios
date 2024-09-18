@@ -84,11 +84,10 @@ struct Talk02: View {
                         }) {
                             Text("すれ違い")
                         }
-                        .padding()
+                        .frame(width: 100, height: 35) // ボタンのサイズを固定
                         .accentColor(Color.black)
                         .background(Color.yellow)
                         .cornerRadius(26)
-                        
                         Spacer()
                         // ボタンーーーーーーーーーーーーー
                         
@@ -112,7 +111,7 @@ struct Talk02: View {
                             //.fontWeight(.semibold)
                             //.frame(width: 370, height: 60)
                         }
-                        .padding()
+                        .frame(width: 150, height: 35) // ボタンのサイズを固定
                         .accentColor(Color.white)
                         .background(isButtonTapped ? Color.red : Color.blue)
                         .cornerRadius(26)

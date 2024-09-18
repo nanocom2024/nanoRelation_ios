@@ -215,6 +215,70 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		C1D8CF5A2C993E3F006335C2 /* AppMain */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF5B2C993E64006335C2 /* Friend */,
+				C1D8CF5C2C993E72006335C2 /* LostChild */,
+				C1D8CF5D2C993E80006335C2 /* Profile */,
+				C1D8CF5E2C993E8E006335C2 /* Child */,
+			);
+			path = AppMain;
+			sourceTree = "<group>";
+		};
+		C1D8CF5B2C993E64006335C2 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF4A2C992136006335C2 /* FriendView.swift */,
+				C1D8CF4C2C9924BB006335C2 /* FriendList.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		C1D8CF5C2C993E72006335C2 /* LostChild */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF4E2C993612006335C2 /* LostChildView.swift */,
+				C1D8CF502C9936B0006335C2 /* LostChildrenList.swift */,
+			);
+			path = LostChild;
+			sourceTree = "<group>";
+		};
+		C1D8CF5D2C993E80006335C2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF522C993907006335C2 /* ProfileView.swift */,
+				C1D8CF542C9939E2006335C2 /* MyProfile.swift */,
+				C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C1D8CF5E2C993E8E006335C2 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF562C993BD8006335C2 /* ChildView.swift */,
+				C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */,
+			);
+			path = Child;
+			sourceTree = "<group>";
+		};
+		C1D8CF612C994954006335C2 /* AppMain */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF622C99495E006335C2 /* Profile */,
+			);
+			path = AppMain;
+			sourceTree = "<group>";
+		};
+		C1D8CF622C99495E006335C2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		C1D8CF652C99666A006335C2 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,70 +378,6 @@
 				C1D8CF2A2C954F4D006335C2 /* StreetPassViewModel.swift */,
 			);
 			path = StreetPass;
-			sourceTree = "<group>";
-		};
-		C1D8CF5A2C993E3F006335C2 /* AppMain */ = {
-			isa = PBXGroup;
-			children = (
-				C1D8CF5B2C993E64006335C2 /* Friend */,
-				C1D8CF5C2C993E72006335C2 /* LostChild */,
-				C1D8CF5D2C993E80006335C2 /* Profile */,
-				C1D8CF5E2C993E8E006335C2 /* Child */,
-			);
-			path = AppMain;
-			sourceTree = "<group>";
-		};
-		C1D8CF5B2C993E64006335C2 /* Friend */ = {
-			isa = PBXGroup;
-			children = (
-				C1D8CF4A2C992136006335C2 /* FriendView.swift */,
-				C1D8CF4C2C9924BB006335C2 /* FriendList.swift */,
-			);
-			path = Friend;
-			sourceTree = "<group>";
-		};
-		C1D8CF5C2C993E72006335C2 /* LostChild */ = {
-			isa = PBXGroup;
-			children = (
-				C1D8CF4E2C993612006335C2 /* LostChildView.swift */,
-				C1D8CF502C9936B0006335C2 /* LostChildrenList.swift */,
-			);
-			path = LostChild;
-			sourceTree = "<group>";
-		};
-		C1D8CF5D2C993E80006335C2 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				C1D8CF522C993907006335C2 /* ProfileView.swift */,
-				C1D8CF542C9939E2006335C2 /* MyProfile.swift */,
-				C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		C1D8CF5E2C993E8E006335C2 /* Child */ = {
-			isa = PBXGroup;
-			children = (
-				C1D8CF562C993BD8006335C2 /* ChildView.swift */,
-				C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */,
-			);
-			path = Child;
-			sourceTree = "<group>";
-		};
-		C1D8CF612C994954006335C2 /* AppMain */ = {
-			isa = PBXGroup;
-			children = (
-				C1D8CF622C99495E006335C2 /* Profile */,
-			);
-			path = AppMain;
-			sourceTree = "<group>";
-		};
-		C1D8CF622C99495E006335C2 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -640,7 +640,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon02;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon03;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -671,7 +671,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon02;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ac.aitech.nanocon03;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

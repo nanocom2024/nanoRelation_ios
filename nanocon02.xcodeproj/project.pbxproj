@@ -165,17 +165,11 @@
 		C1D8CEE62C8D4C56006335C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C1D8CEE72C8D4C77006335C2 /* LoginView.swift */,
-				C1D8CEEE2C8D5479006335C2 /* SignupView.swift */,
-				C1D8CEF22C8D60F8006335C2 /* TestView.swift */,
-				C1D8CEF92C8DB94A006335C2 /* DeleteView.swift */,
-				C1D8CF012C8FD492006335C2 /* HomeView.swift */,
-				C1D8CF0D2C9137A3006335C2 /* SearchDeviceView.swift */,
-				C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */,
-				C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */,
-				C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */,
-				C1D8CF182C92E895006335C2 /* BeaconView.swift */,
-				C1D8CF282C954F20006335C2 /* StreetPassView.swift */,
+				C1D8CF712C9A600A006335C2 /* Auth */,
+				C1D8CF722C9A6029006335C2 /* TestView */,
+				C1D8CF732C9A604E006335C2 /* BLE */,
+				C1D8CF742C9A6065006335C2 /* Beacon */,
+				C1D8CF752C9A606F006335C2 /* StreetPass */,
 				C1D8CF5A2C993E3F006335C2 /* AppMain */,
 			);
 			path = View;
@@ -376,6 +370,52 @@
 			isa = PBXGroup;
 			children = (
 				C1D8CF2A2C954F4D006335C2 /* StreetPassViewModel.swift */,
+			);
+			path = StreetPass;
+			sourceTree = "<group>";
+		};
+		C1D8CF712C9A600A006335C2 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CEE72C8D4C77006335C2 /* LoginView.swift */,
+				C1D8CEEE2C8D5479006335C2 /* SignupView.swift */,
+				C1D8CEF92C8DB94A006335C2 /* DeleteView.swift */,
+				C1D8CF012C8FD492006335C2 /* HomeView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C1D8CF722C9A6029006335C2 /* TestView */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CEF22C8D60F8006335C2 /* TestView.swift */,
+			);
+			path = TestView;
+			sourceTree = "<group>";
+		};
+		C1D8CF732C9A604E006335C2 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF0D2C9137A3006335C2 /* SearchDeviceView.swift */,
+				C1D8CF0F2C9139F2006335C2 /* DeviceDetailView.swift */,
+				C1D8CF112C913A20006335C2 /* CharacteristicPropertyView.swift */,
+				C1D8CF132C9197E4006335C2 /* DevicePairingSuccessView.swift */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
+		C1D8CF742C9A6065006335C2 /* Beacon */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF182C92E895006335C2 /* BeaconView.swift */,
+			);
+			path = Beacon;
+			sourceTree = "<group>";
+		};
+		C1D8CF752C9A606F006335C2 /* StreetPass */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF282C954F20006335C2 /* StreetPassView.swift */,
 			);
 			path = StreetPass;
 			sourceTree = "<group>";
@@ -625,7 +665,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"nanocon02/Preview Content\"";
-				DEVELOPMENT_TEAM = UDNCFQBWHP;
+				DEVELOPMENT_TEAM = JSGGNXCXA4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
@@ -656,7 +696,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"nanocon02/Preview Content\"";
-				DEVELOPMENT_TEAM = UDNCFQBWHP;
+				DEVELOPMENT_TEAM = JSGGNXCXA4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";

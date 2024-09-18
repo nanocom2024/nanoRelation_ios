@@ -13,18 +13,24 @@ class ChildLoginViewModel: ObservableObject {
     @Published var isLoading = false
     
     // TODO: signin -> register child
-    func signin(email: String, password: String) {
+    func register_child(email: String, password: String) {
         self.isLoading = true
         self.loginSuccess = false
         
-        let url = URL(string: BaseUrl.url + "/auth/signin")!
+        guard let token = Auth.getToken() else {
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.errorMessage = "missing token"
+            }
+            return
+        }
+        
+        let url = URL(string: BaseUrl.url + "/child/register_child")!
         var request = URLRequest(url: url)
         // Postリクエストを送る(このコードがないとGetリクエストになる)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        var params = Dictionary<String, String>()
-        params["email"] = email
-        params["password"] = password
+        let params = ["token": token, "email": email, "password": password]
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         }catch{
@@ -58,12 +64,8 @@ class ChildLoginViewModel: ObservableObject {
             do {
                 // JSONデータを辞書形式に変換
                 if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let token = object["token"] as? String { // トークンを取得
-                        
-                    // クッキーを設定
-                    Task {
-                        Auth.setToken(token: token)
-                    }
+                   let done = object["done"] as? String,
+                        done == "register" {
                     
                     // 成功を通知
                     DispatchQueue.main.async {
@@ -75,6 +77,12 @@ class ChildLoginViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.isLoading = false
                         self.errorMessage = "Invalid login credentials."
+                    }
+                    Task {
+                        if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                           let err = object["error"] as? String {
+                            print(err)
+                        }
                     }
                     print("Invalid login credentials.")
                 }

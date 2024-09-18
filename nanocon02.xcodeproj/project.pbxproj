@@ -51,6 +51,7 @@
 		C1D8CF592C993BF4006335C2 /* MyChildrenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */; };
 		C1D8CF602C9948B8006335C2 /* ChildLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */; };
 		C1D8CF642C994975006335C2 /* ChildLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */; };
+		C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF762C9A8FA0006335C2 /* Account.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildrenList.swift; sourceTree = "<group>"; };
 		C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildLoginView.swift; sourceTree = "<group>"; };
 		C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildLoginViewModel.swift; sourceTree = "<group>"; };
+		C1D8CF762C9A8FA0006335C2 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				C1D8CEF52C8D9158006335C2 /* Auth.swift */,
+				C1D8CF762C9A8FA0006335C2 /* Account.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */,
 				C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */,
 				C1D8CEF82C8DB02E006335C2 /* TestViewModel.swift in Sources */,
+				C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */,
 				C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */,
 				C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */,
 				C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */,

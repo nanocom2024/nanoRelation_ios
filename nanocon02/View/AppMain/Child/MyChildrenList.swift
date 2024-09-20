@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct MyChildrenList: View {
-    // メッセージの構造体
-    struct Child: Identifiable {
-        let id = UUID()
-        let text: String
-        let image: Image
-    }
-
     // @Stateでメッセージのリストを管理
     @State private var children: [Child] = []
+    @StateObject private var myChildrenObj = MyChildrenListViewModel()
     @EnvironmentObject private var navigationModel: NavigationModel
     
     
@@ -28,15 +22,15 @@ struct MyChildrenList: View {
             HStack{
                 Spacer()
                 
-                // plus mark
-                Button(action: {
-                    children.append(Child(text: "なまえ", image: Image("hiddenlake")))
-                }) {
-                    Image(systemName: "plus.circle")
-                        .font(Font.system(size: 30, weight: .light))
-//                        .foregroundColor(.gray)
-                        .foregroundColor(.black)
-                }
+//                // plus mark
+//                Button(action: {
+//                    children.append(Child(name: "なまえ"))
+//                }) {
+//                    Image(systemName: "plus.circle")
+//                        .font(Font.system(size: 30, weight: .light))
+////                        .foregroundColor(.gray)
+//                        .foregroundColor(.black)
+//                }
                 
                 Spacer().frame(width: 10)
                 
@@ -65,14 +59,14 @@ struct MyChildrenList: View {
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading){
-                                Text(child.text) // 配列内のメッセージを表示
+                                Text(child.name) // 配列内のメッセージを表示
                                     .font(.subheadline)
                                     .foregroundColor(.black)
-                                Text("2024年10月20日 18時23分")
-                                    .frame(width: 180)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-//                                    .background(.yellow)
+//                                Text("2024年10月20日 18時23分")
+//                                    .frame(width: 180)
+//                                    .font(.subheadline)
+//                                    .foregroundColor(.gray)
+////                                    .background(.yellow)
                                     
                             }
                             
@@ -95,9 +89,21 @@ struct MyChildrenList: View {
             } // ScrollView
             
         }
-        .padding(EdgeInsets(top:20,leading: 25,bottom: 0,trailing:25))
+        .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing:25))
+        .onAppear {
+            Task {
+                children = await myChildrenObj.getChildren()
+            }
+        }
     }
     // MARK: END - var body: some View
+}
+
+// メッセージの構造体
+struct Child: Identifiable {
+    let id: String // uid
+    let name: String
+    let image = Image("hiddenlake")
 }
 
 

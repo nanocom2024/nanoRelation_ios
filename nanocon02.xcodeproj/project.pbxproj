@@ -52,6 +52,7 @@
 		C1D8CF602C9948B8006335C2 /* ChildLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */; };
 		C1D8CF642C994975006335C2 /* ChildLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */; };
 		C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF762C9A8FA0006335C2 /* Account.swift */; };
+		C1D8CF7A2C9BEE33006335C2 /* MyChildrenListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF792C9BEE33006335C2 /* MyChildrenListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		C1D8CF5F2C9948B8006335C2 /* ChildLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildLoginView.swift; sourceTree = "<group>"; };
 		C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildLoginViewModel.swift; sourceTree = "<group>"; };
 		C1D8CF762C9A8FA0006335C2 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		C1D8CF792C9BEE33006335C2 /* MyChildrenListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildrenListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 		C1D8CF612C994954006335C2 /* AppMain */ = {
 			isa = PBXGroup;
 			children = (
+				C1D8CF782C9BEE04006335C2 /* Child */,
 				C1D8CF622C99495E006335C2 /* Profile */,
 			);
 			path = AppMain;
@@ -423,6 +426,14 @@
 			path = StreetPass;
 			sourceTree = "<group>";
 		};
+		C1D8CF782C9BEE04006335C2 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF792C9BEE33006335C2 /* MyChildrenListViewModel.swift */,
+			);
+			path = Child;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -520,6 +531,7 @@
 				C1D8CEF82C8DB02E006335C2 /* TestViewModel.swift in Sources */,
 				C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */,
 				C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */,
+				C1D8CF7A2C9BEE33006335C2 /* MyChildrenListViewModel.swift in Sources */,
 				C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */,
 				C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */,
 				C1D8CF512C9936B0006335C2 /* LostChildrenList.swift in Sources */,

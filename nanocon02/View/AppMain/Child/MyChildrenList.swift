@@ -92,7 +92,10 @@ struct MyChildrenList: View {
         .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing:25))
         .onAppear {
             Task {
-                children = await myChildrenObj.getChildren()
+                let children_data = await myChildrenObj.getChildren()
+                DispatchQueue.main.async {
+                    children = children_data
+                }
             }
         }
     }

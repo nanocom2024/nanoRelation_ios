@@ -51,7 +51,7 @@ struct MyChildrenList: View {
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
                 ForEach(children) { child in //ForEach　配列の要素を構成するとき使い回しするもの
                 
-                    NavigationLink(destination: Talk03()) {
+                    NavigationLink(destination: EachChild(oneChild: child)) {
                         HStack{ //各個人
                             child.image
                                 .resizable()

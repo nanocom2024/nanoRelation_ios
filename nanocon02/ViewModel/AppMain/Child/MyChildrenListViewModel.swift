@@ -20,7 +20,9 @@ class MyChildrenListViewModel: ObservableObject {
             }
             return res
         } catch {
-            errorString = error.localizedDescription
+            DispatchQueue.main.async {
+                self.errorString = error.localizedDescription
+            }
             return []
         }
     }
@@ -33,7 +35,9 @@ class MyChildrenListViewModel: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         guard let token = Auth.getToken() else {
-            errorString = "missing token"
+            DispatchQueue.main.async {
+                self.errorString = "missing token"
+            }
             print("missing token")
             return nil
         }
@@ -41,7 +45,9 @@ class MyChildrenListViewModel: ObservableObject {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {
-            errorString = "Invalid JSON format."
+            DispatchQueue.main.async {
+                self.errorString = "Invalid JSON format."
+            }
             print("Invalid JSON format.")
             return nil
         }

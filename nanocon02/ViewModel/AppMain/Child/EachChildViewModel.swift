@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class EachChildViewModel: ObservableObject {
     @Published var errorString = ""
@@ -264,4 +265,78 @@ class EachChildViewModel: ObservableObject {
             throw error
         }
     }
+    
+    
+    func getMessages(child_uid: String) async -> [Message] {
+        do {
+            var res: [Message] = []
+            let messagesResponse = try await fetch_messages(child_uid: child_uid)
+            for msg in messagesResponse?.messages ?? [] {
+                guard let uuid = UUID(uuidString: msg.msgID) else {
+                    print("not expected uuid")
+                    continue
+                }
+                var color: Color
+                switch msg.tag {
+                case "start":
+                    color = .red
+                case "end":
+                    color = .blue
+                default:
+                    print("not expected tag")
+                    continue
+                }
+                let date = Date(timeIntervalSince1970: msg.timestamp)
+                let one_msg = Message(id: uuid, tag: msg.tag, text: msg.text, color: color, date: date)
+                res.append(one_msg)
+            }
+            return res
+        } catch {
+            DispatchQueue.main.async {
+                self.errorString = error.localizedDescription
+            }
+            return []
+        }
+    }
+    
+    
+    private func fetch_messages(child_uid: String) async throws -> MessagesResponse? {
+        let url = URL(string: BaseUrl.url + "/lost_child/fetch_messages")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let token = Auth.getToken() else {
+            DispatchQueue.main.async {
+                self.errorString = "missing token"
+            }
+            print("missing token")
+            return nil
+        }
+        let params = ["token": token, "uid": child_uid]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: params)
+        } catch {
+            DispatchQueue.main.async {
+                self.errorString = "Invalid JSON format."
+            }
+            print("Invalid JSON format.")
+            return nil
+        }
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let response = try JSONDecoder().decode(MessagesResponse.self, from: data)
+        return response
+    }
+}
+
+struct MessagesResponse: Codable {
+    let messages: [MsgResponse]
+}
+
+struct MsgResponse: Codable {
+    let msgID: String
+    let tag: String
+    let text: String
+    let timestamp: Double
 }

@@ -195,6 +195,9 @@ struct EachChild: View {
                         errMsg = eachChildViewModel.errorString
                     }
                 }
+                Task {
+                    messages = await eachChildViewModel.getMessages(child_uid: oneChild.id)
+                }
             }
             
             

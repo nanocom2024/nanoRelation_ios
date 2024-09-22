@@ -8,14 +8,6 @@
 import SwiftUI
 
 struct Talk02: View {
-    // メッセージの構造体
-    struct Message: Identifiable {
-        let id = UUID()
-        let text: String
-        let color: Color
-        let date: Date  // メッセージの日時
-    }
-    
     // @Stateでメッセージのリストを管理
     @State private var messages: [Message] = []
     

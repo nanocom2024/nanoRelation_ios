@@ -12,7 +12,7 @@
 		494737522C787E6600EA38EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494737512C787E6600EA38EB /* Preview Assets.xcassets */; };
 		494737A92C7D899600EA38EB /* Talk01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A82C7D899600EA38EB /* Talk01.swift */; };
 		494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AA2C7D954D00EA38EB /* Talk02.swift */; };
-		494737AD2C7D9EC000EA38EB /* Talk03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* Talk03.swift */; };
+		494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* EachChild.swift */; };
 		C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */; };
 		C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE72C8D4C77006335C2 /* LoginView.swift */; };
 		C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */; };
@@ -53,6 +53,8 @@
 		C1D8CF642C994975006335C2 /* ChildLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */; };
 		C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF762C9A8FA0006335C2 /* Account.swift */; };
 		C1D8CF7A2C9BEE33006335C2 /* MyChildrenListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF792C9BEE33006335C2 /* MyChildrenListViewModel.swift */; };
+		C1D8CF7C2C9DA58D006335C2 /* EachChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF7B2C9DA58D006335C2 /* EachChildViewModel.swift */; };
+		C1D8CF7F2C9E6B75006335C2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF7E2C9E6B75006335C2 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +64,7 @@
 		494737512C787E6600EA38EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		494737A82C7D899600EA38EB /* Talk01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk01.swift; sourceTree = "<group>"; };
 		494737AA2C7D954D00EA38EB /* Talk02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk02.swift; sourceTree = "<group>"; };
-		494737AC2C7D9EC000EA38EB /* Talk03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk03.swift; sourceTree = "<group>"; };
+		494737AC2C7D9EC000EA38EB /* EachChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachChild.swift; sourceTree = "<group>"; };
 		C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1D8CEE72C8D4C77006335C2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieManager.swift; sourceTree = "<group>"; };
@@ -103,6 +105,8 @@
 		C1D8CF632C994975006335C2 /* ChildLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildLoginViewModel.swift; sourceTree = "<group>"; };
 		C1D8CF762C9A8FA0006335C2 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		C1D8CF792C9BEE33006335C2 /* MyChildrenListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildrenListViewModel.swift; sourceTree = "<group>"; };
+		C1D8CF7B2C9DA58D006335C2 /* EachChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachChildViewModel.swift; sourceTree = "<group>"; };
+		C1D8CF7E2C9E6B75006335C2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +146,6 @@
 				C1D8CEE62C8D4C56006335C2 /* View */,
 				494737A82C7D899600EA38EB /* Talk01.swift */,
 				494737AA2C7D954D00EA38EB /* Talk02.swift */,
-				494737AC2C7D9EC000EA38EB /* Talk03.swift */,
 				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
 				4947374E2C787E6600EA38EB /* Assets.xcassets */,
 				494737502C787E6600EA38EB /* Preview Content */,
@@ -194,6 +197,7 @@
 		C1D8CEF42C8D9140006335C2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C1D8CF7D2C9E6B56006335C2 /* Message */,
 				C1D8CF6B2C9967B0006335C2 /* Auth */,
 				C1D8CF6A2C9967A5006335C2 /* NavigationModel */,
 				C1D8CF682C996699006335C2 /* BaseURL */,
@@ -257,6 +261,7 @@
 			children = (
 				C1D8CF562C993BD8006335C2 /* ChildView.swift */,
 				C1D8CF582C993BF4006335C2 /* MyChildrenList.swift */,
+				494737AC2C7D9EC000EA38EB /* EachChild.swift */,
 			);
 			path = Child;
 			sourceTree = "<group>";
@@ -430,8 +435,17 @@
 			isa = PBXGroup;
 			children = (
 				C1D8CF792C9BEE33006335C2 /* MyChildrenListViewModel.swift */,
+				C1D8CF7B2C9DA58D006335C2 /* EachChildViewModel.swift */,
 			);
 			path = Child;
+			sourceTree = "<group>";
+		};
+		C1D8CF7D2C9E6B56006335C2 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF7E2C9E6B75006335C2 /* Message.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -521,6 +535,7 @@
 				C1D8CF4D2C9924BB006335C2 /* FriendList.swift in Sources */,
 				C1D8CF532C993907006335C2 /* ProfileView.swift in Sources */,
 				494737A92C7D899600EA38EB /* Talk01.swift in Sources */,
+				C1D8CF7F2C9E6B75006335C2 /* Message.swift in Sources */,
 				C1D8CF592C993BF4006335C2 /* MyChildrenList.swift in Sources */,
 				C1D8CF062C913241006335C2 /* UserBleCharacteristic.swift in Sources */,
 				C1D8CF0C2C913318006335C2 /* BleCommViewModel.swift in Sources */,
@@ -545,8 +560,9 @@
 				C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */,
 				C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */,
 				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,
+				C1D8CF7C2C9DA58D006335C2 /* EachChildViewModel.swift in Sources */,
 				C1D8CEFA2C8DB94A006335C2 /* DeleteView.swift in Sources */,
-				494737AD2C7D9EC000EA38EB /* Talk03.swift in Sources */,
+				494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */,
 				C1D8CF192C92E895006335C2 /* BeaconView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

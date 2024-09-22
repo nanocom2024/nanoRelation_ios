@@ -7,56 +7,60 @@
 
 import SwiftUI
 
-struct Talk03: View {
-    // メッセージの構造体
-    struct Message: Identifiable {
-        let id = UUID()
-        let text: String
-        let color: Color
-        let date: Date  // メッセージの日時
-    }
+struct EachChild: View {
     // @Stateでメッセージのリストを管理
     @State private var messages: [Message] = []
+    let oneChild: Child
     
-    @State private var isButtonTapped = false
+    @State private var errMsg = ""
+    @State private var isLost = false
+    @StateObject private var eachChildViewModel = EachChildViewModel()
+    
     
     var body: some View {
-        NavigationView {//これがないとtoolbarが使えない
-            VStack{//全体の縦構造
-                HStack{//プロフィール
+        NavigationView { //これがないとtoolbarが使えない
+            // 全体の縦構造
+            VStack{
+                // プロフィール
+                HStack{
                     Image("hiddenlake")
                         .resizable()
                         .frame(width: 50, height: 50)
                         .clipShape(Circle())
                         .padding(.leading,20)
-                    Text("名前") // 配列内のメッセージを表示
+                    Text(oneChild.name) // 配列内のメッセージを表示
                         .font(.headline)
                         .foregroundColor(.black)
                     Spacer()
                 }
                 
-                ScrollView {//スクロールする領域を指定
-// ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
-                    ForEach(messages) { message in//ForEach　配列の要素を構成するとき使い回しするもの
+                if errMsg != "" {
+                    Text(errMsg)
+                        .foregroundStyle(Color.red)
+                }
+                
+                ScrollView { //スクロールする領域を指定
+                    // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
+                    ForEach(messages) { message in //ForEach　配列の要素を構成するとき使い回しするもの
                         VStack { // メッセージ全体ーーーーーーーーーーーーー
                             ZStack {
                                 RoundedRectangle(cornerRadius: 30)
                                     .fill(message.color)
                                     .frame(width: 330, height: 37)
-
+                                
                                 Text(message.text) // 配列内のメッセージを表示
                                     .lineSpacing(-10) // 改行の行間を詰める
                                     .font(.body)
-//                                    .fontWeight(.semibold)
+                                //                                    .fontWeight(.semibold)
                                 
-                                HStack{//未読メッセージアイコン
+                                HStack{ //未読メッセージアイコン
                                     Image(systemName: "exclamationmark.circle.fill")
                                         .font(Font.system(size: 20, weight: .medium))
                                         .foregroundColor(.red)
                                         .padding(.top,-20)
                                         .padding(.leading,20)
                                     Spacer()
-                                }//未読メッセージアイコン
+                                } //未読メッセージアイコン
                             }
                             .padding(.top,10)
                             
@@ -65,11 +69,11 @@ struct Talk03: View {
                                 Text(dateFormatter.string(from: message.date))
                                     .padding(.top, -10)
                                     .padding(.trailing, 40)
-
+                                
                             } // 日時
                         } // メッセージ全体ーーーーーーーーーーーーー
-                    }// messages配列の中身を表示
-// ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
+                    } // messages配列の中身を表示
+                    // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
                     
                 } // ScrollView
                 
@@ -87,6 +91,7 @@ struct Talk03: View {
                         .accentColor(Color.black)
                         .background(Color.yellow)
                         .cornerRadius(26)
+                        .disabled(errMsg != "")
                         
                         Spacer()
                         // ボタンーーーーーーーーーーーーー
@@ -102,34 +107,78 @@ struct Talk03: View {
                         .accentColor(Color.black)
                         .background(Color.green)
                         .cornerRadius(26)
+                        .disabled(errMsg != "")
                         
                         Spacer()
                         // ボタンーーーーーーーーーーーーー
                         
                         // ボタンーーーーーーーーーーーーー
                         Button(action: {//情報提供許可ボタンーーーーーーーーーーーーー
-                            if isButtonTapped {
-                                // isButtonTappedがtrueのときの処理
-                                // メッセージを追加（赤色）
-                                messages.append(Message(text: "迷子アラートを解除しました", color: .blue, date: Date()))
+                            if isLost {
+                                Task {
+                                    let msg = Message(tag: "end", text: "迷子アラートを解除しました", color: .blue, date: Date())
+                                    
+                                    guard let res = await eachChildViewModel.delete_lost_info(child_uid: oneChild.id) else {
+                                        errMsg = eachChildViewModel.errorString
+                                        return
+                                    }
+                                    if !res {
+                                        return
+                                    }
+                                    
+                                    guard let res = await eachChildViewModel.addMsg(child_uid: oneChild.id, newMsg: msg) else {
+                                        errMsg = eachChildViewModel.errorString
+                                        return
+                                    }
+                                    if !res {
+                                        return
+                                    }
+                                    
+                                    DispatchQueue.main.async {
+                                        // メッセージを追加
+                                        isLost = false
+                                        messages.append(msg)
+                                    }
+                                }
                             } else {
-                                // isButtonTappedがfalseのときの処理
-                                // メッセージを追加（青色）
-                                messages.append(Message(text: "迷子アラートを発信しました", color: .red, date: Date()))
+                                Task {
+                                    let msg = Message(tag: "start", text: "迷子アラートを発信しました", color: .red, date: Date())
+                                    
+                                    guard let res = await eachChildViewModel.register_lost(child_uid: oneChild.id) else {
+                                        errMsg = eachChildViewModel.errorString
+                                        return
+                                    }
+                                    if !res {
+                                        return
+                                    }
+                                    
+                                    guard let res = await eachChildViewModel.addMsg(child_uid: oneChild.id, newMsg: msg) else {
+                                        errMsg = eachChildViewModel.errorString
+                                        return
+                                    }
+                                    if !res {
+                                        return
+                                    }
+                                    
+                                    DispatchQueue.main.async {
+                                        // メッセージを追加
+                                        isLost = true
+                                        messages.append(msg)
+                                    }
+                                }
                             }
-                            // ボタンの状態をトグル
-                            isButtonTapped.toggle()
                         }){
                             
-                            Text(isButtonTapped ? "アラート解除" : "アラート発信")
+                            Text(isLost ? "アラート解除" : "アラート発信")
                             //.font(.largeTitle)//*****
                             //.fontWeight(.semibold)
                             //.frame(width: 370, height: 60)
                         }
                         .frame(width: 130, height: 35) // ボタンのサイズを固定
                         .accentColor(Color.white)
-                        .background(isButtonTapped ? Color.blue : Color.red)
+                        .background(isLost ? Color.blue : Color.red)
                         .cornerRadius(26)
+                        .disabled(errMsg != "")
                         //                    .cornerRadius(.infinity)//*****
                         
                         Spacer()
@@ -137,7 +186,19 @@ struct Talk03: View {
                         
                     } // ToolbarItemGroup
                 } // .toolbar
-            } // NavigationView
+            } // MARK: END - VStack
+            .onAppear {
+                Task {
+                    if let res = await eachChildViewModel.isLost(uid: oneChild.id) {
+                        isLost = res
+                    } else {
+                        errMsg = eachChildViewModel.errorString
+                    }
+                }
+                Task {
+                    messages = await eachChildViewModel.getMessages(child_uid: oneChild.id)
+                }
+            }
             
             
         }
@@ -153,5 +214,5 @@ struct Talk03: View {
 }
 
 #Preview {
-    Talk03()
+    EachChild(oneChild: Child(id: "test", name: "なまえ"))
 }

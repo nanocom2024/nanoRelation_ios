@@ -145,7 +145,6 @@
 				C1D8CEEB2C8D527F006335C2 /* ViewModel */,
 				C1D8CEE62C8D4C56006335C2 /* View */,
 				494737A82C7D899600EA38EB /* Talk01.swift */,
-				494737AA2C7D954D00EA38EB /* Talk02.swift */,
 				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
 				4947374E2C787E6600EA38EB /* Assets.xcassets */,
 				494737502C787E6600EA38EB /* Preview Content */,
@@ -242,6 +241,7 @@
 			children = (
 				C1D8CF4E2C993612006335C2 /* LostChildView.swift */,
 				C1D8CF502C9936B0006335C2 /* LostChildrenList.swift */,
+				494737AA2C7D954D00EA38EB /* Talk02.swift */,
 			);
 			path = LostChild;
 			sourceTree = "<group>";

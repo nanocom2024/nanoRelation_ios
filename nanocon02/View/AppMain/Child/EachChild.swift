@@ -116,30 +116,57 @@ struct EachChild: View {
                         Button(action: {//情報提供許可ボタンーーーーーーーーーーーーー
                             if isLost {
                                 Task {
-                                    if let res = await eachChildViewModel.delete_lost_info(child_uid: oneChild.id) {
-                                        if res {
-                                            isLost = false
-                                        }
-                                    } else {
+                                    let msg = Message(tag: "end", text: "迷子アラートを解除しました", color: .blue, date: Date())
+                                    
+                                    guard let res = await eachChildViewModel.delete_lost_info(child_uid: oneChild.id) else {
                                         errMsg = eachChildViewModel.errorString
+                                        return
+                                    }
+                                    if !res {
+                                        return
+                                    }
+                                    
+                                    guard let res = await eachChildViewModel.addMsg(child_uid: oneChild.id, newMsg: msg) else {
+                                        errMsg = eachChildViewModel.errorString
+                                        return
+                                    }
+                                    if !res {
+                                        return
+                                    }
+                                    
+                                    DispatchQueue.main.async {
+                                        // メッセージを追加
+                                        isLost = false
+                                        messages.append(msg)
                                     }
                                 }
-                                // メッセージを追加
-                                messages.append(Message(text: "迷子アラートを解除しました", color: .blue, date: Date()))
                             } else {
                                 Task {
-                                    if let res = await eachChildViewModel.register_lost(child_uid: oneChild.id) {
-                                        if res {
-                                            isLost = true
-                                        }
-                                    } else {
+                                    let msg = Message(tag: "start", text: "迷子アラートを発信しました", color: .red, date: Date())
+                                    
+                                    guard let res = await eachChildViewModel.register_lost(child_uid: oneChild.id) else {
                                         errMsg = eachChildViewModel.errorString
+                                        return
+                                    }
+                                    if !res {
+                                        return
+                                    }
+                                    
+                                    guard let res = await eachChildViewModel.addMsg(child_uid: oneChild.id, newMsg: msg) else {
+                                        errMsg = eachChildViewModel.errorString
+                                        return
+                                    }
+                                    if !res {
+                                        return
+                                    }
+                                    
+                                    DispatchQueue.main.async {
+                                        // メッセージを追加
+                                        isLost = true
+                                        messages.append(msg)
                                     }
                                 }
-                                // メッセージを追加
-                                messages.append(Message(text: "迷子アラートを発信しました", color: .red, date: Date()))
                             }
-                            
                         }){
                             
                             Text(isLost ? "アラート解除" : "アラート発信")

@@ -15,7 +15,7 @@ class MyChildrenListViewModel: ObservableObject {
             var res: [Child] = []
             let childrenResponse = try await fetch_children()
             for child in childrenResponse?.children ?? [] {
-                let one_child = Child(id: child.uid, name: child.name)
+                let one_child = Child(id: child.uid, name: child.name, name_id: child.name_id)
                 res.append(one_child)
             }
             return res
@@ -65,4 +65,5 @@ struct ChildrenResponse: Codable {
 struct ChildResponse: Codable {
     let uid: String
     let name: String
+    let name_id: String
 }

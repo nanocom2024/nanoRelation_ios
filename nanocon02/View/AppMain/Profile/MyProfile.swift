@@ -10,6 +10,7 @@ import SwiftUI
 struct MyProfile: View {
     @EnvironmentObject private var navigationModel: NavigationModel
     @State private var name = ""
+    @State private var name_id = ""
     
     var body: some View {
         // 全体の縦構造
@@ -28,6 +29,10 @@ struct MyProfile: View {
                     .font(.title)
 //                    .fontWeight(.black)
                     .padding(.top, 10.0)
+                // 名前のid
+                Text(name_id)
+                Spacer().frame(height: 20)
+                
                 // 子供追加ボタン
                 Button(action: {
                     navigationModel.path.append("ChildLogin")
@@ -52,12 +57,17 @@ struct MyProfile: View {
             
         }
         .onAppear {
-            if Account.name == "no-name" {
+            if Account.name == "no-name" && Account.name_id == "#xxxx" {
                 Task {
-                    name = await Account.get_name()
+                    let (name_res, name_id_res) = await Account.get_name()
+                    DispatchQueue.main.async {
+                        name = name_res
+                        name_id = name_id_res
+                    }
                 }
             } else {
                 name = Account.name
+                name_id = Account.name_id
             }
         }
         .padding(EdgeInsets(top: -15, leading: 20, bottom: -20, trailing:20))

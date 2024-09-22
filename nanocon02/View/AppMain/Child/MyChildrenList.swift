@@ -59,7 +59,7 @@ struct MyChildrenList: View {
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading){
-                                Text(child.name) // 配列内のメッセージを表示
+                                Text(child.name + " " + child.name_id) // 配列内のメッセージを表示
                                     .font(.subheadline)
                                     .foregroundColor(.black)
 //                                Text("2024年10月20日 18時23分")
@@ -106,6 +106,7 @@ struct MyChildrenList: View {
 struct Child: Identifiable {
     let id: String // uid
     let name: String
+    let name_id: String
     let image = Image("hiddenlake")
 }
 

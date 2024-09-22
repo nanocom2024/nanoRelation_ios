@@ -214,5 +214,5 @@ struct EachChild: View {
 }
 
 #Preview {
-    EachChild(oneChild: Child(id: "test", name: "なまえ"))
+    EachChild(oneChild: Child(id: "test", name: "なまえ", name_id: "#xxxx"))
 }

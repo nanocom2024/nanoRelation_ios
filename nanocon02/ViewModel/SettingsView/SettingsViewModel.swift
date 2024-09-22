@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TestViewModel: ObservableObject {
+class SettingsViewModel: ObservableObject {
     func signout() {
         let url = URL(string: BaseUrl.url + "/auth/signout")!
         var request = URLRequest(url: url)

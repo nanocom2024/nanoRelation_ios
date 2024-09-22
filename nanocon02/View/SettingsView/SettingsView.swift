@@ -1,5 +1,5 @@
 //
-//  TestView.swift
+//  SettingsView.swift
 //  nanocon02
 //
 //  Created by k22036kk on 2024/09/08.
@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct TestView: View {
-    let cookieManager = CookieManager()
-    @StateObject private var testViewModel = TestViewModel()
+struct SettingsView: View {
+    @StateObject private var settingsViewModel = SettingsViewModel()
     @EnvironmentObject var navigationModel: NavigationModel
 
     var body: some View {
@@ -18,15 +17,14 @@ struct TestView: View {
                 Spacer()
                 Spacer()
                 Button(action: {
-                    testViewModel.signout()
+                    settingsViewModel.signout()
                     navigationModel.path.removeLast(navigationModel.path.count)
                 }, label: {
                     Text("signout")
                 })
                 Spacer()
             }
-            Spacer()
-            Text(Auth.getToken() ?? "token not found")
+            
             Spacer()
 
             VStack {
@@ -40,24 +38,18 @@ struct TestView: View {
 
                 Spacer().frame(height: 20)
 
-                Button(action: {
-                    navigationModel.path.append("beacon")
-                }, label: {
-                    Text("iBeacon receive")
-                })
-                
-                Spacer().frame(height: 20)
 
-                Button(action: {
-                    navigationModel.path.append("street pass")
-                }, label: {
-                    Text("street pass")
+                
+                NavigationLink(destination: DebugView(),
+                               label: {
+                    Text("デバッグ用")
                 })
 
                 Spacer()
 
                 NavigationLink(
-                    destination: DeleteView(),
+                    destination: DeleteView()
+                        .environmentObject(navigationModel),
                     label: {
                         Text("Delete Account")
                             .frame(width: 140, height: 40)
@@ -70,11 +62,9 @@ struct TestView: View {
                 .buttonStyle(PlainButtonStyle())
             }
         }
-        // 戻るボタンを非表示にする
-//        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
-    TestView()
+    SettingsView()
 }

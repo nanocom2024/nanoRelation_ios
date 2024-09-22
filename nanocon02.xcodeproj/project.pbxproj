@@ -19,9 +19,9 @@
 		C1D8CEED2C8D5292006335C2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEEC2C8D5292006335C2 /* LoginViewModel.swift */; };
 		C1D8CEEF2C8D5479006335C2 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEEE2C8D5479006335C2 /* SignupView.swift */; };
 		C1D8CEF12C8D54E5006335C2 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEF02C8D54E5006335C2 /* SignupViewModel.swift */; };
-		C1D8CEF32C8D60F8006335C2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEF22C8D60F8006335C2 /* TestView.swift */; };
+		C1D8CEF32C8D60F8006335C2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEF22C8D60F8006335C2 /* SettingsView.swift */; };
 		C1D8CEF62C8D9158006335C2 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEF52C8D9158006335C2 /* Auth.swift */; };
-		C1D8CEF82C8DB02E006335C2 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEF72C8DB02E006335C2 /* TestViewModel.swift */; };
+		C1D8CEF82C8DB02E006335C2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEF72C8DB02E006335C2 /* SettingsViewModel.swift */; };
 		C1D8CEFA2C8DB94A006335C2 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEF92C8DB94A006335C2 /* DeleteView.swift */; };
 		C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEFB2C8DB9B8006335C2 /* DeleteViewModel.swift */; };
 		C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEFD2C8DD2B1006335C2 /* NavigationModel.swift */; };
@@ -55,6 +55,7 @@
 		C1D8CF7A2C9BEE33006335C2 /* MyChildrenListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF792C9BEE33006335C2 /* MyChildrenListViewModel.swift */; };
 		C1D8CF7C2C9DA58D006335C2 /* EachChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF7B2C9DA58D006335C2 /* EachChildViewModel.swift */; };
 		C1D8CF7F2C9E6B75006335C2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF7E2C9E6B75006335C2 /* Message.swift */; };
+		C1D8CF842C9FEF14006335C2 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF832C9FEF14006335C2 /* DebugView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,9 +72,9 @@
 		C1D8CEEC2C8D5292006335C2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C1D8CEEE2C8D5479006335C2 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		C1D8CEF02C8D54E5006335C2 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
-		C1D8CEF22C8D60F8006335C2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		C1D8CEF22C8D60F8006335C2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C1D8CEF52C8D9158006335C2 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		C1D8CEF72C8DB02E006335C2 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
+		C1D8CEF72C8DB02E006335C2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C1D8CEF92C8DB94A006335C2 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		C1D8CEFB2C8DB9B8006335C2 /* DeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewModel.swift; sourceTree = "<group>"; };
 		C1D8CEFD2C8DD2B1006335C2 /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		C1D8CF792C9BEE33006335C2 /* MyChildrenListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChildrenListViewModel.swift; sourceTree = "<group>"; };
 		C1D8CF7B2C9DA58D006335C2 /* EachChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachChildViewModel.swift; sourceTree = "<group>"; };
 		C1D8CF7E2C9E6B75006335C2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C1D8CF832C9FEF14006335C2 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,8 +173,9 @@
 		C1D8CEE62C8D4C56006335C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C1D8CF822C9FEEFF006335C2 /* Debug */,
 				C1D8CF712C9A600A006335C2 /* Auth */,
-				C1D8CF722C9A6029006335C2 /* TestView */,
+				C1D8CF722C9A6029006335C2 /* SettingsView */,
 				C1D8CF732C9A604E006335C2 /* BLE */,
 				C1D8CF742C9A6065006335C2 /* Beacon */,
 				C1D8CF752C9A606F006335C2 /* StreetPass */,
@@ -186,7 +189,7 @@
 			children = (
 				C1D8CF612C994954006335C2 /* AppMain */,
 				C1D8CF6E2C9968B7006335C2 /* Auth */,
-				C1D8CF6F2C9968DD006335C2 /* TestView */,
+				C1D8CF6F2C9968DD006335C2 /* SettingsView */,
 				C1D8CF6D2C9968A7006335C2 /* BLE */,
 				C1D8CF702C9968ED006335C2 /* StreetPass */,
 			);
@@ -369,12 +372,12 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		C1D8CF6F2C9968DD006335C2 /* TestView */ = {
+		C1D8CF6F2C9968DD006335C2 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
-				C1D8CEF72C8DB02E006335C2 /* TestViewModel.swift */,
+				C1D8CEF72C8DB02E006335C2 /* SettingsViewModel.swift */,
 			);
-			path = TestView;
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		C1D8CF702C9968ED006335C2 /* StreetPass */ = {
@@ -396,12 +399,12 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		C1D8CF722C9A6029006335C2 /* TestView */ = {
+		C1D8CF722C9A6029006335C2 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
-				C1D8CEF22C8D60F8006335C2 /* TestView.swift */,
+				C1D8CEF22C8D60F8006335C2 /* SettingsView.swift */,
 			);
-			path = TestView;
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		C1D8CF732C9A604E006335C2 /* BLE */ = {
@@ -446,6 +449,14 @@
 				C1D8CF7E2C9E6B75006335C2 /* Message.swift */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		C1D8CF822C9FEEFF006335C2 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF832C9FEF14006335C2 /* DebugView.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -543,8 +554,9 @@
 				C1D8CF042C912F28006335C2 /* DeviceConfig.swift in Sources */,
 				C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */,
 				C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */,
-				C1D8CEF82C8DB02E006335C2 /* TestViewModel.swift in Sources */,
+				C1D8CEF82C8DB02E006335C2 /* SettingsViewModel.swift in Sources */,
 				C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */,
+				C1D8CF842C9FEF14006335C2 /* DebugView.swift in Sources */,
 				C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */,
 				C1D8CF7A2C9BEE33006335C2 /* MyChildrenListViewModel.swift in Sources */,
 				C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */,
@@ -556,7 +568,7 @@
 				C1D8CF082C913277006335C2 /* UserBleService.swift in Sources */,
 				C1D8CF642C994975006335C2 /* ChildLoginViewModel.swift in Sources */,
 				C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */,
-				C1D8CEF32C8D60F8006335C2 /* TestView.swift in Sources */,
+				C1D8CEF32C8D60F8006335C2 /* SettingsView.swift in Sources */,
 				C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */,
 				C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */,
 				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,

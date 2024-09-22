@@ -37,7 +37,7 @@ struct MyChildrenList: View {
                 // setting mark
                 Button(action: {
                     // test viewへ
-                    navigationModel.path.append("test")
+                    navigationModel.path.append("settings")
                 }) {
                     Image(systemName: "gearshape")
                         .font(Font.system(size: 30, weight: .light))

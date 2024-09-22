@@ -26,8 +26,8 @@ struct HomeView: View {
                 switch value {
                 case "login":
                     LoginView()
-                case "test":
-                    TestView()
+                case "settings":
+                    SettingsView()
                 case "search device":
                     SearchDeviceView()
                         .environmentObject(BleCommViewModel())

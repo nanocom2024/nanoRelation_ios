@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct FriendList: View {
-    // メッセージの構造体
-    struct Friend: Identifiable {
-        let id = UUID()
-        let text: String
-        let image: Image
-    }
-    
     // @Stateでメッセージのリストを管理
     @State private var friends: [Friend] = []
+    @StateObject private var friendListObj = FriendListViewModel()
     @EnvironmentObject private var navigationModel: NavigationModel
     
     
@@ -27,15 +21,15 @@ struct FriendList: View {
             HStack{
                 Spacer()
                 
-                // plus mark
-                Button(action: {
-                    friends.append(Friend(text: "なまえ", image: Image("charleyrivers")))
-                }) {
-                    Image(systemName: "plus.circle")
-                        .font(Font.system(size: 30, weight: .light))
-//                        .foregroundColor(.gray)
-                        .foregroundColor(.black)
-                }
+//                // plus mark
+//                Button(action: {
+//                    friends.append(Friend(text: "なまえ", image: Image("charleyrivers")))
+//                }) {
+//                    Image(systemName: "plus.circle")
+//                        .font(Font.system(size: 30, weight: .light))
+////                        .foregroundColor(.gray)
+//                        .foregroundColor(.black)
+//                }
                 
                 Spacer().frame(width: 10)
                 
@@ -65,14 +59,14 @@ struct FriendList: View {
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading){
-                                Text(friend.text) // 配列内のメッセージを表示
+                                Text(friend.name + " " + friend.name_id)
                                     .font(.subheadline)
                                     .foregroundColor(.black)
-                                Text("2024年10月20日 18時23分")
-                                    .frame(width: 180)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-//                                    .background(.yellow)
+//                                Text("2024年10月20日 18時23分")
+//                                    .frame(width: 180)
+//                                    .font(.subheadline)
+//                                    .foregroundColor(.gray)
+////                                    .background(.yellow)
                                     
                             }
                             
@@ -96,11 +90,26 @@ struct FriendList: View {
             
         }
         .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing:25))
+        .onAppear {
+            Task {
+                // 現状登録されているユーザー
+                let friends_data = await friendListObj.get_users()
+                DispatchQueue.main.async {
+                    friends = friends_data
+                }
+            }
+        }
         
     }
     // MARK: END - var body: some View
 }
 
+struct Friend: Identifiable {
+    let id: String // uid
+    let name: String
+    let name_id: String
+    let image = Image("charleyrivers")
+}
 
 #Preview {
     FriendList()

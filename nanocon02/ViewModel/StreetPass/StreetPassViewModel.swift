@@ -20,9 +20,7 @@ class StreetPassViewModel: ObservableObject {
                let pass = try await request_received_beacon(token: token, major: info.major, minor: info.minor)
             {
                 let currentDate = Date()  // Date型
-                let formatter = DateFormatter()
-                formatter.dateFormat = "[yyyy-MM-dd HH:mm:ss] "  // 文字列のフォーマットを指定
-                let dateString = formatter.string(from: currentDate)  // String型に変換
+                let dateString = StreetPassViewModel.dateFormatter.string(from: currentDate)  // String型に変換
                 DispatchQueue.main.async {
                     self.receivedHistory = dateString + pass
                 }
@@ -39,6 +37,13 @@ class StreetPassViewModel: ObservableObject {
             print("Error: \(error.localizedDescription)")
         }
     }
+    
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "[yyyy-MM-dd HH:mm:ss] "
+        return formatter
+    }()
+
 
     private func request_received_beacon(token: String, major: String, minor: String) async throws -> String? {
         let url = URL(string: BaseUrl.url + "/streetpass/received_beacon")!

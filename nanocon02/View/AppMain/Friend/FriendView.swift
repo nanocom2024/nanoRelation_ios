@@ -29,7 +29,7 @@ struct FriendView: View {
                         Image(systemName: "person.fill")
                             .font(.system(size: 25))
                             .padding(.bottom, -5)
-                        Text("友達")
+                        Text("履歴")
                             .fontWeight(.light)
                             .font(.subheadline)
                     }

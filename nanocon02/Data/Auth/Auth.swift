@@ -21,6 +21,8 @@ class Auth {
     static func setToken(token: String) {
         cookieManager.setCookie(url: url, key: "authtoken", value: token)
         AppDelegate.storeCookies()
+        Account.name = "no-name"
+        Account.name_id = "#xxxx"
     }
 
     static func deleteToken() {

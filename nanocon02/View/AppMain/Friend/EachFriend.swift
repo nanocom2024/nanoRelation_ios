@@ -5,9 +5,13 @@
 // Created by X22049xx on 2024/08/27.
 //
 import SwiftUI
-struct Talk01: View {
-  // @Stateでメッセージのリストを管理
-  @State private var messages: [Message] = []
+struct EachFriend: View {
+    
+    let oneFriend: Friend
+    
+    // @Stateでメッセージのリストを管理
+    @State private var messages: [Message] = []
+    @StateObject private var eachFriendObj = EachFriendViewModel()
     
   var body: some View {
     NavigationView {//これがないとtoolbarが使えない
@@ -55,56 +59,61 @@ struct Talk01: View {
           }// messages配列の中身を表示
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
         } // ScrollView
-        .toolbar {
-          ToolbarItemGroup(placement: .bottomBar) {
-//              VStack{
-//                  HStack{
-                    Button(action: {
-                      // メッセージを追加（黄色）
-                      messages.append(Message(text: "愛知県中区○○○○　周辺ですれ違った", color: .yellow, date: Date()))
-                    }) {
-                      Text("すれ違い")
-                    }
+//        .toolbar {
+//          ToolbarItemGroup(placement: .bottomBar) {
+////              VStack{
+////                  HStack{
+//                    Button(action: {
+//                      // メッセージを追加（黄色）
+//                      messages.append(Message(text: "愛知県中区○○○○　周辺ですれ違った", color: .yellow, date: Date()))
+//                    }) {
+//                      Text("すれ違い")
+//                    }
+////                    .padding()
+//                    .frame(width: 100, height: 35) // ボタンのサイズを固定
+//                    .accentColor(Color.black)
+//                    .background(Color.yellow)
+//                    .cornerRadius(26)
+//                    Spacer()
+//                    Button(action: {
+//                      // メッセージを追加（赤）
+//                      messages.append(Message(text: "なまえ　の子供が迷子になりました!", color: .red, date: Date()))
+//                    }) {
+//                      Text("迷子")
+//                    }
 //                    .padding()
-                    .frame(width: 100, height: 35) // ボタンのサイズを固定
-                    .accentColor(Color.black)
-                    .background(Color.yellow)
-                    .cornerRadius(26)
-                    Spacer()
-                    Button(action: {
-                      // メッセージを追加（赤）
-                      messages.append(Message(text: "なまえ　の子供が迷子になりました!", color: .red, date: Date()))
-                    }) {
-                      Text("迷子")
-                    }
-                    .padding()
-                    .frame(width: 100, height: 35) // ボタンのサイズを固定
-                    .accentColor(Color.black)
-                    .background(Color.red)
-                    .cornerRadius(26)
-                    Spacer()
-                    Button(action: {
-                      // メッセージを追加（緑）
-                      messages.append(Message(text: "愛知県中区○○○○　周辺で\nタロウ　とすれ違った", color: .green, date: Date()))
-                    }) {
-                      Text("迷子とすれ違い")
-                    }
-                    .padding()
-                    .frame(width: 150, height: 35) // ボタンのサイズを固定
-                    .accentColor(Color.black)
-                    .background(Color.green)
-                    .cornerRadius(26)
-//                  }
-//                  .padding(.top,20)
-//              }
-              Spacer()
-//            .frame(height: 600)
-              
-            } // ToolbarItemGroup
-        } // .toolbar
-      } // NavigationView
-    }//var body: some View
-  }//struct Talk01: View
+//                    .frame(width: 100, height: 35) // ボタンのサイズを固定
+//                    .accentColor(Color.black)
+//                    .background(Color.red)
+//                    .cornerRadius(26)
+//                    Spacer()
+//                    Button(action: {
+//                      // メッセージを追加（緑）
+//                      messages.append(Message(text: "愛知県中区○○○○　周辺で\nタロウ　とすれ違った", color: .green, date: Date()))
+//                    }) {
+//                      Text("迷子とすれ違い")
+//                    }
+//                    .padding()
+//                    .frame(width: 150, height: 35) // ボタンのサイズを固定
+//                    .accentColor(Color.black)
+//                    .background(Color.green)
+//                    .cornerRadius(26)
+////                  }
+////                  .padding(.top,20)
+////              }
+//              Spacer()
+////            .frame(height: 600)
+//              
+//            } // ToolbarItemGroup
+//        } // MARK: END - .toolbar
+      } // MARK: END - VStack
+      .onAppear {
+          Task {
+              messages = await eachFriendObj.getMessages(uid: oneFriend.id)
+          }
+      }
+    } // MARK: END - NavigationView
+  }
   // 日時を日本形式で表示するためのDateFormatter
   private var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
@@ -114,5 +123,5 @@ struct Talk01: View {
   }
 }
 #Preview {
-  Talk01()
+  EachFriend(oneFriend: Friend(id: "test", name: "test", name_id: "#xxxx"))
 }

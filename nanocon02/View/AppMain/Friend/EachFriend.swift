@@ -22,7 +22,7 @@ struct EachFriend: View {
             .frame(width: 50, height: 50)
             .clipShape(Circle())
             .padding(.leading,20)
-          Text("名前") // 配列内のメッセージを表示
+            Text(oneFriend.name) // 配列内のメッセージを表示
             .font(.headline)
             .foregroundColor(.black)
           Spacer()

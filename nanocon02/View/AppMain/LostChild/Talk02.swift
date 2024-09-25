@@ -42,15 +42,6 @@ struct Talk02: View {
                                     .lineSpacing(-10) // 改行の行間を詰める
                                     .font(.body)
 //                                    .fontWeight(.semibold)
-                                
-                                HStack{//未読メッセージアイコン
-                                    Image(systemName: "exclamationmark.circle.fill")
-                                        .font(Font.system(size: 20, weight: .medium))
-                                        .foregroundColor(.red)
-                                        .padding(.top,-20)
-                                        .padding(.leading,20)
-                                    Spacer()
-                                }//未読メッセージアイコン
                             }
                             .padding(.top,10)
                             
@@ -71,8 +62,8 @@ struct Talk02: View {
                         Spacer()
                         // ボタンーーーーーーーーーーーーー
                         Button(action: {
-                            // メッセージを追加（黄色）
-                            messages.append(Message(text: "愛知県中区○○○○　周辺ですれ違った", color: .yellow, date: Date()))
+                            // メッセージを追加
+                            messages.append(Message(text: "愛知県中区○○○○　周辺ですれ違った", color: .white, date: Date()))
                         }) {
                             Text("すれ違い")
                         }
@@ -88,11 +79,11 @@ struct Talk02: View {
                             if isButtonTapped {
                                 // isButtonTappedがtrueのときの処理
                                 // メッセージを追加（赤色）
-                                messages.append(Message(text: "情報提供をやめました！", color: .red, date: Date()))
+                                messages.append(Message(text: "情報提供をやめました！", color: Color.red.opacity(0.8), date: Date()))
                             } else {
                                 // isButtonTappedがfalseのときの処理
                                 // メッセージを追加（青色）
-                                messages.append(Message(text: "情報を提供しました！", color: .blue, date: Date()))
+                                messages.append(Message(text: "情報を提供しました！", color: Color.blue.opacity(0.8), date: Date()))
                             }
                             // ボタンの状態をトグル
                             isButtonTapped.toggle()
@@ -113,6 +104,7 @@ struct Talk02: View {
                     } // ToolbarItemGroup
                 } // .toolbar
             } // NavigationView
+            .background(Color.gray.opacity(0.2))
         }//var body: some View
     }//struct Talk01: View
     

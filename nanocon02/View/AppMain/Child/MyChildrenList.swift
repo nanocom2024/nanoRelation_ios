@@ -107,7 +107,7 @@ struct Child: Identifiable {
     let id: String // uid
     let name: String
     let name_id: String
-    let image = Image("hiddenlake")
+    let image = Image("test-img")
 }
 
 

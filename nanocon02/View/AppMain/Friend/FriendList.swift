@@ -108,7 +108,7 @@ struct Friend: Identifiable {
     let id: String // uid
     let name: String
     let name_id: String
-    let image = Image("charleyrivers")
+    let image = Image("test-img")
 }
 
 #Preview {

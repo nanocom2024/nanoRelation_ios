@@ -10,61 +10,59 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject private var settingsViewModel = SettingsViewModel()
     @EnvironmentObject var navigationModel: NavigationModel
-
+    
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Spacer()
+            List {
+                // ログアウトボタン
                 Button(action: {
                     settingsViewModel.signout()
                     navigationModel.path.removeLast(navigationModel.path.count)
-                }, label: {
-                    Text("signout")
-                })
-                Spacer()
-            }
-            
-            Spacer()
+                }) {
+                    Text("ログアウト")
+                        .foregroundColor(.primary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
 
-            VStack {
-                Spacer()
-
+                // デバイスを探すボタン
                 Button(action: {
                     navigationModel.path.append("search device")
-                }, label: {
-                    Text("search Device")
-                })
-
-                Spacer().frame(height: 20)
-
-
-                
-                NavigationLink(destination: DebugView(),
-                               label: {
-                    Text("デバッグ用")
-                })
-
-                Spacer()
-
-                NavigationLink(
-                    destination: DeleteView()
-                        .environmentObject(navigationModel),
-                    label: {
-                        Text("Delete Account")
-                            .frame(width: 140, height: 40)
-                            .font(.body)
-                            .foregroundColor(.white)
-                            .background(Color.red)
-                            .cornerRadius(8)
+                }) {
+                    HStack {
+                        Text("デバイスを探す")
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .frame(width: 7, height: 14)
+                            .foregroundColor(Color.gray.opacity(0.7))
                     }
-                )
-                .buttonStyle(PlainButtonStyle())
+                    .frame(maxWidth: .infinity)
+                }
+
+                // デバッグ用リンク
+                NavigationLink(destination: DebugView()) {
+                    Text("デバッグ用")
+                }
+
+//                 アカウント削除セクション
+                Section {
+                    ZStack {
+                        NavigationLink(destination: DeleteView().environmentObject(navigationModel)) {
+                            EmptyView()
+                        }
+                        .opacity(0) // 非表示にする
+                        HStack {
+                            Text("アカウント削除")
+                            Spacer()
+                        }
+                    }
+                    .listRowBackground(Color.red)
+                }
             }
-        }
     }
 }
 
 #Preview {
     SettingsView()
+        .environmentObject(NavigationModel())
 }

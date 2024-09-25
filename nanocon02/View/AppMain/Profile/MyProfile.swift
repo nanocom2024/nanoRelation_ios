@@ -18,7 +18,7 @@ struct MyProfile: View {
             // プロフィール
             VStack{
                 // アイコン
-                Image("chincoteague")
+                Image("test-img")
                     .resizable()
                     .frame(width: 150, height: 150)
                     .clipShape(Circle())

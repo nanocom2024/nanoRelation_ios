@@ -53,7 +53,7 @@ struct LostChildView: View {
                         Image(systemName: "person.2.slash.fill")
                             .font(Font.system(size: 25))
                             .padding(.bottom, -10)
-                        Text("迷子リスト")
+                        Text("現在の状況")
                             .fontWeight(.light)
                             .font(.subheadline)
 

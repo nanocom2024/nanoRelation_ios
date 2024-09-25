@@ -29,7 +29,7 @@ struct FriendList: View {
                 
                 // plus mark
                 Button(action: {
-                    friends.append(Friend(text: "なまえ", image: Image("charleyrivers")))
+                    friends.append(Friend(text: "なまえ", image: Image("test-img")))
                 }) {
                     Image(systemName: "plus.circle")
                         .font(Font.system(size: 30, weight: .light))

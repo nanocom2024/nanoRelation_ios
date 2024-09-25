@@ -7,11 +7,15 @@
 
 import SwiftUI
 
-struct LostChildrenList: View {
+struct StatusView: View {
     // @Stateでメッセージのリストを管理
     @State private var now = "nopass"
+    @State private var history = NowStatus(pass: "false")
+    @State private var errString = ""
+    @State private var resetTask: Task<Void, Never>? // タイマーを管理するTask
     
-    
+    @StateObject private var statusViewModel = StatusViewModel()
+    @EnvironmentObject private var beaconReceiver: BeaconReceiver
     @EnvironmentObject private var navigationModel: NavigationModel
     
     
@@ -75,7 +79,7 @@ struct LostChildrenList: View {
                                 .overlay(Circle().stroke(Color.white,lineWidth: 4))
                                 .shadow(radius: 10)
                             
-                            Text("名前 と\nすれ違いました")
+                            Text("誰かと\nすれ違いました")
                                 .font(.largeTitle)
                                 .fontWeight(.regular)
                                 .multilineTextAlignment(.center) // 中央揃えにする
@@ -113,52 +117,82 @@ struct LostChildrenList: View {
                     }
                 }
                 Spacer()
+            } // MARK: END - VStack
+            .onChange(of: beaconReceiver.latestBeaconInfo) { _, newInfo in
+                print("change info")
+                if let info = newInfo {
+                    Task {
+                        await statusViewModel.received_beacon(info: info)
+                    }
+                }
+            }
+            .onChange(of: statusViewModel.receivedHistory) { _, newVal in
+                resetTask?.cancel()
+                if newVal.pass == "lost" {
+                    now = "lost"
+                } else if newVal.pass == "true" {
+                    now = "pass"
+                } else {
+                    now = "nopass"
+                }
+                
+                // 15秒後に `nopass` に戻す
+                resetTask = Task {
+                    try? await Task.sleep(nanoseconds: 15 * 1_000_000_000)
+                    DispatchQueue.main.async {
+                        now = "nopass"
+                    }
+                }
+            }
+            .onChange(of: statusViewModel.errorString) { _, newErr in
+                errString = newErr
             }
             
-            .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Spacer()
-                    // ボタンーーーーーーーーーーーーー
-                    Button(action: {
-                        now = "nopass"
-                    }) {
-                        Text("すれ違いなし")
-                    }
-                    .frame(width: 120, height: 35) // ボタンのサイズを固定
-                    .accentColor(Color.black)
-                    .background(Color.yellow)
-                    .cornerRadius(26)
-                    Spacer()
-                    // ボタンーーーーーーーーーーーーー
-                    
-                    // ボタンーーーーーーーーーーーーー
-                    Button(action: {
-                        now = "pass"
-                    }) {
-                        Text("すれ違った")
-                    }
-                    .frame(width: 100, height: 35) // ボタンのサイズを固定
-                    .accentColor(Color.black)
-                    .background(Color.green)
-                    .cornerRadius(26)
-                    Spacer()
-                    // ボタンーーーーーーーーーーーーー
-                    
-                    // ボタンーーーーーーーーーーーーー
-                    Button(action: {
-                        now = "lost"
-                    }) {
-                        Text("迷子が近くにいる")
-                    }
-                    .frame(width: 150, height: 35) // ボタンのサイズを固定
-                    .accentColor(Color.black)
-                    .background(Color.red)
-                    .cornerRadius(26)
-                    Spacer()
-                    // ボタンーーーーーーーーーーーーー
-                    
-                } // ToolbarItemGroup
-            } // .toolbar
+            
+//            .toolbar {
+//                ToolbarItemGroup(placement: .bottomBar) {
+//                    Spacer()
+//                    // ボタンーーーーーーーーーーーーー
+//                    Button(action: {
+//                        now = "nopass"
+//                    }) {
+//                        Text("すれ違いなし")
+//                    }
+//                    .frame(width: 120, height: 35) // ボタンのサイズを固定
+//                    .accentColor(Color.black)
+//                    .background(Color.yellow)
+//                    .cornerRadius(26)
+//                    Spacer()
+//                    // ボタンーーーーーーーーーーーーー
+//                    
+//                    // ボタンーーーーーーーーーーーーー
+//                    Button(action: {
+//                        now = "pass"
+//                    }) {
+//                        Text("すれ違った")
+//                    }
+//                    .frame(width: 100, height: 35) // ボタンのサイズを固定
+//                    .accentColor(Color.black)
+//                    .background(Color.green)
+//                    .cornerRadius(26)
+//                    Spacer()
+//                    // ボタンーーーーーーーーーーーーー
+//                    
+//                    // ボタンーーーーーーーーーーーーー
+//                    Button(action: {
+//                        now = "lost"
+//                    }) {
+//                        Text("迷子が近くにいる")
+//                    }
+//                    .frame(width: 150, height: 35) // ボタンのサイズを固定
+//                    .accentColor(Color.black)
+//                    .background(Color.red)
+//                    .cornerRadius(26)
+//                    Spacer()
+//                    // ボタンーーーーーーーーーーーーー
+//                    
+//                } // ToolbarItemGroup
+//            } // .toolbar
         } // NavigationView
         
     }//var body: some View
@@ -175,5 +209,5 @@ struct LostChildrenList: View {
 
 
 #Preview {
-    LostChildrenList()
+    StatusView()
 }

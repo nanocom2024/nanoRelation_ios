@@ -44,6 +44,7 @@ struct HomeView: View {
                     FriendView()
                 case "LostChild":
                     LostChildView()
+                        .environmentObject(beaconReceiver)
                 case "Child":
                     ChildView()
                 case "Profile":

@@ -12,7 +12,7 @@ struct LostChildView: View {
     var body: some View {
         
         VStack {
-            LostChildrenList()
+            StatusView()
             HStack{
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー

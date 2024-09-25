@@ -44,7 +44,7 @@
 		C1D8CF4B2C992137006335C2 /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF4A2C992136006335C2 /* FriendView.swift */; };
 		C1D8CF4D2C9924BB006335C2 /* FriendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF4C2C9924BB006335C2 /* FriendList.swift */; };
 		C1D8CF4F2C993612006335C2 /* LostChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF4E2C993612006335C2 /* LostChildView.swift */; };
-		C1D8CF512C9936B0006335C2 /* LostChildrenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF502C9936B0006335C2 /* LostChildrenList.swift */; };
+		C1D8CF512C9936B0006335C2 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF502C9936B0006335C2 /* StatusView.swift */; };
 		C1D8CF532C993907006335C2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF522C993907006335C2 /* ProfileView.swift */; };
 		C1D8CF552C9939E2006335C2 /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF542C9939E2006335C2 /* MyProfile.swift */; };
 		C1D8CF572C993BD8006335C2 /* ChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF562C993BD8006335C2 /* ChildView.swift */; };
@@ -58,6 +58,7 @@
 		C1D8CF842C9FEF14006335C2 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF832C9FEF14006335C2 /* DebugView.swift */; };
 		C1D8CF872CA130B6006335C2 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF862CA130B6006335C2 /* FriendListViewModel.swift */; };
 		C1D8CF892CA299FF006335C2 /* EachFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF882CA299FF006335C2 /* EachFriendViewModel.swift */; };
+		C1D8CF8C2CA3E2BB006335C2 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF8B2CA3E2BB006335C2 /* StatusViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,7 +100,7 @@
 		C1D8CF4A2C992136006335C2 /* FriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
 		C1D8CF4C2C9924BB006335C2 /* FriendList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendList.swift; sourceTree = "<group>"; };
 		C1D8CF4E2C993612006335C2 /* LostChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostChildView.swift; sourceTree = "<group>"; };
-		C1D8CF502C9936B0006335C2 /* LostChildrenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostChildrenList.swift; sourceTree = "<group>"; };
+		C1D8CF502C9936B0006335C2 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		C1D8CF522C993907006335C2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C1D8CF542C9939E2006335C2 /* MyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		C1D8CF562C993BD8006335C2 /* ChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildView.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		C1D8CF832C9FEF14006335C2 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		C1D8CF862CA130B6006335C2 /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
 		C1D8CF882CA299FF006335C2 /* EachFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachFriendViewModel.swift; sourceTree = "<group>"; };
+		C1D8CF8B2CA3E2BB006335C2 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				C1D8CF4E2C993612006335C2 /* LostChildView.swift */,
-				C1D8CF502C9936B0006335C2 /* LostChildrenList.swift */,
+				C1D8CF502C9936B0006335C2 /* StatusView.swift */,
 				494737AA2C7D954D00EA38EB /* Talk02.swift */,
 			);
 			path = LostChild;
@@ -276,6 +278,7 @@
 		C1D8CF612C994954006335C2 /* AppMain */ = {
 			isa = PBXGroup;
 			children = (
+				C1D8CF8A2CA3E237006335C2 /* LostChild */,
 				C1D8CF852CA13078006335C2 /* Friend */,
 				C1D8CF782C9BEE04006335C2 /* Child */,
 				C1D8CF622C99495E006335C2 /* Profile */,
@@ -473,6 +476,14 @@
 			path = Friend;
 			sourceTree = "<group>";
 		};
+		C1D8CF8A2CA3E237006335C2 /* LostChild */ = {
+			isa = PBXGroup;
+			children = (
+				C1D8CF8B2CA3E2BB006335C2 /* StatusViewModel.swift */,
+			);
+			path = LostChild;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -577,7 +588,7 @@
 				C1D8CF7A2C9BEE33006335C2 /* MyChildrenListViewModel.swift in Sources */,
 				C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */,
 				C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */,
-				C1D8CF512C9936B0006335C2 /* LostChildrenList.swift in Sources */,
+				C1D8CF512C9936B0006335C2 /* StatusView.swift in Sources */,
 				C1D8CF022C8FD492006335C2 /* HomeView.swift in Sources */,
 				4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */,
 				C1D8CEF62C8D9158006335C2 /* Auth.swift in Sources */,
@@ -589,6 +600,7 @@
 				C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */,
 				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,
 				C1D8CF7C2C9DA58D006335C2 /* EachChildViewModel.swift in Sources */,
+				C1D8CF8C2CA3E2BB006335C2 /* StatusViewModel.swift in Sources */,
 				C1D8CEFA2C8DB94A006335C2 /* DeleteView.swift in Sources */,
 				494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */,
 				C1D8CF192C92E895006335C2 /* BeaconView.swift in Sources */,

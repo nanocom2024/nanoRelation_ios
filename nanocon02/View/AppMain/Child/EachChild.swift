@@ -80,40 +80,40 @@ struct EachChild: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
                         Spacer()
-                        // ボタンーーーーーーーーーーーーー
-                        Button(action: {
-                            // メッセージを追加（黄色）
-                            messages.append(Message(text: "愛知県中区○○○○　周辺ではぐれた", color: .yellow, date: Date()))
-                        }) {
-                            Text("はぐれた")
-                        }
-                        .frame(width: 100, height: 35) // ボタンのサイズを固定
-                        .accentColor(Color.black)
-                        .background(Color.yellow)
-                        .cornerRadius(26)
-                        .disabled(errMsg != "")
+//                        // ボタンーーーーーーーーーーーーー
+//                        Button(action: {
+//                            // メッセージを追加（黄色）
+//                            messages.append(Message(text: "愛知県中区○○○○　周辺ではぐれた", color: .yellow, date: Date()))
+//                        }) {
+//                            Text("はぐれた")
+//                        }
+//                        .frame(width: 100, height: 35) // ボタンのサイズを固定
+//                        .accentColor(Color.black)
+//                        .background(Color.yellow)
+//                        .cornerRadius(26)
+//                        .disabled(errMsg != "")
                         
-                        Spacer()
-                        // ボタンーーーーーーーーーーーーー
-                        
-                        // ボタンーーーーーーーーーーーーー
-                        Button(action: {
-                            // メッセージを追加（黄色）
-                            messages.append(Message(text: "なまえ さん　情報提供者がいます", color: .green, date: Date()))
-                        }) {
-                            Text("情報提供者")
-                        }
-                        .frame(width: 130, height: 35) // ボタンのサイズを固定
-                        .accentColor(Color.black)
-                        .background(Color.green)
-                        .cornerRadius(26)
-                        .disabled(errMsg != "")
-                        
-                        Spacer()
+//                        Spacer()
                         // ボタンーーーーーーーーーーーーー
                         
+//                        // ボタンーーーーーーーーーーーーー
+//                        Button(action: {
+//                            // メッセージを追加（黄色）
+//                            messages.append(Message(text: "なまえ さん　情報提供者がいます", color: .green, date: Date()))
+//                        }) {
+//                            Text("情報提供者")
+//                        }
+//                        .frame(width: 130, height: 35) // ボタンのサイズを固定
+//                        .accentColor(Color.black)
+//                        .background(Color.green)
+//                        .cornerRadius(26)
+//                        .disabled(errMsg != "")
+//                        
+//                        Spacer()
+//                        // ボタンーーーーーーーーーーーーー
+                        
                         // ボタンーーーーーーーーーーーーー
-                        Button(action: {//情報提供許可ボタンーーーーーーーーーーーーー
+                        Button(action: { //アラートボタンーーーーーーーーーーーーー
                             if isLost {
                                 Task {
                                     let msg = Message(tag: "end", text: "迷子アラートを解除しました", color: .blue, date: Date())

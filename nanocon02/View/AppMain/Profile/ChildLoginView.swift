@@ -27,11 +27,7 @@ struct ChildLoginView: View {
                 VStack(alignment: .center) {
                     Spacer()
                     
-                    Text("NanoRelation-ios")
-                        .font(.system(size: 48,
-                                      weight: .heavy))
-                    
-                    Text("ChildLogin")
+                    Text("子供を追加する")
                         .font(.system(size: 40,
                                       weight: .heavy))
                     
@@ -39,18 +35,33 @@ struct ChildLoginView: View {
                         Spacer()
                         Text(errorMessage)
                             .foregroundStyle(Color.red)
+                            .frame(width: 300, height: 10)
                     }
                     
-                    VStack(spacing: 24) {
-                        TextField("Mail address", text: $inputEmail)
+                    VStack {
+                        Text("メールアドレス")
+                            .font(.system(size: 20,
+                                          weight: .semibold))
+                            .frame(maxWidth: 280, alignment: .leading)
+                            .padding(0)
+                        
+                        TextField("Email", text: $inputEmail)
                             .autocapitalization(.none) // 自動大文字化を無効化
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(maxWidth: 280)
+                            .padding(.top,-10)
+                            .padding(.bottom,10)
                         
+                        Text("パスワード")
+                            .font(.system(size: 20,
+                                          weight: .semibold))
+                            .frame(maxWidth: 280, alignment: .leading)
+                            .padding(0)
                         SecureField("Password", text: $inputPassword)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(maxWidth: 280)
-                        
+                            .padding(.top,-10)
+
                     }
                     .frame(height: 200)
                     
@@ -58,19 +69,19 @@ struct ChildLoginView: View {
                     Button(action: {
                         isLoginButtonDisabled = true
                         if inputEmail.isEmpty {
-                            errorMessage = "Missing email"
+                            errorMessage = "メールアドレスを入力してください"
                             isLoginButtonDisabled = false
                             return
                         }
                         if inputPassword.isEmpty {
-                            errorMessage = "Missing password"
+                            errorMessage = "パスワードを入力してください"
                             isLoginButtonDisabled = false
                             return
                         }
                         childLoginViewModel.register_child(email: inputEmail, password: inputPassword)
                     },
                            label: {
-                        Text("Login")
+                        Text("ログインする")
                             .fontWeight(.medium)
                             .frame(minWidth: 160)
                             .foregroundColor(.white)

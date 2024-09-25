@@ -328,15 +328,16 @@ class EachChildViewModel: ObservableObject {
         let response = try JSONDecoder().decode(MessagesResponse.self, from: data)
         return response
     }
-}
+    
+    
+    struct MessagesResponse: Codable {
+        let messages: [MsgResponse]
+    }
 
-struct MessagesResponse: Codable {
-    let messages: [MsgResponse]
-}
-
-struct MsgResponse: Codable {
-    let msgID: String
-    let tag: String
-    let text: String
-    let timestamp: Double
+    struct MsgResponse: Codable {
+        let msgID: String
+        let tag: String
+        let text: String
+        let timestamp: Double
+    }
 }

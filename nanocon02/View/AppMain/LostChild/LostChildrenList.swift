@@ -8,96 +8,183 @@
 import SwiftUI
 
 struct LostChildrenList: View {
-    // メッセージの構造体
-    struct LostChild: Identifiable {
-        let id = UUID()
-        let text: String
-        let image: Image
-    }
-
     // @Stateでメッセージのリストを管理
-    @State private var lostchildren: [LostChild] = []
+    @State private var noInteraction: Bool = false
+    @State private var Interaction: Bool = false
+    @State private var Lostchild: Bool = false
+    
+    
     @EnvironmentObject private var navigationModel: NavigationModel
     
     
+    
     var body: some View {
-        // 全体の縦構造
-        VStack{
-
-            // MARK: ナビゲーションバー
-            HStack{
+        NavigationView {//これがないとtoolbarが使えない
+            VStack{
+                HStack{//プロフィール
+                    Image("test-img")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                        .padding(.leading,20)
+                    Text("名前") // 配列内のメッセージを表示
+                        .font(.headline)
+                        .foregroundColor(.black)
+                    Spacer()
+                    // setting mark
+                    Button(action: {
+                        // test viewへ
+                        navigationModel.path.append("settings")
+                    }) {
+                        Image(systemName: "gearshape")
+                            .font(Font.system(size: 30, weight: .light))
+                            .foregroundColor(.black)
+                    }
+                    .padding(.trailing,25)
+                }
                 Spacer()
-                
-                // plus mark
-                Button(action: {
-                    lostchildren.append(LostChild(text: "なまえ", image: Image("chincoteague")))
-                }) {
-                    Image(systemName: "plus.circle")
-                        .font(Font.system(size: 30, weight: .light))
-//                        .foregroundColor(.gray)
-                        .foregroundColor(.black)
-                }
-                
-                Spacer().frame(width: 10)
-                
-                // setting mark
-                Button(action: {
-                    // test viewへ
-                    navigationModel.path.append("settings")
-                }) {
-                    Image(systemName: "gearshape")
-                        .font(Font.system(size: 30, weight: .light))
-                        .foregroundColor(.black)
-                }
-                
-            }
-            // MARK: - END ナビゲーションバー
-            
-            ScrollView { //スクロールする領域を指定
-// ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
-                ForEach(lostchildren) { lostchild in //ForEach　配列の要素を構成するとき使い回しするもの
-                    
-                    NavigationLink(destination: Talk02()) {
-                        HStack{//各個人
-                            lostchild.image
-                                .resizable()
-                                .frame(width: 55, height: 55)
-                                .clipShape(Circle())
-                            
-                            VStack(alignment: .leading){
-                                Text(lostchild.text) // 配列内のメッセージを表示
-                                    .font(.subheadline)
-                                    .foregroundColor(.black)
-                                Text("2024年10月20日 18時23分")
-                                    .frame(width: 180)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-//                                    .background(.yellow)
-                                    
-                            }
-                            
-                            Spacer()
-                            
-                            Image(systemName: "figure.walk.circle")
-                                .padding(-3.0)
-                                .font(Font.system(size: 40, weight: .light))
+                // ーーーーーーーーーーーーーーーーnoInteractionの状態に応じて表示を切り替える
+                if noInteraction {
+                    ZStack{
+                        Color.gray.opacity(0.2) // 背景色を指定し、透明度を調整
+                            .edgesIgnoringSafeArea(.all) // 画面全体に適用
+                            .cornerRadius(50)
+                        VStack{
+                            Image(systemName: "person.2.slash.fill")
+                                .font(Font.system(size: 100))
                                 .foregroundColor(.gray)
-
                             
-                            Image(systemName: "speaker.wave.2.circle")
-                                .font(Font.system(size: 40, weight: .light))
+                            Text("すれ違った人はいません")
+                                .font(.largeTitle)
+                                .fontWeight(.regular)
                                 .foregroundColor(.gray)
                         }
-                        .padding(.bottom,15)
+                        .frame(height: 300)
+                        .padding(EdgeInsets(top:0,leading: 25,bottom: 0,trailing:25))
                     }
-                }// messages配列の中身を表示
-// ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
-            } // ScrollView
+                }
+                // ーーーーーーーーーーーーーーーーnoInteractionの状態に応じて表示を切り替える
+                // ーーーーーーーーーーーーーーーーInteractionの状態に応じて表示を切り替える
+                if Interaction {
+                    ZStack{
+                        Color.green.opacity(0.2) // 背景色を指定し、透明度を調整
+                            .edgesIgnoringSafeArea(.all) // 画面全体に適用
+                            .cornerRadius(50)
+                        VStack{
+                            // アイコン
+                            Image("test-img")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white,lineWidth: 4))
+                                .shadow(radius: 10)
+                            
+                            Text("名前 と\nすれ違いました")
+                                .font(.largeTitle)
+                                .fontWeight(.regular)
+                                .multilineTextAlignment(.center) // 中央揃えにする
+                        }
+                        .frame(height: 300)
+                        .padding(EdgeInsets(top:0,leading: 5,bottom: 0,trailing:5))
+                    }
+                }
+                // ーーーーーーーーーーーーーーーーInteractionの状態に応じて表示を切り替える
+                // ーーーーーーーーーーーーーーーーLostchildの状態に応じて表示を切り替える
+                if Lostchild {
+                    ZStack{
+                        Color.red.opacity(0.2) // 背景色を指定し、透明度を調整
+                                .edgesIgnoringSafeArea(.all) // 画面全体に適用
+                                .cornerRadius(50)
+                        VStack{
+                            // アイコン
+                            Image("test-img")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white,lineWidth: 4))
+                                .shadow(radius: 10)
+                            
+                            Text("迷子の子供が\n近くにいます")
+                                .font(.largeTitle)
+                                .fontWeight(.regular)
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.center) // 中央揃えにする
+                            
+                        }
+                        .frame(height: 300)
+                        .padding(EdgeInsets(top:0,leading: 5,bottom: 0,trailing:5))
+                    }
+                }
+                // ーーーーーーーーーーーーーーーーLostchildの状態に応じて表示を切り替える
+                Spacer()
+            }
             
-        }
-        .padding(EdgeInsets(top:20,leading: 25,bottom: 0,trailing:25))
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Spacer()
+                    // ボタンーーーーーーーーーーーーー
+                    Button(action: {
+                        // メッセージを追加（黄色）
+                        noInteraction = true
+                        Interaction = false
+                        Lostchild = false
+                        
+                    }) {
+                        Text("すれ違いなし")
+                    }
+                    .frame(width: 120, height: 35) // ボタンのサイズを固定
+                    .accentColor(Color.black)
+                    .background(Color.yellow)
+                    .cornerRadius(26)
+                    Spacer()
+                    // ボタンーーーーーーーーーーーーー
+                    
+                    // ボタンーーーーーーーーーーーーー
+                    Button(action: {
+                        noInteraction = false
+                        Interaction = true
+                        Lostchild = false
+                        
+                    }) {
+                        Text("すれ違った")
+                    }
+                    .frame(width: 100, height: 35) // ボタンのサイズを固定
+                    .accentColor(Color.black)
+                    .background(Color.green)
+                    .cornerRadius(26)
+                    Spacer()
+                    // ボタンーーーーーーーーーーーーー
+                    
+                    // ボタンーーーーーーーーーーーーー
+                    Button(action: {
+                        noInteraction = false
+                        Interaction = false
+                        Lostchild = true
+                        
+                    }) {
+                        Text("迷子が近くにいる")
+                    }
+                    .frame(width: 150, height: 35) // ボタンのサイズを固定
+                    .accentColor(Color.black)
+                    .background(Color.red)
+                    .cornerRadius(26)
+                    Spacer()
+                    // ボタンーーーーーーーーーーーーー
+                    
+                } // ToolbarItemGroup
+            } // .toolbar
+        } // NavigationView
+        
+    }//var body: some View
+    
+    
+    // 日時を日本形式で表示するためのDateFormatter
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = "yyyy年MM月dd日 HH時mm分"
+        return formatter
     }
-    // MARK: END - var body: some View
 }
 
 

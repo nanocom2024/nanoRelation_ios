@@ -17,7 +17,7 @@ struct EachFriend: View {
     NavigationView {//これがないとtoolbarが使えない
       VStack{//全体の縦構造
         HStack{//プロフィール
-          Image("charleyrivers")
+          Image("test-img")
             .resizable()
             .frame(width: 50, height: 50)
             .clipShape(Circle())

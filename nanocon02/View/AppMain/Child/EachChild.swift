@@ -23,7 +23,7 @@ struct EachChild: View {
             VStack{
                 // プロフィール
                 HStack{
-                    Image("hiddenlake")
+                    Image("test-img")
                         .resizable()
                         .frame(width: 50, height: 50)
                         .clipShape(Circle())

@@ -50,7 +50,7 @@ struct FriendList: View {
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー
                 ForEach(friends) { friend in //ForEach　配列の要素を構成するとき使い回しするもの
                     
-                    NavigationLink(destination: Talk01()) {
+                    NavigationLink(destination: EachFriend(oneFriend: friend)) {
                         // 各個人
                         HStack{
                             friend.image

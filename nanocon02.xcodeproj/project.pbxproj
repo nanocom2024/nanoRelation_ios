@@ -10,7 +10,7 @@
 		4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947374A2C787E6300EA38EB /* nanocon02App.swift */; };
 		4947374F2C787E6600EA38EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4947374E2C787E6600EA38EB /* Assets.xcassets */; };
 		494737522C787E6600EA38EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494737512C787E6600EA38EB /* Preview Assets.xcassets */; };
-		494737A92C7D899600EA38EB /* Talk01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A82C7D899600EA38EB /* Talk01.swift */; };
+		494737A92C7D899600EA38EB /* EachFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A82C7D899600EA38EB /* EachFriend.swift */; };
 		494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AA2C7D954D00EA38EB /* Talk02.swift */; };
 		494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* EachChild.swift */; };
 		C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */; };
@@ -57,6 +57,7 @@
 		C1D8CF7F2C9E6B75006335C2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF7E2C9E6B75006335C2 /* Message.swift */; };
 		C1D8CF842C9FEF14006335C2 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF832C9FEF14006335C2 /* DebugView.swift */; };
 		C1D8CF872CA130B6006335C2 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF862CA130B6006335C2 /* FriendListViewModel.swift */; };
+		C1D8CF892CA299FF006335C2 /* EachFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CF882CA299FF006335C2 /* EachFriendViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +65,7 @@
 		4947374A2C787E6300EA38EB /* nanocon02App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanocon02App.swift; sourceTree = "<group>"; };
 		4947374E2C787E6600EA38EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		494737512C787E6600EA38EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		494737A82C7D899600EA38EB /* Talk01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk01.swift; sourceTree = "<group>"; };
+		494737A82C7D899600EA38EB /* EachFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachFriend.swift; sourceTree = "<group>"; };
 		494737AA2C7D954D00EA38EB /* Talk02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk02.swift; sourceTree = "<group>"; };
 		494737AC2C7D9EC000EA38EB /* EachChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachChild.swift; sourceTree = "<group>"; };
 		C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		C1D8CF7E2C9E6B75006335C2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C1D8CF832C9FEF14006335C2 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		C1D8CF862CA130B6006335C2 /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
+		C1D8CF882CA299FF006335C2 /* EachFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachFriendViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +150,6 @@
 				C1D8CEF42C8D9140006335C2 /* Data */,
 				C1D8CEEB2C8D527F006335C2 /* ViewModel */,
 				C1D8CEE62C8D4C56006335C2 /* View */,
-				494737A82C7D899600EA38EB /* Talk01.swift */,
 				4947374A2C787E6300EA38EB /* nanocon02App.swift */,
 				4947374E2C787E6600EA38EB /* Assets.xcassets */,
 				494737502C787E6600EA38EB /* Preview Content */,
@@ -237,6 +238,7 @@
 			children = (
 				C1D8CF4A2C992136006335C2 /* FriendView.swift */,
 				C1D8CF4C2C9924BB006335C2 /* FriendList.swift */,
+				494737A82C7D899600EA38EB /* EachFriend.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -466,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				C1D8CF862CA130B6006335C2 /* FriendListViewModel.swift */,
+				C1D8CF882CA299FF006335C2 /* EachFriendViewModel.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -556,7 +559,8 @@
 				C1D8CF1B2C931126006335C2 /* CharacteristicPropertyViewModel.swift in Sources */,
 				C1D8CF4D2C9924BB006335C2 /* FriendList.swift in Sources */,
 				C1D8CF532C993907006335C2 /* ProfileView.swift in Sources */,
-				494737A92C7D899600EA38EB /* Talk01.swift in Sources */,
+				C1D8CF892CA299FF006335C2 /* EachFriendViewModel.swift in Sources */,
+				494737A92C7D899600EA38EB /* EachFriend.swift in Sources */,
 				C1D8CF7F2C9E6B75006335C2 /* Message.swift in Sources */,
 				C1D8CF592C993BF4006335C2 /* MyChildrenList.swift in Sources */,
 				C1D8CF062C913241006335C2 /* UserBleCharacteristic.swift in Sources */,

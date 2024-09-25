@@ -22,14 +22,14 @@ struct LostChildrenList: View {
         NavigationView {//これがないとtoolbarが使えない
             VStack{
                 HStack{//プロフィール
-                    Image("test-img")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .padding(.leading,20)
-                    Text("名前") // 配列内のメッセージを表示
-                        .font(.headline)
-                        .foregroundColor(.black)
+//                    Image("test-img")
+//                        .resizable()
+//                        .frame(width: 50, height: 50)
+//                        .clipShape(Circle())
+//                        .padding(.leading,20)
+//                    Text("名前") // 配列内のメッセージを表示
+//                        .font(.headline)
+//                        .foregroundColor(.black)
                     Spacer()
                     // setting mark
                     Button(action: {

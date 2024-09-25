@@ -14,32 +14,9 @@ struct LostChildView: View {
         VStack {
             LostChildrenList()
             HStack{
-                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
-                // Friend
-                
-                Button(action: {
-                    var transaction = Transaction()
-                    transaction.disablesAnimations = true
-                    withTransaction(transaction) {
-                        navigationModel.path.append("Friend")
-                    }
-                },
-                       label: {
-                    VStack {
-                        Image(systemName: "person.fill")
-                            .font(.system(size: 25))
-                            .padding(.bottom, -5)
-                        Text("履歴")
-                            .fontWeight(.light)
-                            .font(.subheadline)
-                    }
-                    .foregroundColor(.gray)
-//                    .foregroundColor(.blue)
-                })
-                Spacer()
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
-                // LostChild
+                // status
                 
                 Button(action: {
                     var transaction = Transaction()
@@ -65,6 +42,29 @@ struct LostChildView: View {
                 })
                 Spacer()
 
+                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // Friend
+                
+                Button(action: {
+                    var transaction = Transaction()
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) {
+                        navigationModel.path.append("Friend")
+                    }
+                },
+                       label: {
+                    VStack {
+                        Image(systemName: "person.fill")
+                            .font(.system(size: 25))
+                            .padding(.bottom, -5)
+                        Text("履歴")
+                            .fontWeight(.light)
+                            .font(.subheadline)
+                    }
+                    .foregroundColor(.gray)
+//                    .foregroundColor(.blue)
+                })
+                Spacer()
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 // Child
@@ -91,7 +91,6 @@ struct LostChildView: View {
                     
                 })
                 Spacer()
-
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 // Profile

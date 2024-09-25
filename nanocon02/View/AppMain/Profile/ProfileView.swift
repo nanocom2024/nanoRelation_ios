@@ -14,6 +14,34 @@ struct ProfileView: View {
         VStack {
             MyProfile()
             HStack{
+                
+                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
+                // status
+                
+                Button(action: {
+                    var transaction = Transaction()
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) {
+                        navigationModel.path.append("LostChild")
+                    }
+                },
+                       label: {
+                    VStack{
+                        Image(systemName: "person.2.slash.fill")
+                            .font(Font.system(size: 25))
+                            .padding(.bottom, -10)
+                        Text("現在の状況")
+                            .fontWeight(.light)
+                            .font(.subheadline)
+
+
+                    }
+                    .foregroundColor(.gray)
+//                    .foregroundColor(.blue)
+                    
+                })
+                Spacer()
+
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 // Friend
                 
@@ -37,34 +65,6 @@ struct ProfileView: View {
 //                    .foregroundColor(.blue)
                 })
                 Spacer()
-                
-                //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
-                // LostChild
-                
-                Button(action: {
-                    var transaction = Transaction()
-                    transaction.disablesAnimations = true
-                    withTransaction(transaction) {
-                        navigationModel.path.append("LostChild")
-                    }
-                },
-                       label: {
-                    VStack{
-                        Image(systemName: "person.2.slash.fill")
-                            .font(Font.system(size: 25))
-                            .padding(.bottom, -10)
-                        Text("迷子リスト")
-                            .fontWeight(.light)
-                            .font(.subheadline)
-
-
-                    }
-                    .foregroundColor(.gray)
-//                    .foregroundColor(.blue)
-                    
-                })
-                Spacer()
-
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 // Child

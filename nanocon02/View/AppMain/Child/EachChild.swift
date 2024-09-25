@@ -116,7 +116,7 @@ struct EachChild: View {
                         Button(action: {//情報提供許可ボタンーーーーーーーーーーーーー
                             if isLost {
                                 Task {
-                                    let msg = Message(tag: "end", text: "迷子アラートを解除しました", color: Color.blue.opacity(0.8), date: Date())
+                                    let msg = Message(tag: "end", text: "迷子アラートを解除しました", color: Color.blue.opacity(0.1), date: Date())
                                     
                                     guard let res = await eachChildViewModel.delete_lost_info(child_uid: oneChild.id) else {
                                         errMsg = eachChildViewModel.errorString
@@ -142,7 +142,7 @@ struct EachChild: View {
                                 }
                             } else {
                                 Task {
-                                    let msg = Message(tag: "start", text: "迷子アラートを発信しました", color: Color.red.opacity(0.8), date: Date())
+                                    let msg = Message(tag: "start", text: "迷子アラートを発信しました", color: Color.red.opacity(0.1), date: Date())
                                     
                                     guard let res = await eachChildViewModel.register_lost(child_uid: oneChild.id) else {
                                         errMsg = eachChildViewModel.errorString

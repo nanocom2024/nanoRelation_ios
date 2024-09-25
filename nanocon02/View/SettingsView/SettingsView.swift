@@ -12,7 +12,6 @@ struct SettingsView: View {
     @EnvironmentObject var navigationModel: NavigationModel
     
     var body: some View {
-        NavigationStack {
             List {
                 // ログアウトボタン
                 Button(action: {
@@ -60,8 +59,6 @@ struct SettingsView: View {
                     .listRowBackground(Color.red)
                 }
             }
-            .navigationTitle("設定")
-        }
     }
 }
 

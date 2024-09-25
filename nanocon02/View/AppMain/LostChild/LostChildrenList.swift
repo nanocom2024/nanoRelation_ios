@@ -9,9 +9,7 @@ import SwiftUI
 
 struct LostChildrenList: View {
     // @Stateでメッセージのリストを管理
-    @State private var noInteraction: Bool = false
-    @State private var Interaction: Bool = false
-    @State private var Lostchild: Bool = false
+    @State private var now = "nopass"
     
     
     @EnvironmentObject private var navigationModel: NavigationModel
@@ -44,12 +42,13 @@ struct LostChildrenList: View {
                 }
                 Spacer()
                 // ーーーーーーーーーーーーーーーーnoInteractionの状態に応じて表示を切り替える
-                if noInteraction {
-                    ZStack{
+                switch now {
+                case "nopass":
+                    ZStack {
                         Color.gray.opacity(0.2) // 背景色を指定し、透明度を調整
                             .edgesIgnoringSafeArea(.all) // 画面全体に適用
                             .cornerRadius(50)
-                        VStack{
+                        VStack {
                             Image(systemName: "person.2.slash.fill")
                                 .font(Font.system(size: 100))
                                 .foregroundColor(.gray)
@@ -62,15 +61,12 @@ struct LostChildrenList: View {
                         .frame(height: 300)
                         .padding(EdgeInsets(top:0,leading: 25,bottom: 0,trailing:25))
                     }
-                }
-                // ーーーーーーーーーーーーーーーーnoInteractionの状態に応じて表示を切り替える
-                // ーーーーーーーーーーーーーーーーInteractionの状態に応じて表示を切り替える
-                if Interaction {
-                    ZStack{
+                case "pass":
+                    ZStack {
                         Color.green.opacity(0.2) // 背景色を指定し、透明度を調整
                             .edgesIgnoringSafeArea(.all) // 画面全体に適用
                             .cornerRadius(50)
-                        VStack{
+                        VStack {
                             // アイコン
                             Image("test-img")
                                 .resizable()
@@ -87,15 +83,12 @@ struct LostChildrenList: View {
                         .frame(height: 300)
                         .padding(EdgeInsets(top:0,leading: 5,bottom: 0,trailing:5))
                     }
-                }
-                // ーーーーーーーーーーーーーーーーInteractionの状態に応じて表示を切り替える
-                // ーーーーーーーーーーーーーーーーLostchildの状態に応じて表示を切り替える
-                if Lostchild {
-                    ZStack{
+                case "lost":
+                    ZStack {
                         Color.red.opacity(0.2) // 背景色を指定し、透明度を調整
                                 .edgesIgnoringSafeArea(.all) // 画面全体に適用
                                 .cornerRadius(50)
-                        VStack{
+                        VStack {
                             // アイコン
                             Image("test-img")
                                 .resizable()
@@ -114,8 +107,11 @@ struct LostChildrenList: View {
                         .frame(height: 300)
                         .padding(EdgeInsets(top:0,leading: 5,bottom: 0,trailing:5))
                     }
+                default:
+                    VStack {
+                        Text("error")
+                    }
                 }
-                // ーーーーーーーーーーーーーーーーLostchildの状態に応じて表示を切り替える
                 Spacer()
             }
             
@@ -124,11 +120,7 @@ struct LostChildrenList: View {
                     Spacer()
                     // ボタンーーーーーーーーーーーーー
                     Button(action: {
-                        // メッセージを追加（黄色）
-                        noInteraction = true
-                        Interaction = false
-                        Lostchild = false
-                        
+                        now = "nopass"
                     }) {
                         Text("すれ違いなし")
                     }
@@ -141,10 +133,7 @@ struct LostChildrenList: View {
                     
                     // ボタンーーーーーーーーーーーーー
                     Button(action: {
-                        noInteraction = false
-                        Interaction = true
-                        Lostchild = false
-                        
+                        now = "pass"
                     }) {
                         Text("すれ違った")
                     }
@@ -157,10 +146,7 @@ struct LostChildrenList: View {
                     
                     // ボタンーーーーーーーーーーーーー
                     Button(action: {
-                        noInteraction = false
-                        Interaction = false
-                        Lostchild = true
-                        
+                        now = "lost"
                     }) {
                         Text("迷子が近くにいる")
                     }

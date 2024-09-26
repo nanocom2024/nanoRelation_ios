@@ -27,9 +27,9 @@ struct ChildView: View {
                 },
                        label: {
                     VStack{
-                        Image(systemName: "person.2.slash.fill")
+                        Image(systemName: "dot.radiowaves.left.and.right")
                             .font(Font.system(size: 25))
-                            .padding(.bottom, -10)
+//                            .padding(.bottom, -10)
                         Text("現在の状況")
                             .fontWeight(.light)
                             .font(.subheadline)
@@ -53,7 +53,7 @@ struct ChildView: View {
                 },
                        label: {
                     VStack {
-                        Image(systemName: "person.fill")
+                        Image(systemName: "note.text")
                             .font(.system(size: 25))
                             .padding(.bottom, -5)
                         Text("履歴")
@@ -77,9 +77,9 @@ struct ChildView: View {
                 },
                        label: {
                     VStack{
-                        Image(systemName: "figure.and.child.holdinghands")
+                        Image(systemName: "figure.child.and.lock")
                             .font(Font.system(size: 25))
-                            .padding(.bottom, -5)
+                            .padding(.bottom, -8)
                         Text("子供")
                             .fontWeight(.light)
                             .font(.subheadline)

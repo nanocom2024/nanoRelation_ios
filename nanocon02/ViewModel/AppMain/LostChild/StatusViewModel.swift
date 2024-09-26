@@ -9,6 +9,7 @@ import Foundation
 
 class StatusViewModel: ObservableObject {
     @Published var receivedHistory = NowStatus(pass: "false")
+    @Published var receivedOtherHistory = NowStatus(pass: "false")
     @Published var errorString = ""
     
     func received_beacon(info: BeaconInfo) async {
@@ -21,21 +22,26 @@ class StatusViewModel: ObservableObject {
             {
                 DispatchQueue.main.async {
                     let now = Date()
-                    let historyTimestamp = self.receivedHistory.timestamp
+                    let historyTimestamp = self.receivedOtherHistory.timestamp
                     let timeDifference = now.timeIntervalSince(historyTimestamp)
                     if pass == "lost" {
                         self.receivedHistory = NowStatus(pass: pass)
+                        if self.receivedOtherHistory.pass != pass {
+                            self.receivedHistory = NowStatus(pass: pass)
+                        }
                     } else if pass == "true" {
                         // timestamp が10秒より前かを確認
                         if timeDifference >= 10 {
                             // 10秒以上前の場合の処理
                             self.receivedHistory = NowStatus(pass: pass)
+                            self.receivedOtherHistory = NowStatus(pass: pass)
                         }
                     } else {
                         // timestamp が10秒より前かを確認
                         if timeDifference >= 10 {
                             // 10秒以上前の場合の処理
                             self.receivedHistory = NowStatus(pass: pass)
+                            self.receivedOtherHistory = NowStatus(pass: pass)
                         }
                     }
                     

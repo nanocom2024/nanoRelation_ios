@@ -114,6 +114,7 @@ struct StatusView: View {
                 default:
                     VStack {
                         Text("error")
+                        Rectangle().fill()
                     }
                 }
                 Spacer()
@@ -128,6 +129,7 @@ struct StatusView: View {
             }
             .onChange(of: statusViewModel.receivedHistory) { _, newVal in
                 resetTask?.cancel()
+                print(newVal)
                 if newVal.pass == "lost" {
                     now = "lost"
                 } else if newVal.pass == "true" {
@@ -138,9 +140,26 @@ struct StatusView: View {
                 
                 // 15秒後に `nopass` に戻す
                 resetTask = Task {
-                    try? await Task.sleep(nanoseconds: 15 * 1_000_000_000)
-                    DispatchQueue.main.async {
-                        now = "nopass"
+                    do {
+                        for _ in 0..<15 {
+                            // キャンセルされているかチェック
+                            if Task.isCancelled {
+                                print("Task was cancelled")
+                                return // キャンセルされたらすぐに処理を終了
+                            }
+                            
+                            // 1秒ずつ待つ（15秒を分割して待機）
+                            try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
+                        }
+                        
+                        // 15秒が経過した場合の処理
+                        DispatchQueue.main.async {
+                            now = "nopass"
+                        }
+                        
+                    } catch {
+                        // エラーハンドリング（必要なら追加）
+                        print("Task was interrupted: \(error)")
                     }
                 }
             }
@@ -207,7 +226,7 @@ struct StatusView: View {
     }
 }
 
-
-#Preview {
-    StatusView()
-}
+//
+//#Preview {
+//    StatusView()
+//}

@@ -1,20 +1,20 @@
 //
-//  ContentView.swift
+//  ThirdView.swift
 //  nanocon02
 //
-//  Created by X22049xx on 2024/08/23.
+//  Created by X22049xx on 2024/08/27.
 //
 
 import SwiftUI
 
-struct FriendView: View {
+struct ChildView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
     var body: some View {
         
         VStack {
-            FriendList()
+            MyChildrenList()
             HStack{
-
+                
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 // status
                 
@@ -27,24 +27,23 @@ struct FriendView: View {
                 },
                        label: {
                     VStack{
-                        Image(systemName: "dot.radiowaves.left.and.right")
+                        Image(systemName: "person.2.slash.fill")
                             .font(Font.system(size: 25))
-//                            .padding(.bottom, -10)
+                            .padding(.bottom, -10)
                         Text("現在の状況")
                             .fontWeight(.light)
                             .font(.subheadline)
-                        
-                        
+
+
                     }
                     .foregroundColor(.gray)
-                    //                    .foregroundColor(.blue)
+//                    .foregroundColor(.blue)
                     
                 })
                 Spacer()
-                
+
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 // Friend
-                
                 Button(action: {
                     var transaction = Transaction()
                     transaction.disablesAnimations = true
@@ -54,15 +53,15 @@ struct FriendView: View {
                 },
                        label: {
                     VStack {
-                        Image(systemName: "note.text")
+                        Image(systemName: "person.fill")
                             .font(.system(size: 25))
                             .padding(.bottom, -5)
                         Text("履歴")
                             .fontWeight(.light)
                             .font(.subheadline)
                     }
-                    //                    .foregroundColor(.gray)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.gray)
+//                    .foregroundColor(.blue)
                 })
                 Spacer()
                 
@@ -78,20 +77,20 @@ struct FriendView: View {
                 },
                        label: {
                     VStack{
-                        Image(systemName: "figure.child.and.lock")
+                        Image(systemName: "figure.and.child.holdinghands")
                             .font(Font.system(size: 25))
-                            .padding(.bottom, -8)
+                            .padding(.bottom, -5)
                         Text("子供")
                             .fontWeight(.light)
                             .font(.subheadline)
-                        
+
                     }
-                    .foregroundColor(.gray)
-                    //                    .foregroundColor(.blue)
+//                    .foregroundColor(.gray)
+                    .foregroundColor(.blue)
                     
                 })
                 Spacer()
-                
+
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 // Profile
@@ -111,13 +110,13 @@ struct FriendView: View {
                         Text("自分")
                             .fontWeight(.light)
                             .font(.subheadline)
-                        
+
                     }
                     .foregroundColor(.gray)
-                    //                    .foregroundColor(.blue)
+//                    .foregroundColor(.blue)
                     
                 })
-                
+
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
                 
             }
@@ -129,7 +128,6 @@ struct FriendView: View {
 }
 
 #Preview {
-    FriendView()
+    ChildView()
         .environmentObject(NavigationModel())
 }
-

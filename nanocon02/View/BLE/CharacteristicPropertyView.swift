@@ -107,7 +107,7 @@ struct CharacteristicPropertyView: View {
                     if let dataToWrite = writeString?.data(using: .utf8) {
                         for oneCh in oneService.userCharacteristics {
                             if oneCh.uuid == DeviceConfig.init_characteristic_write_uuid {
-                                oneDevPeri.userPeripheral.writeValue(dataToWrite, for: oneChar.characteristic, type: .withResponse)
+                                oneDevPeri.userPeripheral.writeValue(dataToWrite, for: oneCh.characteristic, type: .withResponse)
                             }
                         }
                         

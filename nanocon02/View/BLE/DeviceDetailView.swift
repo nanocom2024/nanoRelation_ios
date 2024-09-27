@@ -37,7 +37,8 @@ struct DeviceDetailView: View {
                             Divider().padding(.vertical, 2)
                             NavigationLink(destination: CharacteristicPropertyView(
                                 oneChar: userChar,
-                                oneDevPeri: bleViewModel.connectedUserBlePeripheral!)
+                                oneDevPeri: bleViewModel.connectedUserBlePeripheral!,
+                                oneService: item)
                                 .environmentObject(bleViewModel)
                             ) {
                                     CharacteristicCell(onePeri: bleViewModel.connectedUserBlePeripheral!,

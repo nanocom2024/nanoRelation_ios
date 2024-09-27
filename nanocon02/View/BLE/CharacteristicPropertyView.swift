@@ -13,6 +13,7 @@ struct CharacteristicPropertyView: View {
     
     @StateObject public var oneChar: UserBleCharacteristic
     @StateObject public var oneDevPeri: UserBlePeripheral
+    @StateObject public var oneService: UserBleService
     @StateObject private var CharPropertyObj = CharacteristicPropertyViewModel()
     @State private var showAlert = false
     @State private var showError = false
@@ -37,7 +38,7 @@ struct CharacteristicPropertyView: View {
             }
             
             // MARK: - pairing
-            if isCharsReadable() && isCharsWriteable() {
+//            if isCharsReadable() && isCharsWriteable() {
                 HStack(alignment: .center) {
                     
                     Spacer().frame(width: 10)
@@ -52,7 +53,11 @@ struct CharacteristicPropertyView: View {
                             CharPropertyObj.errorString = ""
                             
                             // read
-                            oneDevPeri.userPeripheral.readValue(for: oneChar.characteristic)
+                            for oneCh in oneService.userCharacteristics {
+                                if oneCh.uuid == DeviceConfig.init_characteristic_read_uuid {
+                                    oneDevPeri.userPeripheral.readValue(for: oneCh.characteristic)
+                                }
+                            }
                             
                         }) {
                             Text("Pairing (initialize setting)")
@@ -69,9 +74,9 @@ struct CharacteristicPropertyView: View {
                 
                 Spacer()
                 
-            } else {
-                Text("cannot pairing")
-            }
+//            } else {
+//                Text("cannot pairing")
+//            }
             // MARK: - END pairing
             
         }
@@ -100,7 +105,12 @@ struct CharacteristicPropertyView: View {
                     // 文字列をDataに変換して書き込む
                     let writeString = await CharPropertyObj.generate_writeString(device_id: device_id)
                     if let dataToWrite = writeString?.data(using: .utf8) {
-                        oneDevPeri.userPeripheral.writeValue(dataToWrite, for: oneChar.characteristic, type: .withResponse)
+                        for oneCh in oneService.userCharacteristics {
+                            if oneCh.uuid == DeviceConfig.init_characteristic_write_uuid {
+                                oneDevPeri.userPeripheral.writeValue(dataToWrite, for: oneCh.characteristic, type: .withResponse)
+                            }
+                        }
+                        
                     } else {
                         isPairingButtonDisabled = false
                         errorMessage = CharPropertyObj.errorString

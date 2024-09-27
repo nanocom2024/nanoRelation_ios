@@ -163,7 +163,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
             connectedUserBlePeripheral?.userServices.append(oneUserBleService)
             
             print("Found one service: \(foundOneService.uuid.uuidString)")
-            peripheral.discoverCharacteristics([DeviceConfig.init_characteristic_uuid], for: foundOneService.service)
+            peripheral.discoverCharacteristics([DeviceConfig.init_characteristic_read_uuid, DeviceConfig.init_characteristic_write_uuid], for: foundOneService.service)
         }
     }
     

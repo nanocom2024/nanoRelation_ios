@@ -18,7 +18,7 @@ class StatusViewModel: ObservableObject {
         }
         do {
             if let token = Auth.getToken(),
-               let pass = try await request_received_beacon(token: token, major: info.major, minor: info.minor)
+               let pass = try await request_received_beacon(token: token, major: info.major, minor: info.minor, latitude: info.latitude, longitude: info.longitude)
             {
                 DispatchQueue.main.async {
                     let now = Date()
@@ -61,13 +61,19 @@ class StatusViewModel: ObservableObject {
     }
     
     
-    private func request_received_beacon(token: String, major: String, minor: String) async throws -> String? {
+    private func request_received_beacon(token: String, major: String, minor: String, latitude: Double?, longitude: Double?) async throws -> String? {
         let url = URL(string: BaseUrl.url + "/streetpass/received_beacon")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let params = ["token": token, "received_major": major, "received_minor": minor]
+        let params = [
+            "token": token,
+            "received_major": major,
+            "received_minor": minor,
+            "latitude": latitude ?? 0.0,
+            "longitude": longitude ?? 0.0
+        ] as [String : Any]
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {

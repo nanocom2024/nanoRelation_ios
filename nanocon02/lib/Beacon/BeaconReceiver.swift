@@ -14,6 +14,8 @@ class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
 
     @Published var beaconHistory: [String] = []
     @Published var latestBeaconInfo: BeaconInfo?
+    @Published var currentLocation: CLLocation? // 最新の位置情報
+
 
     override init() {
         super.init()
@@ -24,6 +26,9 @@ class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
 
         // 位置情報使用許可をリクエスト（必須）
         locationManager.requestWhenInUseAuthorization()
+        
+        // 位置情報の更新を開始
+        locationManager.startUpdatingLocation() // 位置情報取得の開始
 
         // iBeaconのUUIDを設定（ここでは例としてUUIDを設定）
         beaconRegion = CLBeaconRegion(uuid: DeviceConfig.iBeacon_uuid, identifier: "MyBeacon")
@@ -51,13 +56,19 @@ extension BeaconReceiver {
                 default:
                     proximityString = "Unknown"
                 }
+                
+                let location = currentLocation
+                let latitude = location?.coordinate.latitude
+                let longitude = location?.coordinate.longitude
 
                 DispatchQueue.main.async {
                     self.latestBeaconInfo = BeaconInfo(
                         proximity: proximityString,
                         major: beacon.major.stringValue,
                         minor: beacon.minor.stringValue,
-                        rssi: beacon.rssi
+                        rssi: beacon.rssi,
+                        latitude: latitude,
+                        longitude: longitude
                     )
                 }
 
@@ -74,6 +85,15 @@ extension BeaconReceiver {
 
         }
     }
+    
+    // 位置情報の更新が行われたときに呼ばれるメソッド
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // 最新の位置情報を取得
+        if let location = locations.last {
+            currentLocation = location
+        }
+    }
+
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error: \(error)")
@@ -95,4 +115,6 @@ struct BeaconInfo: Equatable {
     var major: String
     var minor: String
     var rssi: Int
+    var latitude: Double? // 緯度
+    var longitude: Double? // 経度
 }

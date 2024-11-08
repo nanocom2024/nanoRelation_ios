@@ -102,10 +102,37 @@ extension BeaconReceiver {
     func start_ranging() {
         // レンジング（ビーコンとの距離測定）を開始
         locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
+        
     }
     
     func stop_ranging() {
         locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
+    }
+    
+    // ビーコン圏内に入ったときに呼ばれるメソッド didEnterRegion
+    // だだこのあたりは、複数ビーコンが範囲にあった場合の挙動がわからない
+    // [フォアグラウンド状態]常に周囲のデバイスを監視する形の実装になる？ある程度頻度は設定可能にした方がいいかもね　発火イベント->didEnterRegion,didDetermineState,didDetermineState
+    // [バックグラウンド状態]ビーコン発見で、周囲デバイスのチェック ユーザーへの通知発行　発火イベント-> didEnterRegion,didDetermineState,didDetermineStateが出る
+    // [Suspend状態]      didFinishLaunchingWithOptions,didEnterRegion,didDetermineState,didDetermineStateが出る
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print(#function)
+        
+        //sendNotification("didEnterRegion") // 通知を送信　もしくは　別途ハンドリング
+        
+        // レンジングはこのタイミングで始める
+        start_ranging()
+    }
+    
+    // ビーコン圏内から出た時に呼ばれるメソッド
+    // これは精度が良くない。あまり感度が良いとちょっとした計測誤差等で過反応するのでバッファーが多く設けられている
+    // 今回の、アプリだったら離れたっていう通知は高精度で必要じゃなさそう
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print(#function)
+        
+        //sendNotification("didExitRegion") // 通知を送信　もしくは　別途ハンドリング
+        
+        // レンジングを止める
+        stop_ranging()
     }
 }
 

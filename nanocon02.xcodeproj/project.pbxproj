@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43EC314E2CDDD7F8000859AB /* NRBecon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC314D2CDDD7F8000859AB /* NRBecon.swift */; };
 		4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947374A2C787E6300EA38EB /* nanocon02App.swift */; };
 		4947374F2C787E6600EA38EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4947374E2C787E6600EA38EB /* Assets.xcassets */; };
 		494737522C787E6600EA38EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494737512C787E6600EA38EB /* Preview Assets.xcassets */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43EC314D2CDDD7F8000859AB /* NRBecon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRBecon.swift; sourceTree = "<group>"; };
 		494737472C787E6300EA38EB /* nanocon02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nanocon02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4947374A2C787E6300EA38EB /* nanocon02App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanocon02App.swift; sourceTree = "<group>"; };
 		4947374E2C787E6600EA38EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43EC314C2CDDD7D4000859AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43EC314D2CDDD7F8000859AB /* NRBecon.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4947373E2C787E6300EA38EB = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +323,7 @@
 		C1D8CF672C996683006335C2 /* Beacon */ = {
 			isa = PBXGroup;
 			children = (
+				43EC314C2CDDD7D4000859AB /* Model */,
 				C1D8CF162C92D5B1006335C2 /* BeaconReceiver.swift */,
 			);
 			path = Beacon;
@@ -592,6 +603,7 @@
 				C1D8CF022C8FD492006335C2 /* HomeView.swift in Sources */,
 				4947374B2C787E6300EA38EB /* nanocon02App.swift in Sources */,
 				C1D8CEF62C8D9158006335C2 /* Auth.swift in Sources */,
+				43EC314E2CDDD7F8000859AB /* NRBecon.swift in Sources */,
 				C1D8CF082C913277006335C2 /* UserBleService.swift in Sources */,
 				C1D8CF642C994975006335C2 /* ChildLoginViewModel.swift in Sources */,
 				C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */,

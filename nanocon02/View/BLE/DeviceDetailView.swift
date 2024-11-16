@@ -71,6 +71,7 @@ struct ServiceListView: View {
                 }
             ) {
                 ForEach(service.userCharacteristics) { userChar in
+                    
                     Divider().padding(.vertical, 2)
                     NavigationLink(
                         destination: CharacteristicPropertyView(

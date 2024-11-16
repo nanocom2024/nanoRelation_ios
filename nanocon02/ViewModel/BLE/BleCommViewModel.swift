@@ -36,7 +36,7 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
     @MainActor func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("step 1")
         if(central.state == .poweredOn) {
-            startScanning()
+//            startScanning()
             print("step 2")
         }
         

@@ -44,10 +44,11 @@ struct SearchDeviceView: View {
                     )
             .onDisappear {
                 bluetoothViewModel.stopScanning()
-                beaconReceiver.start_ranging()
+//                beaconReceiver.start_ranging()
             }
             .onAppear {
-                beaconReceiver.stop_ranging()
+                bluetoothViewModel.startScanning()
+//                beaconReceiver.stop_ranging()
             }
                         
     }

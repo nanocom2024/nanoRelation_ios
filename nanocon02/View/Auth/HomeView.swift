@@ -11,6 +11,7 @@ struct HomeView: View {
     // 認証結果を保持する状態プロパティ
     @State private var isAuthenticated: Bool = false
     @ObservedObject private var beaconReceiver = BeaconReceiver()
+    @ObservedObject private var bluetoothViewModel = BleCommViewModel()
     @EnvironmentObject private var navigationModel: NavigationModel
 
     var body: some View {
@@ -30,7 +31,7 @@ struct HomeView: View {
                     SettingsView()
                 case "search device":
                     SearchDeviceView()
-                        .environmentObject(BleCommViewModel())
+                        .environmentObject(bluetoothViewModel)
                         .environmentObject(beaconReceiver)
                 case "device pairing success":
                     DevicePairingSuccessView()

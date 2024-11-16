@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CharacteristicPropertyViewModel: ObservableObject {
+actor CharacteristicPropertyViewModel: ObservableObject {
     @Published var errorString = ""
     
     func generate_writeString(device_id: String) async -> String? {
@@ -20,15 +20,11 @@ class CharacteristicPropertyViewModel: ObservableObject {
                 let res = major + "," + minor
                 return res
             } else {
-                DispatchQueue.main.async {
-                    self.errorString = "Pairing fail"
-                }
+                self.errorString = "Pairing fail"
                 print("Pairing fail")
             }
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             print("Error: \(error.localizedDescription)")
         }
         return nil

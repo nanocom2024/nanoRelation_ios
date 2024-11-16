@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StreetPassViewModel: ObservableObject {
+actor StreetPassViewModel: ObservableObject {
     @Published var receivedHistory = ""
     @Published var errorString = ""
 
@@ -21,19 +21,15 @@ class StreetPassViewModel: ObservableObject {
             {
                 let currentDate = Date()  // Date型
                 let dateString = StreetPassViewModel.dateFormatter.string(from: currentDate)  // String型に変換
-                DispatchQueue.main.async {
-                    self.receivedHistory = dateString + pass
-                }
+                self.receivedHistory = dateString + pass
+                
             } else {
-                DispatchQueue.main.async {
-                    self.errorString = "err: beacon receive process"
-                }
+                self.errorString = "err: beacon receive process"
                 print("err: beacon receive process")
+                
             }
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             print("Error: \(error.localizedDescription)")
         }
     }

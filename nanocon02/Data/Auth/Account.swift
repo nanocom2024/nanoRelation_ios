@@ -8,26 +8,30 @@
 import Foundation
 
 class Account{
-    static var name: String = "no-name"
-    static var name_id: String = "#xxxx"
+    @MainActor static var name: String = "no-name"
+    @MainActor static var name_id: String = "#xxxx"
     
     static func get_name() async -> (String, String) {
         guard let token = Auth.getToken() else {
-            Account.name = "no-name"
-            Account.name_id = "#xxxx"
+            DispatchQueue.main.async {
+                Account.name = "no-name"
+                Account.name_id = "#xxxx"
+            }
             print("missing token")
-            return (Account.name, Account.name_id)
+            return await (Account.name, Account.name_id)
         }
         do {
             if let (name, name_id) = try await Account.fetch_name(token: token) {
-                Account.name = name
-                Account.name_id = name_id
+                DispatchQueue.main.async {
+                    Account.name = name
+                    Account.name_id = name_id
+                }
                 return (name, name_id)
             }
         } catch {
             print(error.localizedDescription)
         }
-        return (Account.name, Account.name_id)
+        return await (Account.name, Account.name_id)
     }
     
     private static func fetch_name(token: String) async throws -> (String, String)? {

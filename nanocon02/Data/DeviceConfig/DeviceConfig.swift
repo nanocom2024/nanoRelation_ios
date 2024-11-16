@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreBluetooth
+@preconcurrency import CoreBluetooth
 
 class DeviceConfig {
     static let init_service_uuid = CBUUID(string: "442F1570-8A00-9A28-CBE1-E1D4212D53EB")

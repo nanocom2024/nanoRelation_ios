@@ -18,7 +18,7 @@ class Auth {
         return nil
     }
 
-    static func setToken(token: String) {
+    @MainActor static func setToken(token: String) {
         cookieManager.setCookie(url: url, key: "authtoken", value: token)
         AppDelegate.storeCookies()
         Account.name = "no-name"

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class EachFriendViewModel: ObservableObject {
+actor EachFriendViewModel: ObservableObject {
     @Published var errorString = ""
     
     func getMessages(uid: String) async -> [Message] {
@@ -41,9 +41,7 @@ class EachFriendViewModel: ObservableObject {
             }
             return res
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             return []
         }
     }
@@ -56,9 +54,7 @@ class EachFriendViewModel: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         guard let token = Auth.getToken() else {
-            DispatchQueue.main.async {
-                self.errorString = "missing token"
-            }
+            self.errorString = "missing token"
             print("missing token")
             return nil
         }
@@ -66,9 +62,7 @@ class EachFriendViewModel: ObservableObject {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = "Invalid JSON format."
-            }
+            self.errorString = "Invalid JSON format."
             print("Invalid JSON format.")
             return nil
         }

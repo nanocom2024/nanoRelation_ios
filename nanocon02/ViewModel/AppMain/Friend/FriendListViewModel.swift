@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FriendListViewModel: ObservableObject {
+actor FriendListViewModel: ObservableObject {
     @Published var errorString = ""
     
     func get_users() async -> [Friend] {
@@ -20,9 +20,7 @@ class FriendListViewModel: ObservableObject {
             }
             return res
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             return []
         }
     }
@@ -35,9 +33,7 @@ class FriendListViewModel: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         guard let token = Auth.getToken() else {
-            DispatchQueue.main.async {
-                self.errorString = "missing token"
-            }
+            self.errorString = "missing token"
             print("missing token")
             return nil
         }
@@ -45,9 +41,7 @@ class FriendListViewModel: ObservableObject {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = "Invalid JSON format."
-            }
+            self.errorString = "Invalid JSON format."
             print("Invalid JSON format.")
             return nil
         }

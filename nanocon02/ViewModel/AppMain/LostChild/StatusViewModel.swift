@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StatusViewModel: ObservableObject {
+actor StatusViewModel: ObservableObject {
     @Published var receivedHistory = NowStatus(pass: "false")
     @Published var receivedOtherHistory = NowStatus(pass: "false")
     @Published var errorString = ""
@@ -20,7 +20,7 @@ class StatusViewModel: ObservableObject {
             if let token = Auth.getToken(),
                let pass = try await request_received_beacon(token: token, major: info.major, minor: info.minor, latitude: info.latitude, longitude: info.longitude)
             {
-                DispatchQueue.main.async {
+                Task {
                     let now = Date()
                     let historyTimestamp = self.receivedOtherHistory.timestamp
                     let timeDifference = now.timeIntervalSince(historyTimestamp)
@@ -47,15 +47,11 @@ class StatusViewModel: ObservableObject {
                     
                 }
             } else {
-                DispatchQueue.main.async {
-                    self.errorString = "err: beacon receive process"
-                }
+                self.errorString = "err: beacon receive process"
                 print("err: beacon receive process")
             }
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             print("Error: \(error.localizedDescription)")
         }
     }

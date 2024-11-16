@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class EachChildViewModel: ObservableObject {
+actor EachChildViewModel: ObservableObject {
     @Published var errorString = ""
     
     func isLost(uid: String) async -> Bool? {
@@ -16,9 +16,7 @@ class EachChildViewModel: ObservableObject {
             let res = try await fetch_isLost(uid: uid)
             return res
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             return nil
         }
     }
@@ -33,9 +31,7 @@ class EachChildViewModel: ObservableObject {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = "Invalid JSON format."
-            }
+            self.errorString = "Invalid JSON format."
             print("Invalid JSON format.")
             return nil
         }
@@ -53,15 +49,11 @@ class EachChildViewModel: ObservableObject {
                     }
                     
                 } else if let errStr = object["error"] as? String {
-                    DispatchQueue.main.async {
-                        self.errorString = errStr
-                    }
+                    self.errorString = errStr
                     return nil
                 }
             }
-            DispatchQueue.main.async {
-                self.errorString = "API response does not match the expected format."
-            }
+            self.errorString = "API response does not match the expected format."
             return nil
         } catch {
             //            print(error.localizedDescription)
@@ -73,17 +65,13 @@ class EachChildViewModel: ObservableObject {
     func register_lost(child_uid: String) async -> Bool? {
         do {
             guard let token = Auth.getToken() else {
-                DispatchQueue.main.async {
-                    self.errorString = "missing token"
-                }
+                self.errorString = "missing token"
                 return nil
             }
             let res = try await register_lost_request(parent_token: token, child_uid: child_uid)
             return res
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             return nil
         }
     }
@@ -98,9 +86,7 @@ class EachChildViewModel: ObservableObject {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = "Invalid JSON format."
-            }
+            self.errorString = "Invalid JSON format."
             print("Invalid JSON format.")
             return nil
         }
@@ -116,15 +102,11 @@ class EachChildViewModel: ObservableObject {
                     }
                     
                 } else if let errStr = object["error"] as? String {
-                    DispatchQueue.main.async {
-                        self.errorString = errStr
-                    }
+                    self.errorString = errStr
                     return nil
                 }
             }
-            DispatchQueue.main.async {
-                self.errorString = "API response does not match the expected format."
-            }
+            self.errorString = "API response does not match the expected format."
             return nil
         } catch {
             //            print(error.localizedDescription)
@@ -136,17 +118,13 @@ class EachChildViewModel: ObservableObject {
     func delete_lost_info(child_uid: String) async -> Bool? {
         do {
             guard let token = Auth.getToken() else {
-                DispatchQueue.main.async {
-                    self.errorString = "missing token"
-                }
+                self.errorString = "missing token"
                 return nil
             }
             let res = try await delete_lost_info_request(parent_token: token, child_uid: child_uid)
             return res
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             return nil
         }
     }
@@ -161,9 +139,7 @@ class EachChildViewModel: ObservableObject {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = "Invalid JSON format."
-            }
+            self.errorString = "Invalid JSON format."
             print("Invalid JSON format.")
             return nil
         }
@@ -179,15 +155,11 @@ class EachChildViewModel: ObservableObject {
                     }
                     
                 } else if let errStr = object["error"] as? String {
-                    DispatchQueue.main.async {
-                        self.errorString = errStr
-                    }
+                    self.errorString = errStr
                     return nil
                 }
             }
-            DispatchQueue.main.async {
-                self.errorString = "API response does not match the expected format."
-            }
+            self.errorString = "API response does not match the expected format."
             return nil
         } catch {
             //            print(error.localizedDescription)
@@ -199,17 +171,13 @@ class EachChildViewModel: ObservableObject {
     func addMsg(child_uid: String, newMsg: Message) async -> Bool? {
         do {
             guard let token = Auth.getToken() else {
-                DispatchQueue.main.async {
-                    self.errorString = "missing token"
-                }
+                self.errorString = "missing token"
                 return nil
             }
             let res = try await addMsg_request(parent_token: token, child_uid: child_uid, newMsg: newMsg)
             return res
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             return nil
         }
     }
@@ -232,9 +200,7 @@ class EachChildViewModel: ObservableObject {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = "Invalid JSON format."
-            }
+            self.errorString = "Invalid JSON format."
             print("Invalid JSON format.")
             return nil
         }
@@ -250,15 +216,11 @@ class EachChildViewModel: ObservableObject {
                     }
                     
                 } else if let errStr = object["error"] as? String {
-                    DispatchQueue.main.async {
-                        self.errorString = errStr
-                    }
+                    self.errorString = errStr
                     return nil
                 }
             }
-            DispatchQueue.main.async {
-                self.errorString = "API response does not match the expected format."
-            }
+            self.errorString = "API response does not match the expected format."
             return nil
         } catch {
             //            print(error.localizedDescription)
@@ -292,9 +254,7 @@ class EachChildViewModel: ObservableObject {
             }
             return res
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             return []
         }
     }
@@ -307,9 +267,7 @@ class EachChildViewModel: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         guard let token = Auth.getToken() else {
-            DispatchQueue.main.async {
-                self.errorString = "missing token"
-            }
+            self.errorString = "missing token"
             print("missing token")
             return nil
         }
@@ -317,9 +275,7 @@ class EachChildViewModel: ObservableObject {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = "Invalid JSON format."
-            }
+            self.errorString = "Invalid JSON format."
             print("Invalid JSON format.")
             return nil
         }

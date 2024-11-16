@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginViewModel: ObservableObject {
+actor LoginViewModel: ObservableObject {
     @Published var loginSuccess = false
     @Published var errorMessage: String? = nil
     @Published var isLoading = false
@@ -27,20 +27,16 @@ class LoginViewModel: ObservableObject {
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         }catch{
-            DispatchQueue.main.async {
-                self.isLoading = false
-                self.errorMessage = "Invalid JSON format."
-            }
+            self.isLoading = false
+            self.errorMessage = "Invalid JSON format."
             print("Invalid JSON format.")
             return
         }
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.errorMessage = "No data received."
-                }
+                self.isLoading = false
+                self.errorMessage = "No data received."
                 print("No data received.")
                 return
             }

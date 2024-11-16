@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CoreBluetooth
+@preconcurrency import CoreBluetooth
 
 class BleCommViewModel: NSObject, ObservableObject {
     
@@ -20,7 +20,7 @@ class BleCommViewModel: NSObject, ObservableObject {
     @Published var recValueData: Data?
     @Published var initWriteSuccess = false
     
-    static var isScanning = false
+    @MainActor static var isScanning = false
         
     override init() {
         print("init BleCommViewModel")
@@ -31,9 +31,9 @@ class BleCommViewModel: NSObject, ObservableObject {
     var NO_CHARS_NAME = "NO_CHARS_NAME"
 }
 
-extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
+extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripheralDelegate {
  
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    @MainActor func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("step 1")
         if(central.state == .poweredOn) {
             startScanning()
@@ -67,7 +67,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    func startScanning() {
+    @MainActor func startScanning() {
         if !BleCommViewModel.isScanning {
             print("Starting scan")
             self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
@@ -75,7 +75,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    func stopScanning() {
+    @MainActor func stopScanning() {
         if BleCommViewModel.isScanning {
             print("Stopping scan")
             self.centralManager?.stopScan()
@@ -255,10 +255,8 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         if let error = error {
             print("Write failed with error: \(error.localizedDescription)")
         } else {
-            DispatchQueue.main.async {
-                self.initWriteSuccess = true
-                self.centralManager?.cancelPeripheralConnection(peripheral)
-            }
+            self.initWriteSuccess = true
+            self.centralManager?.cancelPeripheralConnection(peripheral)
             print("Write successful for characteristic: \(characteristic.uuid)")
         }
     }

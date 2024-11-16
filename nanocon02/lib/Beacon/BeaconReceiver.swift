@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreLocation
+@preconcurrency import CoreLocation
 
 class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
     var locationManager: CLLocationManager!

@@ -24,8 +24,9 @@ struct DeviceDetailView: View {
             if oneDev.userPeripheral.state == CBPeripheralState.connected {
                 Text("connected")
                 
-                ServiceListView(services: bleViewModel.connectedUserBlePeripheral?.userServices ?? [],
-                                bleViewModel: _bleViewModel)
+                ServiceListView()
+                    .environmentObject(bleViewModel)
+                    .environmentObject(navigationModel)
             } else {
                 Text("\(connectionStatus)")
             }
@@ -46,9 +47,14 @@ struct DeviceDetailView: View {
             bleViewModel.centralManager?.connect(oneDev.userPeripheral)
             if oneDev.userPeripheral.state != CBPeripheralState.connected {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    connectionStatus = "Cannot connect"
+                    if oneDev.userPeripheral.state != CBPeripheralState.connected {
+                        connectionStatus = "Cannot connect"
+                    }
                 }
             }
+        }
+        .onDisappear {
+            bleViewModel.centralManager?.cancelPeripheralConnection(oneDev.userPeripheral)
         }
     }
     
@@ -59,11 +65,11 @@ struct DeviceDetailView: View {
 }
 
 struct ServiceListView: View {
-    let services: [UserBleService]
     @EnvironmentObject var bleViewModel: BleCommViewModel
+    @EnvironmentObject var navigationModel: NavigationModel
 
     var body: some View {
-        ForEach(services) { service in
+        ForEach(bleViewModel.connectedUserBlePeripheral?.userServices ?? []) { service in
             GroupBox(
                 label: VStack {
                     Text("Service: \(service.serviceName)")
@@ -72,18 +78,24 @@ struct ServiceListView: View {
             ) {
                 ForEach(service.userCharacteristics) { userChar in
                     
-                    Divider().padding(.vertical, 2)
-                    NavigationLink(
-                        destination: CharacteristicPropertyView(
-                            oneChar: userChar,
-                            oneDevPeri: bleViewModel.connectedUserBlePeripheral!,
-                            oneService: service
-                        ).environmentObject(bleViewModel)
-                    ) {
-                        CharacteristicCell(
-                            onePeri: bleViewModel.connectedUserBlePeripheral!,
-                            oneChar: userChar
-                        )
+                    if let connectedUserBlePeripheral = bleViewModel.connectedUserBlePeripheral {
+                        Divider().padding(.vertical, 2)
+                        NavigationLink(
+                            destination: CharacteristicPropertyView(
+                                oneChar: userChar,
+                                oneDevPeri: bleViewModel.connectedUserBlePeripheral!,
+                                oneService: service
+                            )
+                            .environmentObject(bleViewModel)
+                            .environmentObject(navigationModel)
+                        ) {
+                            CharacteristicCell(
+                                onePeri: connectedUserBlePeripheral,
+                                oneChar: userChar
+                            )
+                        }
+                    } else {
+                        Text("No connected device")
                     }
                 }
             }

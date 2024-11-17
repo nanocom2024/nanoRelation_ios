@@ -55,9 +55,6 @@ struct DeviceDetailView: View {
                 }
             }
         }
-        .onDisappear {
-            bleViewModel.centralManager?.cancelPeripheralConnection(oneDev.userPeripheral)
-        }
     }
     
     func goBack() {
@@ -82,7 +79,7 @@ struct ServiceListView: View {
 struct ServiceView: View {
     @EnvironmentObject private var bleViewModel: BleCommViewModel
     @EnvironmentObject private var navigationModel: NavigationModel
-    var service: UserBleService
+    @ObservedObject var service: UserBleService
     
     var body: some View {
         GroupBox(
@@ -107,6 +104,9 @@ struct ServiceView: View {
                 .stroke(Color.blue, lineWidth: 1)
         )
         .padding(.horizontal, 10)
+        .onAppear {
+            print("ServiceView onAppear")
+        }
     }
 }
 

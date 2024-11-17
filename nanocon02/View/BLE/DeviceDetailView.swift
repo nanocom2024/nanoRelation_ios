@@ -41,8 +41,7 @@ struct DeviceDetailView: View {
                                 oneService: item)
                                 .environmentObject(bleViewModel)
                             ) {
-                                    CharacteristicCell(onePeri: bleViewModel.connectedUserBlePeripheral!,
-                                                       oneChar: userChar)
+                                    CharacteristicCell(oneChar: userChar)
                             }
                         }
                     }
@@ -91,7 +90,6 @@ struct DeviceDetailView: View {
     }
     
     struct CharacteristicCell: View {
-        @ObservedObject var onePeri: UserBlePeripheral
         @ObservedObject var oneChar: UserBleCharacteristic
         
         var body: some View {

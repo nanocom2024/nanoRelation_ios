@@ -48,6 +48,7 @@ struct SearchDeviceView: View {
             }
             .onAppear {
                 beaconReceiver.stop_ranging()
+                bluetoothViewModel.startScanning()
             }
                         
     }

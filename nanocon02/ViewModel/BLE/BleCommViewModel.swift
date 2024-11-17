@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-@preconcurrency import CoreBluetooth
+import CoreBluetooth
 
 class BleCommViewModel: NSObject, ObservableObject {
     
@@ -118,6 +118,7 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {
         print("Disconnected device")
+        print("- Error: \(error?.localizedDescription ?? "no error")")
         resetConfigure()
     }
     
@@ -136,6 +137,14 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
         
         peripheral.discoverServices([DeviceConfig.init_service_uuid])
         print("Getting services")
+    }
+    
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: (any Error)?) {
+        if let error = error {
+            print("Failed to connect to device: \(error.localizedDescription)")
+        } else {
+            print("Failed to connect to device", "不明なエラー")
+        }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: (any Error)?) {

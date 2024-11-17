@@ -44,7 +44,9 @@ struct DeviceDetailView: View {
                 }
         )
         .onAppear {
-            bleViewModel.centralManager?.connect(oneDev.userPeripheral)
+            if oneDev.userPeripheral.state != CBPeripheralState.connected {
+                bleViewModel.centralManager?.connect(oneDev.userPeripheral)
+            }
             if oneDev.userPeripheral.state != CBPeripheralState.connected {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     if oneDev.userPeripheral.state != CBPeripheralState.connected {
@@ -65,51 +67,74 @@ struct DeviceDetailView: View {
 }
 
 struct ServiceListView: View {
-    @EnvironmentObject var bleViewModel: BleCommViewModel
-    @EnvironmentObject var navigationModel: NavigationModel
-
+    @EnvironmentObject private var bleViewModel: BleCommViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
+    
     var body: some View {
         ForEach(bleViewModel.connectedUserBlePeripheral?.userServices ?? []) { service in
-            GroupBox(
-                label: VStack {
-                    Text("Service: \(service.serviceName)")
-                    Text("\(service.uuid.uuidString)").font(.subheadline)
-                }
-            ) {
-                ForEach(service.userCharacteristics) { userChar in
-                    
-                    if let connectedUserBlePeripheral = bleViewModel.connectedUserBlePeripheral {
-                        Divider().padding(.vertical, 2)
-                        NavigationLink(
-                            destination: CharacteristicPropertyView(
-                                oneChar: userChar,
-                                oneDevPeri: bleViewModel.connectedUserBlePeripheral!,
-                                oneService: service
-                            )
-                            .environmentObject(bleViewModel)
-                            .environmentObject(navigationModel)
-                        ) {
-                            CharacteristicCell(
-                                onePeri: connectedUserBlePeripheral,
-                                oneChar: userChar
-                            )
-                        }
-                    } else {
-                        Text("No connected device")
-                    }
+            ServiceView(service: service)
+                .environmentObject(bleViewModel)
+                .environmentObject(navigationModel)
+        }
+    }
+}
+    
+struct ServiceView: View {
+    @EnvironmentObject private var bleViewModel: BleCommViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
+    var service: UserBleService
+    
+    var body: some View {
+        GroupBox(
+            label: VStack {
+                Text("Service: \(service.serviceName)")
+                Text("\(service.uuid.uuidString)").font(.subheadline)
+            }
+        ) {
+            ForEach(service.userCharacteristics) { userChar in
+                if let connectedUserBlePeripheral = bleViewModel.connectedUserBlePeripheral {
+                    Divider().padding(.vertical, 2)
+                    CharacteristicNavigationLink(userChar: userChar, service: service, peripheral: connectedUserBlePeripheral)
+                        .environmentObject(bleViewModel)
+                        .environmentObject(navigationModel)
+                } else {
+                    Text("No connected device")
                 }
             }
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.blue, lineWidth: 1)
+        }
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.blue, lineWidth: 1)
+        )
+        .padding(.horizontal, 10)
+    }
+}
+
+struct CharacteristicNavigationLink: View {
+    @EnvironmentObject private var bleViewModel: BleCommViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
+    var userChar: UserBleCharacteristic
+    var service: UserBleService
+    var peripheral: UserBlePeripheral
+
+    var body: some View {
+        NavigationLink(
+            destination: CharacteristicPropertyView(
+                oneChar: userChar,
+                oneDevPeri: peripheral,
+                oneService: service
             )
-            .padding(.horizontal, 10)
+            .environmentObject(bleViewModel)
+            .environmentObject(navigationModel)
+        ) {
+            CharacteristicCell(
+                oneChar: userChar
+            )
         }
     }
 }
 
 struct CharacteristicCell: View {
-    @ObservedObject var onePeri: UserBlePeripheral
     @ObservedObject var oneChar: UserBleCharacteristic
     
     var body: some View {

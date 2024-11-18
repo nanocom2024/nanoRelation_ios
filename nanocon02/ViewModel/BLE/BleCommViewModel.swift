@@ -26,6 +26,10 @@ class BleCommViewModel: NSObject, ObservableObject {
         print("init BleCommViewModel")
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: .main)
+        
+        // 通知の許可
+        let notificationManager = NotificationManager()
+        notificationManager.requestNotificationAuthorization()
     }
     
     var NO_CHARS_NAME = "NO_CHARS_NAME"
@@ -119,6 +123,10 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {
         print("Disconnected device")
         print("- Error: \(error?.localizedDescription ?? "no error")")
+        
+        let notificationManager = NotificationManager()
+        notificationManager.sendDisconnectedNotification(peripheralName: peripheral.name ?? "no name")
+        
         resetConfigure()
     }
     

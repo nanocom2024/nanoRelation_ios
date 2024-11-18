@@ -75,6 +75,7 @@ struct CharacteristicPropertyView: View {
                             // Lost
                             Button(action: {
                                 isLostPairingButtonDisabled = true
+                                CharacteristicPropertyViewModel.observingChild = true
                                 CharPropertyObj.errorString = ""
                                 
                                 // notify
@@ -113,6 +114,7 @@ struct CharacteristicPropertyView: View {
                 //                errorMessage = "Received nil data"
                 isPassPairingButtonDisabled = false
                 isLostPairingButtonDisabled = false
+                CharacteristicPropertyViewModel.observingChild = false
                 return
             }
             
@@ -128,7 +130,6 @@ struct CharacteristicPropertyView: View {
                 print("Failed to decode data")
                 errorMessage = "Failed to decode data"
                 isPassPairingButtonDisabled = false
-                isLostPairingButtonDisabled = false
                 return
             }
             
@@ -148,7 +149,6 @@ struct CharacteristicPropertyView: View {
                         
                     } else {
                         isPassPairingButtonDisabled = false
-                        isLostPairingButtonDisabled = false
                         errorMessage = CharPropertyObj.errorString
                     }
                     
@@ -170,12 +170,10 @@ struct CharacteristicPropertyView: View {
                             // next View
                             navigationModel.path.append("device pairing success")
                             isPassPairingButtonDisabled = false
-                            isLostPairingButtonDisabled = false
                         } else {
                             navigationModel.path.removeLast(navigationModel.path.count)
                             bleObj.initWriteSuccess = false
                             isPassPairingButtonDisabled = false
-                            isLostPairingButtonDisabled = false
                         }
                     }
                 }

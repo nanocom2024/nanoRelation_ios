@@ -35,4 +35,19 @@ class NotificationManager {
             }
         }
     }
+    
+    func sendLostNotification(peripheralName: String) {
+        // ローカル通知を送信
+        let content = UNMutableNotificationContent()
+        content.title = "子供が離れました"
+        content.body = "\(peripheralName) との接続が切れました"
+        content.sound = .default
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("通知送信エラー: \(error)")
+            }
+        }
+    }
 }

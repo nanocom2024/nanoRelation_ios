@@ -120,12 +120,17 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
         return false
     }
     
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {
+    @MainActor func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {
         print("Disconnected device")
         print("- Error: \(error?.localizedDescription ?? "no error")")
         
         let notificationManager = NotificationManager()
-        notificationManager.sendDisconnectedNotification(peripheralName: peripheral.name ?? "no name")
+        if CharacteristicPropertyViewModel.observingChild {
+            notificationManager.sendLostNotification(peripheralName: peripheral.name ?? "no name")
+            CharacteristicPropertyViewModel.observingChild = false
+        } else {
+            notificationManager.sendDisconnectedNotification(peripheralName: peripheral.name ?? "no name")
+        }
         
         resetConfigure()
     }

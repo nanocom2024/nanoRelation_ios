@@ -18,7 +18,8 @@ struct CharacteristicPropertyView: View {
     @State private var showAlert = false
     @State private var showError = false
     @State private var errorMessage = ""
-    @State private var isPairingButtonDisabled = false
+    @State private var isPassPairingButtonDisabled = false
+    @State private var isLostPairingButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject var bleObj: BleCommViewModel
     
@@ -43,33 +44,57 @@ struct CharacteristicPropertyView: View {
                     
                     Spacer().frame(width: 10)
                     
-                    if isPairingButtonDisabled && !CharPropertyObj.errorString.isEmpty {
+                    if (isPassPairingButtonDisabled || isLostPairingButtonDisabled) && !CharPropertyObj.errorString.isEmpty {
                         ProgressView("initializing device...")
                             .progressViewStyle(CircularProgressViewStyle())
                             .padding()
                     } else {
-                        Button(action: {
-                            isPairingButtonDisabled = true
-                            CharPropertyObj.errorString = ""
-                            
-                            // read
-                            for oneCh in oneService.userCharacteristics {
-                                if oneCh.uuid == DeviceConfig.init_characteristic_read_uuid {
-                                    oneDevPeri.userPeripheral.readValue(for: oneCh.characteristic)
+                        VStack {
+                            // Street Pass
+                            Button(action: {
+                                isPassPairingButtonDisabled = true
+                                CharPropertyObj.errorString = ""
+                                
+                                // read
+                                for oneCh in oneService.userCharacteristics {
+                                    if oneCh.uuid == DeviceConfig.init_characteristic_read_uuid {
+                                        oneDevPeri.userPeripheral.readValue(for: oneCh.characteristic)
+                                    }
                                 }
+                                
+                            }) {
+                                Text("Pairing (すれ違い)")
+                                    .padding()
+                                    .frame(width: 240.0, height: 40.0)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.green)
+                                    .cornerRadius(8)
                             }
+                            .disabled(isPassPairingButtonDisabled)
                             
-                        }) {
-                            Text("Pairing (initialize setting)")
-                                .padding()
-                                .frame(width: 240.0, height: 40.0)
-                                .foregroundColor(Color.white)
-                                .background(Color.green)
-                                .cornerRadius(8)
+                            // Lost
+                            Button(action: {
+                                isLostPairingButtonDisabled = true
+                                CharPropertyObj.errorString = ""
+                                
+                                // notify
+                                for oneCh in oneService.userCharacteristics {
+                                    if oneCh.uuid == DeviceConfig.init_characteristic_notify_uuid {
+                                        oneDevPeri.userPeripheral.setNotifyValue(true, for: oneCh.characteristic)
+                                    }
+                                }
+                                
+                            }) {
+                                Text("Pairing (子供の見守り)")
+                                    .padding()
+                                    .frame(width: 240.0, height: 40.0)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.green)
+                                    .cornerRadius(8)
+                            }
+                            .disabled(isLostPairingButtonDisabled)
                         }
-                        .disabled(isPairingButtonDisabled)
                     }
-                    
                 }
                 
                 Spacer()
@@ -86,14 +111,24 @@ struct CharacteristicPropertyView: View {
             guard let recData = newVal else {
                 print("Received nil data")
                 //                errorMessage = "Received nil data"
-                isPairingButtonDisabled = false
+                isPassPairingButtonDisabled = false
+                isLostPairingButtonDisabled = false
                 return
+            }
+            
+            if let binString = String(data: recData, encoding: .utf8) {
+                let cleacnedString = binString.replacingOccurrences(of: "b'", with: "").replacingOccurrences(of: "'", with: "")
+                if let notify_num = Int(cleacnedString) {
+                    print("notify_num: \(notify_num)")
+                    return
+                }
             }
             
             guard let device_id = String(data: recData, encoding: .utf8) else {
                 print("Failed to decode data")
                 errorMessage = "Failed to decode data"
-                isPairingButtonDisabled = false
+                isPassPairingButtonDisabled = false
+                isLostPairingButtonDisabled = false
                 return
             }
             
@@ -112,7 +147,8 @@ struct CharacteristicPropertyView: View {
                         }
                         
                     } else {
-                        isPairingButtonDisabled = false
+                        isPassPairingButtonDisabled = false
+                        isLostPairingButtonDisabled = false
                         errorMessage = CharPropertyObj.errorString
                     }
                     
@@ -133,11 +169,13 @@ struct CharacteristicPropertyView: View {
                             navigationModel.path.removeLast(1)
                             // next View
                             navigationModel.path.append("device pairing success")
-                            isPairingButtonDisabled = false
+                            isPassPairingButtonDisabled = false
+                            isLostPairingButtonDisabled = false
                         } else {
                             navigationModel.path.removeLast(navigationModel.path.count)
                             bleObj.initWriteSuccess = false
-                            isPairingButtonDisabled = false
+                            isPassPairingButtonDisabled = false
+                            isLostPairingButtonDisabled = false
                         }
                     }
                 }

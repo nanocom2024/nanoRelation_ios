@@ -172,7 +172,7 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
             connectedUserBlePeripheral?.userServices.append(oneUserBleService)
             
             print("Found one service: \(foundOneService.uuid.uuidString)")
-            peripheral.discoverCharacteristics([DeviceConfig.init_characteristic_read_uuid, DeviceConfig.init_characteristic_write_uuid], for: foundOneService.service)
+            peripheral.discoverCharacteristics([DeviceConfig.init_characteristic_read_uuid, DeviceConfig.init_characteristic_write_uuid, DeviceConfig.init_characteristic_notify_uuid], for: foundOneService.service)
         }
     }
     

@@ -23,6 +23,11 @@ class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
         // CLLocationManagerの初期化
         locationManager = CLLocationManager()
         locationManager.delegate = self
+        
+//        バックグラウンドでのロケーション更新を許可
+        locationManager.allowsBackgroundLocationUpdates = true
+//        ロケーション更新の自動中断をオフ
+        locationManager.pausesLocationUpdatesAutomatically = false
 
         // 位置情報使用許可をリクエスト（必須）
         locationManager.requestWhenInUseAuthorization()

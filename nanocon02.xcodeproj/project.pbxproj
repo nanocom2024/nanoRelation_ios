@@ -69,6 +69,7 @@
 		494737A82C7D899600EA38EB /* EachFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachFriend.swift; sourceTree = "<group>"; };
 		494737AA2C7D954D00EA38EB /* Talk02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk02.swift; sourceTree = "<group>"; };
 		494737AC2C7D9EC000EA38EB /* EachChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachChild.swift; sourceTree = "<group>"; };
+		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1D8CEE72C8D4C77006335C2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieManager.swift; sourceTree = "<group>"; };
@@ -148,6 +149,7 @@
 		494737492C787E6300EA38EB /* nanocon02 */ = {
 			isa = PBXGroup;
 			children = (
+				C1B693372CEA0FF000201E0B /* Info.plist */,
 				C1D8CF152C92D47D006335C2 /* lib */,
 				C1D8CEF42C8D9140006335C2 /* Data */,
 				C1D8CEEB2C8D527F006335C2 /* ViewModel */,
@@ -740,6 +742,7 @@
 				DEVELOPMENT_TEAM = JSGGNXCXA4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = nanocon02/Info.plist;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we use iBeacon";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -772,6 +775,7 @@
 				DEVELOPMENT_TEAM = JSGGNXCXA4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = nanocon02/Info.plist;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we use iBeacon";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

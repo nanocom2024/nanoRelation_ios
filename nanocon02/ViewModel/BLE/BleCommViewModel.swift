@@ -21,6 +21,7 @@ class BleCommViewModel: NSObject, ObservableObject {
     @Published var initWriteSuccess = false
     
     @MainActor static var isScanning = false
+    @MainActor static var isObservingChild = false
         
     override init() {
         print("init BleCommViewModel")
@@ -125,9 +126,9 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
         print("- Error: \(error?.localizedDescription ?? "no error")")
         
         let notificationManager = NotificationManager()
-        if CharacteristicPropertyViewModel.observingChild {
+        if BleCommViewModel.isObservingChild {
             notificationManager.sendLostNotification(peripheralName: peripheral.name ?? "no name")
-            CharacteristicPropertyViewModel.observingChild = false
+            BleCommViewModel.isObservingChild = false
         } else {
             notificationManager.sendDisconnectedNotification(peripheralName: peripheral.name ?? "no name")
         }
@@ -251,6 +252,17 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
                         print("FOUND PREDEFINED NAME \(oneUserChar.characteristicName)")
                     }
                 }
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: (any Error)?) {
+        if let error = error {
+            print("Notify state update failed with error: \(error.localizedDescription)")
+        } else {
+            if !characteristic.isNotifying && characteristic.uuid.uuidString == DeviceConfig.init_characteristic_notify_uuid.uuidString {
+                // disconnect
+                self.centralManager?.cancelPeripheralConnection(peripheral)
             }
         }
     }

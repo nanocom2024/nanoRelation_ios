@@ -72,10 +72,10 @@ struct CharacteristicPropertyView: View {
                             }
                             .disabled(isPassPairingButtonDisabled)
                             
-                            // Lost
+                            // Lost observation
                             Button(action: {
                                 isLostPairingButtonDisabled = true
-                                CharacteristicPropertyViewModel.observingChild = true
+                                BleCommViewModel.isObservingChild = true
                                 CharPropertyObj.errorString = ""
                                 
                                 // notify
@@ -84,6 +84,12 @@ struct CharacteristicPropertyView: View {
                                         oneDevPeri.userPeripheral.setNotifyValue(true, for: oneCh.characteristic)
                                     }
                                 }
+                                
+                                bleObj.stopScanning()
+                                navigationModel.path.removeLast(1)
+                                // next View
+                                navigationModel.path.append("observing child")
+                                isLostPairingButtonDisabled = false
                                 
                             }) {
                                 Text("Pairing (子供の見守り)")
@@ -114,7 +120,7 @@ struct CharacteristicPropertyView: View {
                 //                errorMessage = "Received nil data"
                 isPassPairingButtonDisabled = false
                 isLostPairingButtonDisabled = false
-                CharacteristicPropertyViewModel.observingChild = false
+                BleCommViewModel.isObservingChild = false
                 return
             }
             

@@ -35,6 +35,9 @@ struct HomeView: View {
                         .environmentObject(beaconReceiver)
                 case "device pairing success":
                     DevicePairingSuccessView()
+                case "observing child":
+                    ObservingChildView()
+                        .environmentObject(bluetoothViewModel)
                 case "beacon":
                     BeaconView()
                         .environmentObject(beaconReceiver)

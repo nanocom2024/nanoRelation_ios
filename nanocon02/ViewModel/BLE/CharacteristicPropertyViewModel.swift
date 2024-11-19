@@ -10,8 +10,6 @@ import Foundation
 actor CharacteristicPropertyViewModel: ObservableObject {
     @Published var errorString = ""
     
-    @MainActor static var observingChild = false
-    
     func generate_writeString(device_id: String) async -> String? {
         do {
             if let (_, _, major, minor) = try await generate_major_minor(device_id: device_id),

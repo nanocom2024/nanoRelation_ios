@@ -84,6 +84,7 @@ class AuthTokenDatastore {
             for token in tokens {
                 context.delete(token)
             }
+            try context.save()
         } catch {
             print(error)
         }

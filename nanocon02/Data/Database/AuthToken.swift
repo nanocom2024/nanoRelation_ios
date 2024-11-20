@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftData
-import _SwiftData_SwiftUI
 
 @Model
 class AuthToken {

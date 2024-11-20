@@ -12,7 +12,7 @@ class Account{
     @MainActor static var name_id: String = "#xxxx"
     
     static func get_name() async -> (String, String) {
-        guard let token = Auth.getToken() else {
+        guard let token = await Auth.getToken() else {
             DispatchQueue.main.async {
                 Account.name = "no-name"
                 Account.name_id = "#xxxx"

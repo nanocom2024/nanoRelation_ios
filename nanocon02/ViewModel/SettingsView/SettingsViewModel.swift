@@ -8,7 +8,7 @@
 import Foundation
 
 class SettingsViewModel: ObservableObject {
-    func signout() {
+    @MainActor func signout() {
         let url = URL(string: BaseUrl.url + "/auth/signout")!
         var request = URLRequest(url: url)
         // Postリクエストを送る(このコードがないとGetリクエストになる)

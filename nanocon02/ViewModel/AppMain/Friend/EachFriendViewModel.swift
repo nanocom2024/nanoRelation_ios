@@ -53,7 +53,7 @@ actor EachFriendViewModel: ObservableObject {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let token = Auth.getToken() else {
+        guard let token = await Auth.getToken() else {
             self.errorString = "missing token"
             print("missing token")
             return nil

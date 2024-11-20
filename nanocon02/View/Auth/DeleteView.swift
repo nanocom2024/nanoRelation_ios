@@ -85,7 +85,9 @@ struct DeleteView: View {
                         isDeleteButtonDisabled = false
                         return
                     }
-                    deleteViewModel.delete_account(password: inputPassword, confirmPassword: inputConfirmPassword)
+                    Task {
+                        await deleteViewModel.delete_account(password: inputPassword, confirmPassword: inputConfirmPassword)
+                    }
                 },
                 label: {
                     Text("アカウント削除")

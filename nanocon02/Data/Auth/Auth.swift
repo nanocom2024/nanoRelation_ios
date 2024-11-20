@@ -6,30 +6,44 @@
 //
 
 import Foundation
+import SwiftData
 
 class Auth {
-    static private let cookieManager = CookieManager()
+    @MainActor static private let cookieManager = CookieManager()
     static private let url = URL(string: BaseUrl.url + "/auth")!
 
-    static func getToken() -> String? {
-        if cookieManager.isCookieSet(name: "authtoken", url: url) {
-            return cookieManager.getCookie(name: "authtoken", url: url)
+//    @MainActor static func getToken() -> String? {
+//        if cookieManager.isCookieSet(name: "authtoken", url: url) {
+//            return cookieManager.getCookie(name: "authtoken", url: url)
+//        }
+//        return nil
+//    }
+    @MainActor static func getToken() -> String? {
+        let token = AuthTokenDatastore.shared?.getToken()
+        if token == "" {
+            return nil
         }
-        return nil
+        return token
     }
 
-    @MainActor static func setToken(token: String) {
-        cookieManager.setCookie(url: url, key: "authtoken", value: token)
-        AppDelegate.storeCookies()
+//    @MainActor static func setToken(token: String) {
+//        cookieManager.setCookie(url: url, key: "authtoken", value: token)
+//        AppDelegate.storeCookies()
+//        Account.name = "no-name"
+//        Account.name_id = "#xxxx"
+//    }
+    @MainActor static func setToken(token: String){
+        AuthTokenDatastore.shared?.setToken(token: token)
         Account.name = "no-name"
         Account.name_id = "#xxxx"
     }
+        
 
-    static func deleteToken() {
+    @MainActor static func deleteToken() {
         cookieManager.removeCookie(name: "authtoken", url: url)
     }
 
-    static func auth_check(completion: @escaping (Bool) -> Void) {
+    @MainActor static func auth_check(completion: @escaping (Bool) -> Void){
         var done = false
         let auth_check_url = URL(string: BaseUrl.url + "/pairing/auth_check")!
         var request = URLRequest(url: auth_check_url)
@@ -75,7 +89,7 @@ class Auth {
                    let token = object["token"] as? String { // トークンを取得
                     // クッキーを設定
                     Task {
-                        Auth.setToken(token: token)
+                        await Auth.setToken(token: token)
                     }
                     done = true
                     completion(true)

@@ -16,7 +16,7 @@ actor StreetPassViewModel: ObservableObject {
             return
         }
         do {
-            if let token = Auth.getToken(),
+            if let token = await Auth.getToken(),
                let pass = try await request_received_beacon(token: token, major: info.major, minor: info.minor)
             {
                 let currentDate = Date()  // Date型

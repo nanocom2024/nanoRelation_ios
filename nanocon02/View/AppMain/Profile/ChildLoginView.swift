@@ -78,7 +78,9 @@ struct ChildLoginView: View {
                             isLoginButtonDisabled = false
                             return
                         }
-                        childLoginViewModel.register_child(email: inputEmail, password: inputPassword)
+                        Task {
+                            await childLoginViewModel.register_child(email: inputEmail, password: inputPassword)
+                        }
                     },
                            label: {
                         Text("ログインする")

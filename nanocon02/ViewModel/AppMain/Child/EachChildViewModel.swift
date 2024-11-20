@@ -64,7 +64,7 @@ actor EachChildViewModel: ObservableObject {
     
     func register_lost(child_uid: String) async -> Bool? {
         do {
-            guard let token = Auth.getToken() else {
+            guard let token = await Auth.getToken() else {
                 self.errorString = "missing token"
                 return nil
             }
@@ -117,7 +117,7 @@ actor EachChildViewModel: ObservableObject {
     
     func delete_lost_info(child_uid: String) async -> Bool? {
         do {
-            guard let token = Auth.getToken() else {
+            guard let token = await Auth.getToken() else {
                 self.errorString = "missing token"
                 return nil
             }
@@ -170,7 +170,7 @@ actor EachChildViewModel: ObservableObject {
     
     func addMsg(child_uid: String, newMsg: Message) async -> Bool? {
         do {
-            guard let token = Auth.getToken() else {
+            guard let token = await Auth.getToken() else {
                 self.errorString = "missing token"
                 return nil
             }
@@ -266,7 +266,7 @@ actor EachChildViewModel: ObservableObject {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        guard let token = Auth.getToken() else {
+        guard let token = await Auth.getToken() else {
             self.errorString = "missing token"
             print("missing token")
             return nil

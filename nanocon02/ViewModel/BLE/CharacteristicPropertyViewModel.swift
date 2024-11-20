@@ -13,7 +13,7 @@ actor CharacteristicPropertyViewModel: ObservableObject {
     func generate_writeString(device_id: String) async -> String? {
         do {
             if let (_, _, major, minor) = try await generate_major_minor(device_id: device_id),
-               let token = Auth.getToken(),
+               let token = await Auth.getToken(),
                try await register_pairing(token: token, major: major, minor: minor)
             {
 //                let res = private_key + "," + public_key + "," + major + "," + minor

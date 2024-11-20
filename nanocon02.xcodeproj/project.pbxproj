@@ -15,9 +15,8 @@
 		494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* EachChild.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
-		C1B693432CEC1FC600201E0B /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C1B693422CEC1FC600201E0B /* SQLite */; };
-		C1B693462CEC560000201E0B /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693452CEC55FB00201E0B /* Database.swift */; };
-		C1B693482CEC566D00201E0B /* UserDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693472CEC566D00201E0B /* UserDatastore.swift */; };
+		C1B693482CEC566D00201E0B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693472CEC566D00201E0B /* User.swift */; };
+		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
 		C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */; };
 		C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE72C8D4C77006335C2 /* LoginView.swift */; };
 		C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */; };
@@ -77,8 +76,9 @@
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
-		C1B693452CEC55FB00201E0B /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		C1B693472CEC566D00201E0B /* UserDatastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatastore.swift; sourceTree = "<group>"; };
+		C1B693472CEC566D00201E0B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C1B6934A2CED642700201E0B /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = System/Library/Frameworks/SwiftData.framework; sourceTree = SDKROOT; };
+		C1B6934F2CED6E9D00201E0B /* AuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
 		C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1D8CEE72C8D4C77006335C2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieManager.swift; sourceTree = "<group>"; };
@@ -132,7 +132,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1B693432CEC1FC600201E0B /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +143,7 @@
 			children = (
 				4947376A2C7AE8B400EA38EB /* Resources */,
 				494737492C787E6300EA38EB /* nanocon02 */,
+				C1B693492CED642700201E0B /* Frameworks */,
 				494737482C787E6300EA38EB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -198,10 +198,18 @@
 		C1B693442CEC55EF00201E0B /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				C1B693452CEC55FB00201E0B /* Database.swift */,
-				C1B693472CEC566D00201E0B /* UserDatastore.swift */,
+				C1B693472CEC566D00201E0B /* User.swift */,
+				C1B6934F2CED6E9D00201E0B /* AuthToken.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		C1B693492CED642700201E0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1B6934A2CED642700201E0B /* SwiftData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C1D8CEE62C8D4C56006335C2 /* View */ = {
@@ -561,7 +569,6 @@
 			);
 			mainGroup = 4947373E2C787E6300EA38EB;
 			packageReferences = (
-				C1B693412CEC1FC600201E0B /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 494737482C787E6300EA38EB /* Products */;
 			projectDirPath = "";
@@ -596,7 +603,6 @@
 				494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */,
 				C1D8CF552C9939E2006335C2 /* MyProfile.swift in Sources */,
 				C1D8CF142C9197E4006335C2 /* DevicePairingSuccessView.swift in Sources */,
-				C1B693462CEC560000201E0B /* Database.swift in Sources */,
 				C1D8CF4F2C993612006335C2 /* LostChildView.swift in Sources */,
 				C1D8CF2B2C954F4D006335C2 /* StreetPassViewModel.swift in Sources */,
 				C1D8CEED2C8D5292006335C2 /* LoginViewModel.swift in Sources */,
@@ -607,6 +613,7 @@
 				C1D8CF4D2C9924BB006335C2 /* FriendList.swift in Sources */,
 				C1D8CF532C993907006335C2 /* ProfileView.swift in Sources */,
 				C1D8CF892CA299FF006335C2 /* EachFriendViewModel.swift in Sources */,
+				C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */,
 				494737A92C7D899600EA38EB /* EachFriend.swift in Sources */,
 				C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */,
 				C1D8CF7F2C9E6B75006335C2 /* Message.swift in Sources */,
@@ -617,7 +624,7 @@
 				C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */,
 				C1D8CF042C912F28006335C2 /* DeviceConfig.swift in Sources */,
 				C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */,
-				C1B693482CEC566D00201E0B /* UserDatastore.swift in Sources */,
+				C1B693482CEC566D00201E0B /* User.swift in Sources */,
 				C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */,
 				C1D8CEF82C8DB02E006335C2 /* SettingsViewModel.swift in Sources */,
 				C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */,
@@ -856,25 +863,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C1B693412CEC1FC600201E0B /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.15.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C1B693422CEC1FC600201E0B /* SQLite */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C1B693412CEC1FC600201E0B /* XCRemoteSwiftPackageReference "SQLite.swift" */;
-			productName = SQLite;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4947373F2C787E6300EA38EB /* Project object */;
 }

@@ -12,7 +12,7 @@ actor DeleteViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var isLoading = false
     
-    func delete_account(password: String, confirmPassword: String) {
+    func delete_account(password: String, confirmPassword: String) async {
         self.isLoading = true
         self.deleteSuccess = false
         
@@ -22,7 +22,7 @@ actor DeleteViewModel: ObservableObject {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         var params = Dictionary<String, String>()
-        guard let token = Auth.getToken() else {
+        guard let token = await Auth.getToken() else {
             self.isLoading = false
             self.errorMessage = "Invalid token"
             print("Invalid token")

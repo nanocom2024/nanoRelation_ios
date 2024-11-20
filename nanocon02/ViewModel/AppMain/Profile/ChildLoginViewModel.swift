@@ -13,11 +13,11 @@ actor ChildLoginViewModel: ObservableObject {
     @Published var isLoading = false
     
     // TODO: signin -> register child
-    func register_child(email: String, password: String) {
+    func register_child(email: String, password: String) async {
         self.isLoading = true
         self.loginSuccess = false
         
-        guard let token = Auth.getToken() else {
+        guard let token = await Auth.getToken() else {
             self.isLoading = false
             self.errorMessage = "missing token"
             return

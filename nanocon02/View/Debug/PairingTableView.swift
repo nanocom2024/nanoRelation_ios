@@ -31,7 +31,7 @@ struct PairingRow: View {
     
     var body: some View {
         HStack {
-            Text(pairing.device_uid)
+            Text(pairing.user_uid)
             Spacer()
             Text(pairing.major)
             Spacer()

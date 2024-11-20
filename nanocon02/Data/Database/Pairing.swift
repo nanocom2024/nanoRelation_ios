@@ -11,13 +11,13 @@ import SwiftData
 @Model
 class Pairing {
     var id: UUID
-    var device_uid: String
+    var user_uid: String
     var major: String
     var minor: String
     
     init(device_uid: String, major: String, minor: String) {
         self.id = UUID()
-        self.device_uid = device_uid
+        self.user_uid = device_uid
         self.major = major
         self.minor = minor
     }

@@ -26,7 +26,6 @@ class Pairing {
 class PairingDatastore {
     @MainActor static let shared = PairingDatastore()
     
-    var container: ModelContainer
     private var context: ModelContext
     
     private init?() {
@@ -45,7 +44,6 @@ class PairingDatastore {
                 for: Pairing.self,
                 configurations: modelConfiguration
             )
-            self.container = modelContainer
             // 4. ModelContainer で ModelContext で初期化
             self.context = ModelContext(modelContainer)
         } catch {
@@ -75,6 +73,17 @@ class PairingDatastore {
             print(error)
         }
         return []
+    }
+    
+    func fetch_user_uid(major: String, minor: String) -> String? {
+        do {
+            let pairing = try context.fetch(FetchDescriptor<Pairing>(predicate:#Predicate{$0.major == major && $0.minor == minor}))
+            return pairing.first?.user_uid
+        } catch {
+            print("pairing fetch error")
+            print(error)
+            return nil
+        }
     }
     
     func deleteAll() {

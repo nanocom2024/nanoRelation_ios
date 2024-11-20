@@ -15,8 +15,9 @@
 		494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* EachChild.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
-		C1B693482CEC566D00201E0B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693472CEC566D00201E0B /* User.swift */; };
 		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
+		C1B693522CEDC50400201E0B /* Pairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693512CEDC50400201E0B /* Pairing.swift */; };
+		C1B693542CEDE6B000201E0B /* PairingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693532CEDE6B000201E0B /* PairingTableView.swift */; };
 		C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */; };
 		C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE72C8D4C77006335C2 /* LoginView.swift */; };
 		C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */; };
@@ -76,9 +77,10 @@
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
-		C1B693472CEC566D00201E0B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C1B6934A2CED642700201E0B /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = System/Library/Frameworks/SwiftData.framework; sourceTree = SDKROOT; };
 		C1B6934F2CED6E9D00201E0B /* AuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
+		C1B693512CEDC50400201E0B /* Pairing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pairing.swift; sourceTree = "<group>"; };
+		C1B693532CEDE6B000201E0B /* PairingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingTableView.swift; sourceTree = "<group>"; };
 		C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1D8CEE72C8D4C77006335C2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieManager.swift; sourceTree = "<group>"; };
@@ -198,8 +200,8 @@
 		C1B693442CEC55EF00201E0B /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				C1B693472CEC566D00201E0B /* User.swift */,
 				C1B6934F2CED6E9D00201E0B /* AuthToken.swift */,
+				C1B693512CEDC50400201E0B /* Pairing.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -503,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				C1D8CF832C9FEF14006335C2 /* DebugView.swift */,
+				C1B693532CEDE6B000201E0B /* PairingTableView.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				C1D8CEEF2C8D5479006335C2 /* SignupView.swift in Sources */,
 				C1D8CF1B2C931126006335C2 /* CharacteristicPropertyViewModel.swift in Sources */,
 				C1D8CF4D2C9924BB006335C2 /* FriendList.swift in Sources */,
+				C1B693522CEDC50400201E0B /* Pairing.swift in Sources */,
 				C1D8CF532C993907006335C2 /* ProfileView.swift in Sources */,
 				C1D8CF892CA299FF006335C2 /* EachFriendViewModel.swift in Sources */,
 				C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */,
@@ -624,7 +628,7 @@
 				C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */,
 				C1D8CF042C912F28006335C2 /* DeviceConfig.swift in Sources */,
 				C1D8CF102C9139F2006335C2 /* DeviceDetailView.swift in Sources */,
-				C1B693482CEC566D00201E0B /* User.swift in Sources */,
+				C1B693542CEDE6B000201E0B /* PairingTableView.swift in Sources */,
 				C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */,
 				C1D8CEF82C8DB02E006335C2 /* SettingsViewModel.swift in Sources */,
 				C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */,

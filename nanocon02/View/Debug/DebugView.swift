@@ -30,6 +30,14 @@ struct DebugView: View {
                 Text("street pass")
             })
             
+            Spacer().frame(height: 20)
+            
+            Button(action: {
+                navigationModel.path.append("pairing table")
+            }, label: {
+                Text("pairing table")
+            })
+            
             Spacer()
         }
     }

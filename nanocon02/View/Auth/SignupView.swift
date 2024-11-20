@@ -18,7 +18,6 @@ struct SignupView: View {
     @State private var isCreateButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
     
-    @Query private var users: [User]
 
     var body: some View {
         VStack(alignment: .center) {
@@ -130,11 +129,6 @@ struct SignupView: View {
             if !msg.isEmpty {
                 errorMessage = msg
                 isCreateButtonDisabled = false
-            }
-        }
-        .onAppear() {
-            for user in users {
-                print(user.name, user.email)
             }
         }
     }

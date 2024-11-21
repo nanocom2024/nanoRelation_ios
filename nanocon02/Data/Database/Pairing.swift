@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class Pairing {
+    @Attribute(.unique)
     var id: UUID
     var user_uid: String
     var major: String

@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class AuthToken {
+    @Attribute(.unique)
     var id: UUID
     var token: String
     

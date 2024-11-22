@@ -124,6 +124,8 @@ struct SignupView: View {
         .onChange(of: signupViewModel.signupSuccess) { _, success in
             navigationModel.path.append("Friend")
             isCreateButtonDisabled = false
+            PairingDatastore.shared?.syncPairings()
+            FriendDatastore.shared?.syncFriends()
         }
         .onChange(of: signupViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {

@@ -36,7 +36,7 @@ class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
         locationManager.startUpdatingLocation() // 位置情報取得の開始
 
         // iBeaconのUUIDを設定（ここでは例としてUUIDを設定）
-        beaconRegion = CLBeaconRegion(uuid: DeviceConfig.iBeacon_uuid, identifier: "MyBeacon")
+//        beaconRegion = CLBeaconRegion(uuid: DeviceConfig.iBeacon_normal_uuid, identifier: "MyBeacon")
 
         // レンジング（ビーコンとの距離測定）を開始
         start_ranging()
@@ -106,11 +106,13 @@ extension BeaconReceiver {
     
     func start_ranging() {
         // レンジング（ビーコンとの距離測定）を開始
-        locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
+        locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_normal_uuid))
+        locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_lost_uuid))
     }
     
     func stop_ranging() {
-        locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
+        locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_normal_uuid))
+        locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_lost_uuid))
     }
 }
 

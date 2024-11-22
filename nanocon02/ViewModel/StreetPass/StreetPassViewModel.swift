@@ -58,7 +58,6 @@ actor StreetPassViewModel: ObservableObject {
         }
     }
     
-    // TODO: 迷子検知対応も必要
     private func check_received_beacon(major: String, minor: String, beaconMode: BeaconMode) -> String? {
         // return "true", "false", "lost", nil
         

@@ -128,6 +128,19 @@ class FriendDatastore {
         }
     }
             
+    
+    func isExistFriend(user_uid: String) -> Bool {
+        do {
+            let friends = try context.fetch(FetchDescriptor<FriendData>(
+                predicate: #Predicate{$0.user_uid == user_uid}
+            ))
+            return !friends.isEmpty
+        } catch {
+            print("friendData fetch error")
+            print(error)
+        }
+        return false
+    }
 }
 
 class CloudFriendssDatastore {

@@ -57,6 +57,8 @@ struct HomeView: View {
                     ChildLoginView()
                 case "pairing table":
                     PairingTableView()
+                case "friend table":
+                    FriendTableView()
                     
                 default:
                     Text("Unknown destination")

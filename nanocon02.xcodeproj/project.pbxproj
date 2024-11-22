@@ -13,11 +13,13 @@
 		494737A92C7D899600EA38EB /* EachFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737A82C7D899600EA38EB /* EachFriend.swift */; };
 		494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AA2C7D954D00EA38EB /* Talk02.swift */; };
 		494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* EachChild.swift */; };
+		C1B606502CEF025B0043ED9B /* FriendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
 		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
 		C1B693522CEDC50400201E0B /* Pairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693512CEDC50400201E0B /* Pairing.swift */; };
 		C1B693542CEDE6B000201E0B /* PairingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693532CEDE6B000201E0B /* PairingTableView.swift */; };
+		C1B693562CEEA9F900201E0B /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B693552CEEA9F900201E0B /* Friend.swift */; };
 		C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */; };
 		C1D8CEE82C8D4C77006335C2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE72C8D4C77006335C2 /* LoginView.swift */; };
 		C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */; };
@@ -74,6 +76,7 @@
 		494737A82C7D899600EA38EB /* EachFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachFriend.swift; sourceTree = "<group>"; };
 		494737AA2C7D954D00EA38EB /* Talk02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk02.swift; sourceTree = "<group>"; };
 		494737AC2C7D9EC000EA38EB /* EachChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachChild.swift; sourceTree = "<group>"; };
+		C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableView.swift; sourceTree = "<group>"; };
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 		C1B6934F2CED6E9D00201E0B /* AuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
 		C1B693512CEDC50400201E0B /* Pairing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pairing.swift; sourceTree = "<group>"; };
 		C1B693532CEDE6B000201E0B /* PairingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingTableView.swift; sourceTree = "<group>"; };
+		C1B693552CEEA9F900201E0B /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1D8CEE72C8D4C77006335C2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C1D8CEE92C8D4CD3006335C2 /* CookieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieManager.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			children = (
 				C1B6934F2CED6E9D00201E0B /* AuthToken.swift */,
 				C1B693512CEDC50400201E0B /* Pairing.swift */,
+				C1B693552CEEA9F900201E0B /* Friend.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 			children = (
 				C1D8CF832C9FEF14006335C2 /* DebugView.swift */,
 				C1B693532CEDE6B000201E0B /* PairingTableView.swift */,
+				C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 				C1D8CEEF2C8D5479006335C2 /* SignupView.swift in Sources */,
 				C1D8CF1B2C931126006335C2 /* CharacteristicPropertyViewModel.swift in Sources */,
 				C1D8CF4D2C9924BB006335C2 /* FriendList.swift in Sources */,
+				C1B693562CEEA9F900201E0B /* Friend.swift in Sources */,
 				C1B693522CEDC50400201E0B /* Pairing.swift in Sources */,
 				C1D8CF532C993907006335C2 /* ProfileView.swift in Sources */,
 				C1D8CF892CA299FF006335C2 /* EachFriendViewModel.swift in Sources */,
@@ -647,6 +654,7 @@
 				C1D8CEFE2C8DD2B1006335C2 /* NavigationModel.swift in Sources */,
 				C1D8CEF32C8D60F8006335C2 /* SettingsView.swift in Sources */,
 				C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */,
+				C1B606502CEF025B0043ED9B /* FriendTableView.swift in Sources */,
 				C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */,
 				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,
 				C1D8CF7C2C9DA58D006335C2 /* EachChildViewModel.swift in Sources */,

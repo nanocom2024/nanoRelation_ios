@@ -38,6 +38,14 @@ struct DebugView: View {
                 Text("pairing table")
             })
             
+            Spacer().frame(height: 20)
+            
+            Button(action: {
+                navigationModel.path.append("friend table")
+            }, label: {
+                Text("friend table")
+            })
+            
             Spacer()
         }
     }

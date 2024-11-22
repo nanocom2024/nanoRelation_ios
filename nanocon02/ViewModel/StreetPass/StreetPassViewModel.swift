@@ -44,12 +44,11 @@ actor StreetPassViewModel: ObservableObject {
         if info.proximity == "Unknown" {
             return
         }
-        if let pass = check_received_beacon(major: info.major, minor: info.minor) {
-            let beaconMode = info.beaconMode == .lost ? "lost" : "pass"
+        if let pass = check_received_beacon(major: info.major, minor: info.minor, beaconMode: info.beaconMode) {
             let currentDate = Date()  // Date型
             let dateString = StreetPassViewModel.dateFormatter.string(from: currentDate)  // String型に変換
             DispatchQueue.main.async {
-                self.receivedHistory = dateString + pass + " " + beaconMode
+                self.receivedHistory = dateString + pass
             }
         } else {
             DispatchQueue.main.async {
@@ -60,8 +59,13 @@ actor StreetPassViewModel: ObservableObject {
     }
     
     // TODO: 迷子検知対応も必要
-    private func check_received_beacon(major: String, minor: String) -> String? {
+    private func check_received_beacon(major: String, minor: String, beaconMode: BeaconMode) -> String? {
         // return "true", "false", "lost", nil
+        
+        if beaconMode == .lost {
+            return "lost"
+        }
+        
         guard let user_uid = PairingDatastore.shared?.fetch_user_uid(major: major, minor: minor) else {
             return nil
         }

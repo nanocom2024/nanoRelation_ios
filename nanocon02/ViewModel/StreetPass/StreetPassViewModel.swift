@@ -45,10 +45,11 @@ actor StreetPassViewModel: ObservableObject {
             return
         }
         if let pass = check_received_beacon(major: info.major, minor: info.minor) {
+            let beaconMode = info.beaconMode == .lost ? "lost" : "pass"
             let currentDate = Date()  // Date型
             let dateString = StreetPassViewModel.dateFormatter.string(from: currentDate)  // String型に変換
             DispatchQueue.main.async {
-                self.receivedHistory = dateString + pass
+                self.receivedHistory = dateString + pass + " " + beaconMode
             }
         } else {
             DispatchQueue.main.async {

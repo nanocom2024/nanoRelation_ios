@@ -65,6 +65,8 @@ extension BeaconReceiver {
                 let location = currentLocation
                 let latitude = location?.coordinate.latitude
                 let longitude = location?.coordinate.longitude
+                
+                let beaconMode = beaconConstraint.uuid == DeviceConfig.iBeacon_lost_uuid ? BeaconMode.lost : BeaconMode.normal
 
                 DispatchQueue.main.async {
                     self.latestBeaconInfo = BeaconInfo(
@@ -73,7 +75,8 @@ extension BeaconReceiver {
                         minor: beacon.minor.stringValue,
                         rssi: beacon.rssi,
                         latitude: latitude,
-                        longitude: longitude
+                        longitude: longitude,
+                        beaconMode: beaconMode
                     )
                 }
 
@@ -124,4 +127,11 @@ struct BeaconInfo: Equatable {
     var rssi: Int
     var latitude: Double? // 緯度
     var longitude: Double? // 経度
+    var beaconMode: BeaconMode = .normal
 }
+
+enum BeaconMode {
+    case normal
+    case lost
+}
+

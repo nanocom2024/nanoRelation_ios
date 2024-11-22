@@ -54,10 +54,11 @@ actor SignupViewModel: ObservableObject {
             do {
                 // JSONデータを辞書形式に変換
                 if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let token = object["token"] as? String { // トークンを取得
+                   let token = object["token"] as? String,
+                   let user_uid = object["user_uid"] as? String {
                         
                     // クッキーを設定
-                    Auth.setToken(token: token)
+                    Auth.setToken(token: token, user_uid: user_uid)
                     
                     // 成功を通知
                     DispatchQueue.main.async {

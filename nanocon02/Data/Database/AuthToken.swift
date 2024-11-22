@@ -13,10 +13,12 @@ class AuthToken {
     @Attribute(.unique)
     var id: UUID
     var token: String
+    var user_uid: String
     
-    init(token: String) {
+    init(token: String, user_uid: String) {
         self.id = UUID()
         self.token = token
+        self.user_uid = user_uid
     }
 }
 
@@ -66,11 +68,27 @@ class AuthTokenDatastore {
         }
     }
     
-    func setToken(token: String) {
+    func getUserUid() -> String {
+        do {
+            
+            let token = try context.fetch(FetchDescriptor<AuthToken>())
+            if token.isEmpty {
+                return ""
+            } else {
+                return token[0].user_uid
+            }
+            
+        } catch {
+            return ""
+        }
+    }
+        
+    
+    func setToken(token: String, user_uid: String) {
         do {
             deleteToken()
             
-            let newToken = AuthToken(token: token)
+            let newToken = AuthToken(token: token, user_uid: user_uid)
             context.insert(newToken)
             try context.save()
         } catch {

@@ -76,6 +76,23 @@ class StreetPassDatastore {
         }
         return []
     }
+    
+    func fetchByUserUid(user_uid: String) -> [StreetPassData] {
+        do {
+            let data = try context.fetch(FetchDescriptor<StreetPassData>(
+                predicate: #Predicate{$0.user_uid == user_uid}
+            ))
+            if data.isEmpty {
+                return []
+            }
+            return data
+        } catch {
+            print("StreetPassData fetch error")
+            print(error)
+        }
+        return []
+    }
+    
 
     @MainActor func received(major: String, minor: String) {
         guard let user_uid = PairingDatastore.shared?.fetch_user_uid(major: major, minor: minor) else {

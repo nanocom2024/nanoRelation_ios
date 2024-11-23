@@ -78,18 +78,12 @@ struct CharacteristicPropertyView: View {
                                 BleCommViewModel.isObservingChild = true
                                 CharPropertyObj.errorString = ""
                                 
-                                // notify
+                                // read
                                 for oneCh in oneService.userCharacteristics {
-                                    if oneCh.uuid == DeviceConfig.init_characteristic_notify_uuid {
-                                        oneDevPeri.userPeripheral.setNotifyValue(true, for: oneCh.characteristic)
+                                    if oneCh.uuid == DeviceConfig.init_characteristic_read_uuid {
+                                        oneDevPeri.userPeripheral.readValue(for: oneCh.characteristic)
                                     }
                                 }
-                                
-                                bleObj.stopScanning()
-                                navigationModel.path.removeLast(1)
-                                // next View
-                                navigationModel.path.append("observing child")
-                                isLostPairingButtonDisabled = false
                                 
                             }) {
                                 Text("Pairing (子供の見守り)")
@@ -136,6 +130,7 @@ struct CharacteristicPropertyView: View {
                 print("Failed to decode data")
                 errorMessage = "Failed to decode data"
                 isPassPairingButtonDisabled = false
+                isLostPairingButtonDisabled = false
                 return
             }
             
@@ -145,7 +140,8 @@ struct CharacteristicPropertyView: View {
             } else {
                 Task {
                     // 文字列をDataに変換して書き込む
-                    let writeString = await CharPropertyObj.generate_writeString(device_id: device_id)
+                    let pairingType: PairingType = isLostPairingButtonDisabled ? .lost : .normal
+                    let writeString = await CharPropertyObj.generate_writeString(device_id: device_id, pairingType: pairingType)
                     if let dataToWrite = writeString?.data(using: .utf8) {
                         for oneCh in oneService.userCharacteristics {
                             if oneCh.uuid == DeviceConfig.init_characteristic_write_uuid {
@@ -155,7 +151,8 @@ struct CharacteristicPropertyView: View {
                         
                     } else {
                         isPassPairingButtonDisabled = false
-                        errorMessage = CharPropertyObj.errorString
+                        isLostPairingButtonDisabled = false
+                        errorMessage = await CharPropertyObj.errorString
                     }
                     
                 }
@@ -165,6 +162,22 @@ struct CharacteristicPropertyView: View {
         // write success event
         .onChange(of: bleObj.initWriteSuccess) { _, newValue in
             if newValue {
+                if isLostPairingButtonDisabled {
+                    // notify
+                    for oneCh in oneService.userCharacteristics {
+                        if oneCh.uuid == DeviceConfig.init_characteristic_notify_uuid {
+                            oneDevPeri.userPeripheral.setNotifyValue(true, for: oneCh.characteristic)
+                        }
+                    }
+                    
+                    bleObj.stopScanning()
+                    navigationModel.path.removeLast(1)
+                    // next View
+                    navigationModel.path.append("observing child")
+                    isLostPairingButtonDisabled = false
+                    return
+                }
+                
                 Auth.auth_check { ok in
                     // 認証で問題がなければ次のViewへ
                     DispatchQueue.main.async {
@@ -210,6 +223,11 @@ struct CharacteristicPropertyView: View {
         }
     }
     
+}
+
+enum PairingType {
+    case normal
+    case lost
 }
 
 //#Preview {

@@ -83,7 +83,7 @@ class LostPassDatastore {
         return []
     }
 
-    @MainActor func received(major: String, minor: String, latitude: Double? = nil, longitude: Double? = nil) {
+    @MainActor func received(major: String, minor: String, latitude: Double? = nil, longitude: Double? = nil) async {
         let data = LostPassData(major: major, minor: minor, latitude: latitude, longitude: longitude)
         do {
             let allData = try context.fetch(FetchDescriptor<LostPassData>(
@@ -94,6 +94,12 @@ class LostPassDatastore {
                 
                 print("send lostPass notification")
                 NotificationManager().sendLostPassNotification()
+                
+                let token = AuthTokenDatastore.shared?.getToken() ?? ""
+                if token.isEmpty {
+                    return
+                }
+                await CloudLostPassDatastore().provide_lost_beacon(token: token, major: major, minor: minor, latitude: latitude, longitude: longitude)
                 return
             }
             
@@ -105,10 +111,46 @@ class LostPassDatastore {
                 
                 print("send lostPass notification")
                 NotificationManager().sendLostPassNotification()
+                
+                let token = AuthTokenDatastore.shared?.getToken() ?? ""
+                if token.isEmpty {
+                    return
+                }
+                await CloudLostPassDatastore().provide_lost_beacon(token: token, major: major, minor: minor, latitude: latitude, longitude: longitude)
             }
                 
         } catch {
             print("LostPassData fetch error")
+            print(error)
+        }
+    }
+}
+
+class CloudLostPassDatastore {
+    func provide_lost_beacon(token: String, major: String, minor: String, latitude: Double?, longitude: Double?) async {
+        let url = URL(string: BaseUrl.url + "/streetpass/received_lost_beacon")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let params = [
+            "token": token,
+            "major": major,
+            "minor": minor,
+            "latitude": latitude ?? 0.0,
+            "longitude": longitude ?? 0.0
+        ] as [String : Any]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: params)
+        } catch {
+            print("Invalid JSON format.")
+            return
+        }
+
+        do {
+            let (_, _) = try await URLSession.shared.data(for: request)
+        } catch {
+            print("provide_lost_beacon error")
             print(error)
         }
     }

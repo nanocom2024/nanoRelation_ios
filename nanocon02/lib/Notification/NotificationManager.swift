@@ -66,4 +66,19 @@ class NotificationManager {
         }
     }
     
+    func sendLostPassNotification() {
+        // ローカル通知を送信
+        let content = UNMutableNotificationContent()
+        content.title = "すれ違い"
+        content.body = "迷子 とすれ違いました"
+        content.sound = .default
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("通知送信エラー: \(error)")
+            }
+        }
+    }
+    
 }

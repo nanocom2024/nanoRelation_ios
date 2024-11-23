@@ -71,6 +71,7 @@ actor StatusViewModel: ObservableObject {
                     if self.receivedOtherHistory.pass != pass {
                         self.receivedHistory = NowStatus(pass: pass)
                     }
+                    await LostPassDatastore.shared?.received(major: info.major, minor: info.minor, latitude: info.latitude, longitude: info.longitude)
                 } else if pass == "true" {
                     // timestamp が10秒より前かを確認
                     if timeDifference >= 10 {

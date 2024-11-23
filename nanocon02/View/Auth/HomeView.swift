@@ -61,6 +61,8 @@ struct HomeView: View {
                     FriendTableView()
                 case "pass table":
                     StreetPassTableView()
+                case "lost pass table":
+                    LostPassTableView()
                 default:
                     Text("Unknown destination")
                 }

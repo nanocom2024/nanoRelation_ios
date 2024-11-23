@@ -16,6 +16,8 @@
 		C1B606502CEF025B0043ED9B /* FriendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */; };
 		C1B606522CF0515A0043ED9B /* StreetPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606512CF0515A0043ED9B /* StreetPass.swift */; };
 		C1B606542CF173B10043ED9B /* StreetPassTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606532CF173B10043ED9B /* StreetPassTableView.swift */; };
+		C1B606562CF1776F0043ED9B /* LostPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606552CF1776F0043ED9B /* LostPass.swift */; };
+		C1B606582CF17B890043ED9B /* LostPassTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606572CF17B890043ED9B /* LostPassTableView.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
 		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
@@ -81,6 +83,8 @@
 		C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableView.swift; sourceTree = "<group>"; };
 		C1B606512CF0515A0043ED9B /* StreetPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPass.swift; sourceTree = "<group>"; };
 		C1B606532CF173B10043ED9B /* StreetPassTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPassTableView.swift; sourceTree = "<group>"; };
+		C1B606552CF1776F0043ED9B /* LostPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPass.swift; sourceTree = "<group>"; };
+		C1B606572CF17B890043ED9B /* LostPassTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPassTableView.swift; sourceTree = "<group>"; };
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				C1B693512CEDC50400201E0B /* Pairing.swift */,
 				C1B693552CEEA9F900201E0B /* Friend.swift */,
 				C1B606512CF0515A0043ED9B /* StreetPass.swift */,
+				C1B606552CF1776F0043ED9B /* LostPass.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 				C1B693532CEDE6B000201E0B /* PairingTableView.swift */,
 				C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */,
 				C1B606532CF173B10043ED9B /* StreetPassTableView.swift */,
+				C1B606572CF17B890043ED9B /* LostPassTableView.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -620,6 +626,7 @@
 				C1D8CF142C9197E4006335C2 /* DevicePairingSuccessView.swift in Sources */,
 				C1D8CF4F2C993612006335C2 /* LostChildView.swift in Sources */,
 				C1D8CF2B2C954F4D006335C2 /* StreetPassViewModel.swift in Sources */,
+				C1B606582CF17B890043ED9B /* LostPassTableView.swift in Sources */,
 				C1D8CEED2C8D5292006335C2 /* LoginViewModel.swift in Sources */,
 				C1D8CF122C913A20006335C2 /* CharacteristicPropertyView.swift in Sources */,
 				C1D8CF0A2C91329B006335C2 /* UserBlePeripheral.swift in Sources */,
@@ -665,6 +672,7 @@
 				C1B606502CEF025B0043ED9B /* FriendTableView.swift in Sources */,
 				C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */,
 				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,
+				C1B606562CF1776F0043ED9B /* LostPass.swift in Sources */,
 				C1D8CF7C2C9DA58D006335C2 /* EachChildViewModel.swift in Sources */,
 				C1D8CF8C2CA3E2BB006335C2 /* StatusViewModel.swift in Sources */,
 				C1D8CEFA2C8DB94A006335C2 /* DeleteView.swift in Sources */,

@@ -32,8 +32,8 @@ class Auth {
 //        Account.name = "no-name"
 //        Account.name_id = "#xxxx"
 //    }
-    @MainActor static func setToken(token: String, user_uid: String){
-        AuthTokenDatastore.shared?.setToken(token: token, user_uid: user_uid)
+    @MainActor static func setToken(token: String, user_uid: String, name: String, name_id: String) {
+        AuthTokenDatastore.shared?.setToken(token: token, user_uid: user_uid, name: name, name_id: name_id)
         Account.name = "no-name"
         Account.name_id = "#xxxx"
     }
@@ -87,10 +87,12 @@ class Auth {
                 // JSONデータを辞書形式に変換
                 if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                    let token = object["token"] as? String,
-                   let user_uid = object["user_uid"] as? String {
+                   let user_uid = object["user_uid"] as? String,
+                   let name = object["name"] as? String,
+                   let name_id = object["name_id"] as? String {
                     // クッキーを設定
                     Task {
-                        await Auth.setToken(token: token, user_uid: user_uid)
+                        await Auth.setToken(token: token, user_uid: user_uid, name: name, name_id: name_id)
                     }
                     done = true
                     completion(true)

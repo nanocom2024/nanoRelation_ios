@@ -14,11 +14,15 @@ class AuthToken {
     var id: UUID
     var token: String
     var user_uid: String
+    var name: String
+    var name_id: String
     
-    init(token: String, user_uid: String) {
+    init(token: String, user_uid: String, name: String, name_id: String) {
         self.id = UUID()
         self.token = token
         self.user_uid = user_uid
+        self.name = name
+        self.name_id = name_id
     }
 }
 
@@ -82,13 +86,28 @@ class AuthTokenDatastore {
             return ""
         }
     }
+    
+    func getName() -> (String, String) {
+        do {
+            
+            let token = try context.fetch(FetchDescriptor<AuthToken>())
+            if token.isEmpty {
+                return ("no-name", "#xxxx")
+            } else {
+                return (token[0].name, token[0].name_id)
+            }
+            
+        } catch {
+            return ("no-name", "#xxxx")
+        }
+    }
         
     
-    func setToken(token: String, user_uid: String) {
+    func setToken(token: String, user_uid: String, name: String, name_id: String) {
         do {
             deleteToken()
             
-            let newToken = AuthToken(token: token, user_uid: user_uid)
+            let newToken = AuthToken(token: token, user_uid: user_uid, name: name, name_id: name_id)
             context.insert(newToken)
             try context.save()
         } catch {

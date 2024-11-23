@@ -54,11 +54,13 @@ actor LoginViewModel: ObservableObject {
                 // JSONデータを辞書形式に変換
                 if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                    let token = object["token"] as? String,
-                   let user_uid = object["user_uid"] as? String {
+                   let user_uid = object["user_uid"] as? String,
+                   let name = object["name"] as? String,
+                   let name_id = object["name_id"] as? String {
                         
                     // クッキーを設定
                     Task {
-                        await Auth.setToken(token: token, user_uid: user_uid)
+                        await Auth.setToken(token: token, user_uid: user_uid, name: name, name_id: name_id)
                     }
                     
                     // 成功を通知

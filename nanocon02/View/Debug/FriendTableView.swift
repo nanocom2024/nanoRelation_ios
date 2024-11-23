@@ -42,5 +42,5 @@ struct FriendRow: View {
 
 
 #Preview {
-    PairingTableView()
+    FriendTableView()
 }

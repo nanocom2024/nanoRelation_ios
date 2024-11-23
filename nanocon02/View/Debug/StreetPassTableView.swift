@@ -40,5 +40,5 @@ struct PassRow: View {
 
 
 #Preview {
-    StreetPassView()
+    StreetPassTableView()
 }

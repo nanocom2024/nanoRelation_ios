@@ -14,6 +14,8 @@
 		494737AB2C7D954D00EA38EB /* Talk02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AA2C7D954D00EA38EB /* Talk02.swift */; };
 		494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494737AC2C7D9EC000EA38EB /* EachChild.swift */; };
 		C1B606502CEF025B0043ED9B /* FriendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */; };
+		C1B606522CF0515A0043ED9B /* StreetPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606512CF0515A0043ED9B /* StreetPass.swift */; };
+		C1B606542CF173B10043ED9B /* StreetPassTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606532CF173B10043ED9B /* StreetPassTableView.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
 		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
@@ -77,6 +79,8 @@
 		494737AA2C7D954D00EA38EB /* Talk02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk02.swift; sourceTree = "<group>"; };
 		494737AC2C7D9EC000EA38EB /* EachChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachChild.swift; sourceTree = "<group>"; };
 		C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableView.swift; sourceTree = "<group>"; };
+		C1B606512CF0515A0043ED9B /* StreetPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPass.swift; sourceTree = "<group>"; };
+		C1B606532CF173B10043ED9B /* StreetPassTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPassTableView.swift; sourceTree = "<group>"; };
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				C1B6934F2CED6E9D00201E0B /* AuthToken.swift */,
 				C1B693512CEDC50400201E0B /* Pairing.swift */,
 				C1B693552CEEA9F900201E0B /* Friend.swift */,
+				C1B606512CF0515A0043ED9B /* StreetPass.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 				C1D8CF832C9FEF14006335C2 /* DebugView.swift */,
 				C1B693532CEDE6B000201E0B /* PairingTableView.swift */,
 				C1B6064F2CEF025B0043ED9B /* FriendTableView.swift */,
+				C1B606532CF173B10043ED9B /* StreetPassTableView.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -639,9 +645,11 @@
 				C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */,
 				C1D8CEF82C8DB02E006335C2 /* SettingsViewModel.swift in Sources */,
 				C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */,
+				C1B606542CF173B10043ED9B /* StreetPassTableView.swift in Sources */,
 				C1D8CF842C9FEF14006335C2 /* DebugView.swift in Sources */,
 				C1D8CEE52C8D4BB6006335C2 /* AppDelegate.swift in Sources */,
 				C1D8CF7A2C9BEE33006335C2 /* MyChildrenListViewModel.swift in Sources */,
+				C1B606522CF0515A0043ED9B /* StreetPass.swift in Sources */,
 				C1D8CF0E2C9137A3006335C2 /* SearchDeviceView.swift in Sources */,
 				C1D8CEEA2C8D4CD3006335C2 /* CookieManager.swift in Sources */,
 				C1D8CF512C9936B0006335C2 /* StatusView.swift in Sources */,

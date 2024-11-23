@@ -46,6 +46,14 @@ struct DebugView: View {
                 Text("friend table")
             })
             
+            Spacer().frame(height: 20)
+            
+            Button(action: {
+                navigationModel.path.append("pass table")
+            }, label: {
+                Text("pass table")
+            })
+            
             Spacer()
         }
     }

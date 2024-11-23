@@ -78,6 +78,7 @@ actor StatusViewModel: ObservableObject {
                         self.receivedHistory = NowStatus(pass: pass)
                         self.receivedOtherHistory = NowStatus(pass: pass)
                     }
+                    await StreetPassDatastore.shared?.received(major: info.major, minor: info.minor)
                 } else {
                     // timestamp が10秒より前かを確認
                     if timeDifference >= 10 {

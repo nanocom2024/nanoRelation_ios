@@ -59,7 +59,8 @@ struct HomeView: View {
                     PairingTableView()
                 case "friend table":
                     FriendTableView()
-                    
+                case "pass table":
+                    StreetPassTableView()
                 default:
                     Text("Unknown destination")
                 }

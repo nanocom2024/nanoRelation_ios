@@ -12,6 +12,8 @@ struct MyQrCodeView: View {
     @State private var qrCodeImage: UIImage? = nil
     @State private var name: String? = nil
     
+    @ObservedObject var myQrCodeViewModel = MyQrCodeViewModel()
+    
     var body: some View {
         VStack(spacing: 20) {
             // QRコード表示エリア
@@ -52,19 +54,28 @@ struct MyQrCodeView: View {
                 .padding(.horizontal, 20)
                 .multilineTextAlignment(.center)
             
+            if !myQrCodeViewModel.errorString.isEmpty {
+                Text(myQrCodeViewModel.errorString)
+                    .foregroundColor(.red)
+            }
+            
             Spacer()
         }
         .padding()
 //        .background(Color(UIColor.systemGroupedBackground)) // 全体背景色
         .onAppear {
-            generateQRCode()
+            Task {
+                await generateQRCode()
+            }
         }
     }
     
-    private func generateQRCode() {
+    private func generateQRCode() async {
         do {
             // QRコードを生成
-            let data = "asas,name"
+            guard let data = await myQrCodeViewModel.getData() else {
+                return
+            }
             let doc = try QRCode.Document(utf8String: data)
             doc.errorCorrection = .high
             doc.design.style.backgroundFractionalCornerRadius = 3.0

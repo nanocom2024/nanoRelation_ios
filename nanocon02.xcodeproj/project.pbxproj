@@ -23,6 +23,7 @@
 		C1B6065E2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6065D2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift */; };
 		C1B606612CF2C6B70043ED9B /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = C1B606602CF2C6B70043ED9B /* QRCode */; };
 		C1B606632CF2C73B0043ED9B /* MyQrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606622CF2C73B0043ED9B /* MyQrCodeView.swift */; };
+		C1B606652CF2D1640043ED9B /* MyQrCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606642CF2D1640043ED9B /* MyQrCodeViewModel.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
 		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
@@ -94,6 +95,7 @@
 		C1B6065B2CF2B5C50043ED9B /* FriendAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddView.swift; sourceTree = "<group>"; };
 		C1B6065D2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeCameraDelegate.swift; sourceTree = "<group>"; };
 		C1B606622CF2C73B0043ED9B /* MyQrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQrCodeView.swift; sourceTree = "<group>"; };
+		C1B606642CF2D1640043ED9B /* MyQrCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQrCodeViewModel.swift; sourceTree = "<group>"; };
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 			children = (
 				C1D8CF862CA130B6006335C2 /* FriendListViewModel.swift */,
 				C1D8CF882CA299FF006335C2 /* EachFriendViewModel.swift */,
+				C1B606642CF2D1640043ED9B /* MyQrCodeViewModel.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				C1B693542CEDE6B000201E0B /* PairingTableView.swift in Sources */,
 				C1D8CF292C954F20006335C2 /* StreetPassView.swift in Sources */,
 				C1D8CEF82C8DB02E006335C2 /* SettingsViewModel.swift in Sources */,
+				C1B606652CF2D1640043ED9B /* MyQrCodeViewModel.swift in Sources */,
 				C1D8CF772C9A8FA0006335C2 /* Account.swift in Sources */,
 				C1B606542CF173B10043ED9B /* StreetPassTableView.swift in Sources */,
 				C1D8CF842C9FEF14006335C2 /* DebugView.swift in Sources */,

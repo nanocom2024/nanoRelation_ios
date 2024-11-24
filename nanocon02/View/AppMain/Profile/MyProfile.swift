@@ -30,8 +30,8 @@ struct MyProfile: View {
 //                    .fontWeight(.black)
                     .padding(.top, 10.0)
                 // 名前のid
-                Text(name_id)
-                Spacer().frame(height: 20)
+//                Text(name_id)
+//                Spacer().frame(height: 20)
                 
                 // 子供追加ボタン
                 Button(action: {

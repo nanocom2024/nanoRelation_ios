@@ -70,7 +70,8 @@ struct FriendList: View {
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading){
-                                Text(friend.name + " " + friend.name_id)
+//                                Text(friend.name + " " + friend.name_id)
+                                Text(friend.name)
                                     .font(.subheadline)
                                     .foregroundColor(.black)
 //                                Text("2024年10月20日 18時23分")

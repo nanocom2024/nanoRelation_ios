@@ -91,6 +91,20 @@ class FriendDatastore {
         }
     }
     
+    func delete(user_uid: String, name_id: String) {
+        do {
+            let friends = try context.fetch(FetchDescriptor<FriendData>(
+                predicate: #Predicate{$0.user_uid == user_uid && $0.name_id == name_id}
+            ))
+            for friend in friends {
+                context.delete(friend)
+            }
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
+    
     func syncFriends() {
         Task {
             do {

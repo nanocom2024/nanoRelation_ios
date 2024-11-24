@@ -17,15 +17,31 @@ struct EachFriend: View {
     NavigationView {//これがないとtoolbarが使えない
       VStack{//全体の縦構造
         HStack{//プロフィール
-          Image("test-img")
-            .resizable()
-            .frame(width: 50, height: 50)
-            .clipShape(Circle())
-            .padding(.leading,20)
-            Text(oneFriend.name) // 配列内のメッセージを表示
-            .font(.headline)
-            .foregroundColor(.black)
-          Spacer()
+            Image("test-img")
+                .resizable()
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
+                .padding(.leading,20)
+                Text(oneFriend.name) // 配列内のメッセージを表示
+                .font(.headline)
+                .foregroundColor(.black)
+            Spacer()
+            
+//            Button(action: {
+//                navigationModel.path.append("friend delete")
+//            }, label: {
+//                Image(systemName: "person.badge.minus")
+//                    .font(Font.system(size: 30, weight: .light))
+//            })
+            NavigationLink(destination: FriendDeleteView(oneFriend: oneFriend)) {
+                    
+                Image(systemName: "person.badge.minus")
+                    .font(Font.system(size: 30, weight: .light))
+                    
+            }
+            
+            Spacer()
+                .frame(width: 20)
         }
         ScrollView {//スクロールする領域を指定
 // ーーーーーーーーーーーーーーーーーmessages配列の要素をどのように並べるか、デザインーーーーーーーーーーーーーーーーーーー

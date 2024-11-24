@@ -25,6 +25,8 @@
 		C1B606632CF2C73B0043ED9B /* MyQrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606622CF2C73B0043ED9B /* MyQrCodeView.swift */; };
 		C1B606652CF2D1640043ED9B /* MyQrCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606642CF2D1640043ED9B /* MyQrCodeViewModel.swift */; };
 		C1B606672CF2F1A00043ED9B /* FriendAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606662CF2F1A00043ED9B /* FriendAddViewModel.swift */; };
+		C1B606692CF302C50043ED9B /* FriendDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606682CF302C50043ED9B /* FriendDeleteView.swift */; };
+		C1B6066B2CF309F10043ED9B /* FriendDeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6066A2CF309F10043ED9B /* FriendDeleteViewModel.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
 		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
@@ -98,6 +100,8 @@
 		C1B606622CF2C73B0043ED9B /* MyQrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQrCodeView.swift; sourceTree = "<group>"; };
 		C1B606642CF2D1640043ED9B /* MyQrCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQrCodeViewModel.swift; sourceTree = "<group>"; };
 		C1B606662CF2F1A00043ED9B /* FriendAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddViewModel.swift; sourceTree = "<group>"; };
+		C1B606682CF302C50043ED9B /* FriendDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDeleteView.swift; sourceTree = "<group>"; };
+		C1B6066A2CF309F10043ED9B /* FriendDeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDeleteViewModel.swift; sourceTree = "<group>"; };
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 				C1B606592CF2B3DF0043ED9B /* FriendAddScannerView.swift */,
 				C1B6065B2CF2B5C50043ED9B /* FriendAddView.swift */,
 				C1B606622CF2C73B0043ED9B /* MyQrCodeView.swift */,
+				C1B606682CF302C50043ED9B /* FriendDeleteView.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -553,6 +558,7 @@
 				C1D8CF882CA299FF006335C2 /* EachFriendViewModel.swift */,
 				C1B606642CF2D1640043ED9B /* MyQrCodeViewModel.swift */,
 				C1B606662CF2F1A00043ED9B /* FriendAddViewModel.swift */,
+				C1B6066A2CF309F10043ED9B /* FriendDeleteViewModel.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1D8CF572C993BD8006335C2 /* ChildView.swift in Sources */,
+				C1B6066B2CF309F10043ED9B /* FriendDeleteViewModel.swift in Sources */,
 				C1D8CF602C9948B8006335C2 /* ChildLoginView.swift in Sources */,
 				C1D8CEF12C8D54E5006335C2 /* SignupViewModel.swift in Sources */,
 				C1D8CF4B2C992137006335C2 /* FriendView.swift in Sources */,
@@ -705,6 +712,7 @@
 				C1D8CEFA2C8DB94A006335C2 /* DeleteView.swift in Sources */,
 				494737AD2C7D9EC000EA38EB /* EachChild.swift in Sources */,
 				C1D8CF192C92E895006335C2 /* BeaconView.swift in Sources */,
+				C1B606692CF302C50043ED9B /* FriendDeleteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

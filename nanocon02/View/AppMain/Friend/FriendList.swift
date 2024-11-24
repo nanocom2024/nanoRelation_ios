@@ -33,6 +33,17 @@ struct FriendList: View {
                 
                 Spacer().frame(width: 10)
                 
+                // plus mark
+                Button(action: {
+                    navigationModel.path.append("friend add")
+                }) {
+                    Image(systemName: "person.badge.plus")
+                        .font(Font.system(size: 30, weight: .light))
+                        .foregroundColor(.black)
+                }
+                
+                Spacer().frame(width: 20)
+                
                 // setting mark
                 Button(action: {
                     // test viewへ

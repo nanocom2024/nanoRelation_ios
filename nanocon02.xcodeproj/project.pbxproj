@@ -18,6 +18,9 @@
 		C1B606542CF173B10043ED9B /* StreetPassTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606532CF173B10043ED9B /* StreetPassTableView.swift */; };
 		C1B606562CF1776F0043ED9B /* LostPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606552CF1776F0043ED9B /* LostPass.swift */; };
 		C1B606582CF17B890043ED9B /* LostPassTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606572CF17B890043ED9B /* LostPassTableView.swift */; };
+		C1B6065A2CF2B3DF0043ED9B /* FriendAddScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606592CF2B3DF0043ED9B /* FriendAddScannerView.swift */; };
+		C1B6065C2CF2B5C50043ED9B /* FriendAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6065B2CF2B5C50043ED9B /* FriendAddView.swift */; };
+		C1B6065E2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6065D2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
 		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
@@ -85,6 +88,9 @@
 		C1B606532CF173B10043ED9B /* StreetPassTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetPassTableView.swift; sourceTree = "<group>"; };
 		C1B606552CF1776F0043ED9B /* LostPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPass.swift; sourceTree = "<group>"; };
 		C1B606572CF17B890043ED9B /* LostPassTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPassTableView.swift; sourceTree = "<group>"; };
+		C1B606592CF2B3DF0043ED9B /* FriendAddScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddScannerView.swift; sourceTree = "<group>"; };
+		C1B6065B2CF2B5C50043ED9B /* FriendAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddView.swift; sourceTree = "<group>"; };
+		C1B6065D2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeCameraDelegate.swift; sourceTree = "<group>"; };
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
@@ -297,6 +303,8 @@
 				C1D8CF4A2C992136006335C2 /* FriendView.swift */,
 				C1D8CF4C2C9924BB006335C2 /* FriendList.swift */,
 				494737A82C7D899600EA38EB /* EachFriend.swift */,
+				C1B606592CF2B3DF0043ED9B /* FriendAddScannerView.swift */,
+				C1B6065B2CF2B5C50043ED9B /* FriendAddView.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -354,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				C1D8CEE42C8D4BB6006335C2 /* AppDelegate.swift */,
+				C1B6065D2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -639,6 +648,8 @@
 				C1D8CF892CA299FF006335C2 /* EachFriendViewModel.swift in Sources */,
 				C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */,
 				494737A92C7D899600EA38EB /* EachFriend.swift in Sources */,
+				C1B6065A2CF2B3DF0043ED9B /* FriendAddScannerView.swift in Sources */,
+				C1B6065E2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift in Sources */,
 				C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */,
 				C1D8CF7F2C9E6B75006335C2 /* Message.swift in Sources */,
 				C1D8CF592C993BF4006335C2 /* MyChildrenList.swift in Sources */,
@@ -671,6 +682,7 @@
 				C1D8CEFC2C8DB9B8006335C2 /* DeleteViewModel.swift in Sources */,
 				C1B606502CEF025B0043ED9B /* FriendTableView.swift in Sources */,
 				C1D8CF002C8E80FD006335C2 /* BaseUrl.swift in Sources */,
+				C1B6065C2CF2B5C50043ED9B /* FriendAddView.swift in Sources */,
 				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,
 				C1B606562CF1776F0043ED9B /* LostPass.swift in Sources */,
 				C1D8CF7C2C9DA58D006335C2 /* EachChildViewModel.swift in Sources */,
@@ -815,8 +827,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = nanocon02/Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we use iBeacon";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "BLEを使用します。";
+				INFOPLIST_KEY_NSCameraUsageDescription = "RQコードを読み取る際に使用します。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "iBeaconと位置情報を使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -848,8 +861,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = nanocon02/Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "we use BLE";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we use iBeacon";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "BLEを使用します。";
+				INFOPLIST_KEY_NSCameraUsageDescription = "RQコードを読み取る際に使用します。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "iBeaconと位置情報を使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -10,6 +10,7 @@ import QRCode
 
 struct MyQrCodeView: View {
     @State private var qrCodeImage: UIImage? = nil
+    @State private var name: String? = nil
     
     var body: some View {
         VStack(spacing: 20) {
@@ -45,6 +46,12 @@ struct MyQrCodeView: View {
                 .padding(.horizontal, 20)
                 .multilineTextAlignment(.center)
             
+            Text("ユーザー名：\(name ?? "")")
+                .font(.body)
+                .foregroundColor(.secondary)
+                .padding(.horizontal, 20)
+                .multilineTextAlignment(.center)
+            
             Spacer()
         }
         .padding()
@@ -57,12 +64,15 @@ struct MyQrCodeView: View {
     private func generateQRCode() {
         do {
             // QRコードを生成
-            let doc = try QRCode.Document(utf8String: "asas,name")
+            let data = "asas,name"
+            let doc = try QRCode.Document(utf8String: data)
             doc.errorCorrection = .high
             doc.design.style.backgroundFractionalCornerRadius = 3.0
             
             let cgImage = try doc.cgImage(CGSize(width: 1000, height: 1000))
             qrCodeImage = UIImage(cgImage: cgImage)
+            
+            name = data.components(separatedBy: ",")[1]
         } catch {
             print("QRCode generate error: \(error)")
         }

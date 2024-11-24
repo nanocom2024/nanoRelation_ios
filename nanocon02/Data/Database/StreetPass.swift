@@ -77,7 +77,7 @@ class StreetPassDatastore {
         return []
     }
     
-    func fetchByUserUid(user_uid: String) -> [StreetPassData] {
+    @MainActor func fetchByUserUid(user_uid: String) -> [StreetPassData] {
         do {
             let data = try context.fetch(FetchDescriptor<StreetPassData>(
                 predicate: #Predicate{$0.user_uid == user_uid}

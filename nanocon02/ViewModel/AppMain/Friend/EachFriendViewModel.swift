@@ -11,9 +11,9 @@ import SwiftUI
 actor EachFriendViewModel: ObservableObject {
     @Published var errorString = ""
     
-    func getMessages(uid: String) -> [Message] {
+    func getMessages(uid: String) async -> [Message] {
         var res: [Message] = []
-        let logsResponse = fetch_logs(user_uid: uid)
+        let logsResponse = await fetch_logs(user_uid: uid)
         for log in logsResponse.logs {
             var text: String
             var color: Color
@@ -41,8 +41,8 @@ actor EachFriendViewModel: ObservableObject {
         return res
     }
     
-    private func fetch_logs(user_uid: String) -> LogsResponse {
-        let data = StreetPassDatastore.shared?.fetchByUserUid(user_uid: user_uid)
+    private func fetch_logs(user_uid: String) async -> LogsResponse {
+        let data = await StreetPassDatastore.shared?.fetchByUserUid(user_uid: user_uid)
         var logs: [OneLogResponse] = []
         for log in data ?? [] {
             logs.append(OneLogResponse(tag: "pass", timestamp: log.timestamp))

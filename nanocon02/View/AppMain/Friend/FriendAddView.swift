@@ -9,7 +9,9 @@ import SwiftUI
 
 struct FriendAddView: View {
     @State private var scannedResult: String = ""
+    @State private var code: String = ""
     
+    @ObservedObject private var friendAddViewModel = FriendAddViewModel()
     @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
@@ -18,7 +20,7 @@ struct FriendAddView: View {
             FriendAddScannerView(scanInterval: 1.0) { result in
                 if scannedResult.isEmpty {
                     let data = result.split(separator: ",")
-                    let code = data[0] // 将来の利用のため保持
+                    code = String(data[0])
                     let name = data[1]
                     scannedResult = String(name)
                     print("Scanned QR code: \(result)")
@@ -48,10 +50,18 @@ struct FriendAddView: View {
                 }
                 
                 // 友達追加ボタン
-                if !scannedResult.isEmpty {
+                if !scannedResult.isEmpty && !code.isEmpty {
                     Button(action: {
-                        print("友達追加")
-                        scannedResult = ""
+                        Task {
+                            let res = await friendAddViewModel.addFriend(code: code)
+                            if res {
+                                FriendDatastore.shared?.syncFriends()
+                                navigationModel.path.removeLast()
+                            }
+                            
+                            code = ""
+                            scannedResult = ""
+                        }
                     }) {
                         HStack {
                             Image(systemName: "plus.app.fill")

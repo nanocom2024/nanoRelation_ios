@@ -68,6 +68,9 @@ struct MyQrCodeView: View {
                 await generateQRCode()
             }
         }
+        .onDisappear {
+            FriendDatastore.shared?.syncFriends()
+        }
     }
     
     private func generateQRCode() async {

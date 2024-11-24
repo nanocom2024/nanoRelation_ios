@@ -65,6 +65,9 @@ struct HomeView: View {
                     LostPassTableView()
                 case "friend add":
                     FriendAddView()
+                        .environmentObject(navigationModel)
+                case "myQR":
+                    MyQrCodeView()
                 default:
                     Text("Unknown destination")
                 }

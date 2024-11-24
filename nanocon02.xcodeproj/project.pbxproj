@@ -21,6 +21,8 @@
 		C1B6065A2CF2B3DF0043ED9B /* FriendAddScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606592CF2B3DF0043ED9B /* FriendAddScannerView.swift */; };
 		C1B6065C2CF2B5C50043ED9B /* FriendAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6065B2CF2B5C50043ED9B /* FriendAddView.swift */; };
 		C1B6065E2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6065D2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift */; };
+		C1B606612CF2C6B70043ED9B /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = C1B606602CF2C6B70043ED9B /* QRCode */; };
+		C1B606632CF2C73B0043ED9B /* MyQrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B606622CF2C73B0043ED9B /* MyQrCodeView.swift */; };
 		C1B6933E2CEB260200201E0B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933D2CEB260200201E0B /* NotificationManager.swift */; };
 		C1B693402CEB626900201E0B /* ObservingChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6933F2CEB626900201E0B /* ObservingChildView.swift */; };
 		C1B693502CED6E9D00201E0B /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B6934F2CED6E9D00201E0B /* AuthToken.swift */; };
@@ -91,6 +93,7 @@
 		C1B606592CF2B3DF0043ED9B /* FriendAddScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddScannerView.swift; sourceTree = "<group>"; };
 		C1B6065B2CF2B5C50043ED9B /* FriendAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddView.swift; sourceTree = "<group>"; };
 		C1B6065D2CF2B63A0043ED9B /* QrCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeCameraDelegate.swift; sourceTree = "<group>"; };
+		C1B606622CF2C73B0043ED9B /* MyQrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQrCodeView.swift; sourceTree = "<group>"; };
 		C1B693372CEA0FF000201E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1B6933D2CEB260200201E0B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C1B6933F2CEB626900201E0B /* ObservingChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservingChildView.swift; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1B606612CF2C6B70043ED9B /* QRCode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +309,7 @@
 				494737A82C7D899600EA38EB /* EachFriend.swift */,
 				C1B606592CF2B3DF0043ED9B /* FriendAddScannerView.swift */,
 				C1B6065B2CF2B5C50043ED9B /* FriendAddView.swift */,
+				C1B606622CF2C73B0043ED9B /* MyQrCodeView.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -599,6 +604,7 @@
 			);
 			mainGroup = 4947373E2C787E6300EA38EB;
 			packageReferences = (
+				C1B6065F2CF2C6B70043ED9B /* XCRemoteSwiftPackageReference "qrcode" */,
 			);
 			productRefGroup = 494737482C787E6300EA38EB /* Products */;
 			projectDirPath = "";
@@ -685,6 +691,7 @@
 				C1B6065C2CF2B5C50043ED9B /* FriendAddView.swift in Sources */,
 				C1D8CF172C92D5B1006335C2 /* BeaconReceiver.swift in Sources */,
 				C1B606562CF1776F0043ED9B /* LostPass.swift in Sources */,
+				C1B606632CF2C73B0043ED9B /* MyQrCodeView.swift in Sources */,
 				C1D8CF7C2C9DA58D006335C2 /* EachChildViewModel.swift in Sources */,
 				C1D8CF8C2CA3E2BB006335C2 /* StatusViewModel.swift in Sources */,
 				C1D8CEFA2C8DB94A006335C2 /* DeleteView.swift in Sources */,
@@ -905,6 +912,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C1B6065F2CF2C6B70043ED9B /* XCRemoteSwiftPackageReference "qrcode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/qrcode.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1B606602CF2C6B70043ED9B /* QRCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1B6065F2CF2C6B70043ED9B /* XCRemoteSwiftPackageReference "qrcode" */;
+			productName = QRCode;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4947373F2C787E6300EA38EB /* Project object */;
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct FriendAddView: View {
     @State private var scannedResult: String = ""
     
+    @EnvironmentObject private var navigationModel: NavigationModel
+    
     var body: some View {
         VStack(spacing: 20) { // 各要素間の余白を設定
             // カメラビュー
@@ -69,7 +71,7 @@ struct FriendAddView: View {
                 
                 // マイQRコード表示ボタン
                 Button(action: {
-                    print("マイQRコードを表示")
+                    navigationModel.path.append("myQR")
                 }) {
                     HStack {
                         Image(systemName: "qrcode")

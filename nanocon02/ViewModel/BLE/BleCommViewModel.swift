@@ -36,7 +36,7 @@ class BleCommViewModel: NSObject, ObservableObject {
     var NO_CHARS_NAME = "NO_CHARS_NAME"
 }
 
-extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripheralDelegate {
+extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, @preconcurrency CBPeripheralDelegate {
  
     @MainActor func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("step 1")
@@ -285,12 +285,14 @@ extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, CBPeripher
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: (any Error)?) {
+    @MainActor func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: (any Error)?) {
         if let error = error {
             print("Write failed with error: \(error.localizedDescription)")
         } else {
             self.initWriteSuccess = true
-            self.centralManager?.cancelPeripheralConnection(peripheral)
+            if !BleCommViewModel.isObservingChild {
+                self.centralManager?.cancelPeripheralConnection(peripheral)
+            }
             print("Write successful for characteristic: \(characteristic.uuid)")
         }
     }

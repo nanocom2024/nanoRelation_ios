@@ -113,6 +113,8 @@ struct LoginView: View {
             if success {
                 navigationModel.path.append("Friend")
                 isLoginButtonDisabled = false
+                PairingDatastore.shared?.syncPairings()
+                FriendDatastore.shared?.syncFriends()
             }
         }
         .onChange(of: loginViewModel.errorMessage ?? "") { _, msg in

@@ -9,11 +9,11 @@ import CoreBluetooth
 
 class UserBleService: Identifiable, ObservableObject, Hashable {
     
-    var id: UUID
-    var uuid: CBUUID
-    var service: CBService
-    var serviceName: String
-    var userCharacteristics: [UserBleCharacteristic] = []
+    @Published var id: UUID
+    @Published var uuid: CBUUID
+    @Published var service: CBService
+    @Published var serviceName: String
+    @Published var userCharacteristics: [UserBleCharacteristic] = []
     
     init(_uuid: CBUUID, _service: CBService, _serviceName: String, _userCharacteristics: [UserBleCharacteristic]) {
         id = UUID()

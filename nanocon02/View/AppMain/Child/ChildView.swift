@@ -12,7 +12,7 @@ struct ChildView: View {
     var body: some View {
         
         VStack {
-            MyChildrenList()
+            LostInfoView()
             HStack{
                 
                 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーボタンーーーーーーーーーーーーーーーーーーーー
@@ -53,10 +53,10 @@ struct ChildView: View {
                 },
                        label: {
                     VStack {
-                        Image(systemName: "note.text")
+                        Image(systemName: "person.2.fill")
                             .font(.system(size: 25))
                             .padding(.bottom, -5)
-                        Text("履歴")
+                        Text("友達")
                             .fontWeight(.light)
                             .font(.subheadline)
                     }

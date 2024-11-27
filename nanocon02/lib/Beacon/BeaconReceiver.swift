@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreLocation
+@preconcurrency import CoreLocation
 
 class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
     var locationManager: CLLocationManager!
@@ -23,6 +23,11 @@ class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
         // CLLocationManagerの初期化
         locationManager = CLLocationManager()
         locationManager.delegate = self
+        
+//        バックグラウンドでのロケーション更新を許可
+        locationManager.allowsBackgroundLocationUpdates = true
+//        ロケーション更新の自動中断をオフ
+        locationManager.pausesLocationUpdatesAutomatically = false
 
         // 位置情報使用許可をリクエスト（必須）
         locationManager.requestWhenInUseAuthorization()
@@ -31,7 +36,7 @@ class BeaconReceiver: NSObject, CLLocationManagerDelegate, ObservableObject {
         locationManager.startUpdatingLocation() // 位置情報取得の開始
 
         // iBeaconのUUIDを設定（ここでは例としてUUIDを設定）
-        beaconRegion = CLBeaconRegion(uuid: DeviceConfig.iBeacon_uuid, identifier: "MyBeacon")
+//        beaconRegion = CLBeaconRegion(uuid: DeviceConfig.iBeacon_normal_uuid, identifier: "MyBeacon")
 
         // レンジング（ビーコンとの距離測定）を開始
         start_ranging()
@@ -60,6 +65,8 @@ extension BeaconReceiver {
                 let location = currentLocation
                 let latitude = location?.coordinate.latitude
                 let longitude = location?.coordinate.longitude
+                
+                let beaconMode = beaconConstraint.uuid == DeviceConfig.iBeacon_lost_uuid ? BeaconMode.lost : BeaconMode.normal
 
                 DispatchQueue.main.async {
                     self.latestBeaconInfo = BeaconInfo(
@@ -68,7 +75,8 @@ extension BeaconReceiver {
                         minor: beacon.minor.stringValue,
                         rssi: beacon.rssi,
                         latitude: latitude,
-                        longitude: longitude
+                        longitude: longitude,
+                        beaconMode: beaconMode
                     )
                 }
 
@@ -101,11 +109,13 @@ extension BeaconReceiver {
     
     func start_ranging() {
         // レンジング（ビーコンとの距離測定）を開始
-        locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
+        locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_normal_uuid))
+        locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_lost_uuid))
     }
     
     func stop_ranging() {
-        locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_uuid))
+        locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_normal_uuid))
+        locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: DeviceConfig.iBeacon_lost_uuid))
     }
 }
 
@@ -117,4 +127,11 @@ struct BeaconInfo: Equatable {
     var rssi: Int
     var latitude: Double? // 緯度
     var longitude: Double? // 経度
+    var beaconMode: BeaconMode = .normal
 }
+
+enum BeaconMode {
+    case normal
+    case lost
+}
+

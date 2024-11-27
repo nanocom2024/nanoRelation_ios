@@ -7,55 +7,58 @@
 
 import Foundation
 
-class FriendListViewModel: ObservableObject {
+actor FriendListViewModel: ObservableObject {
     @Published var errorString = ""
     
-    func get_users() async -> [Friend] {
-        do {
-            var res: [Friend] = []
-            let usersResponse = try await fetch_users()
-            for user in usersResponse?.users ?? [] {
-                let one_user = Friend(id: user.uid, name: user.name, name_id: user.name_id)
-                res.append(one_user)
-            }
-            return res
-        } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
-            return []
+    func get_users() -> [Friend] {
+        let friends = FriendDatastore.shared?.fetchAll() ?? []
+        var res: [Friend] = []
+        for friend in friends {
+            res.append(Friend(id: friend.user_uid, name: friend.name, name_id: friend.name_id))
         }
+        return res
     }
     
+//    func get_users() async -> [Friend] {
+//        do {
+//            var res: [Friend] = []
+//            let usersResponse = try await fetch_users()
+//            for user in usersResponse?.users ?? [] {
+//                let one_user = Friend(id: user.uid, name: user.name, name_id: user.name_id)
+//                res.append(one_user)
+//            }
+//            return res
+//        } catch {
+//            self.errorString = error.localizedDescription
+//            return []
+//        }
+//    }
     
-    private func fetch_users() async throws -> UsersResponse? {
-        let url = URL(string: BaseUrl.url + "/user/fetch_users")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        guard let token = Auth.getToken() else {
-            DispatchQueue.main.async {
-                self.errorString = "missing token"
-            }
-            print("missing token")
-            return nil
-        }
-        let params = ["token": token]
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: params)
-        } catch {
-            DispatchQueue.main.async {
-                self.errorString = "Invalid JSON format."
-            }
-            print("Invalid JSON format.")
-            return nil
-        }
-        
-        let (data, _) = try await URLSession.shared.data(for: request)
-        let response = try JSONDecoder().decode(UsersResponse.self, from: data)
-        return response
-    }
+    
+//    private func fetch_users() async throws -> UsersResponse? {
+//        let url = URL(string: BaseUrl.url + "/user/fetch_users")!
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        
+//        guard let token = await Auth.getToken() else {
+//            self.errorString = "missing token"
+//            print("missing token")
+//            return nil
+//        }
+//        let params = ["token": token]
+//        do {
+//            request.httpBody = try JSONSerialization.data(withJSONObject: params)
+//        } catch {
+//            self.errorString = "Invalid JSON format."
+//            print("Invalid JSON format.")
+//            return nil
+//        }
+//        
+//        let (data, _) = try await URLSession.shared.data(for: request)
+//        let response = try JSONDecoder().decode(UsersResponse.self, from: data)
+//        return response
+//    }
 }
 
 struct UsersResponse: Codable {

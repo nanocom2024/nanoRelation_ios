@@ -30,6 +30,38 @@ struct DebugView: View {
                 Text("street pass")
             })
             
+            Spacer().frame(height: 20)
+            
+            Button(action: {
+                navigationModel.path.append("pairing table")
+            }, label: {
+                Text("pairing table")
+            })
+            
+            Spacer().frame(height: 20)
+            
+            Button(action: {
+                navigationModel.path.append("friend table")
+            }, label: {
+                Text("friend table")
+            })
+            
+            Spacer().frame(height: 20)
+            
+            Button(action: {
+                navigationModel.path.append("pass table")
+            }, label: {
+                Text("pass table")
+            })
+            
+            Spacer().frame(height: 20)
+            
+            Button(action: {
+                navigationModel.path.append("lost pass table")
+            }, label: {
+                Text("lost pass table")
+            })
+            
             Spacer()
         }
     }

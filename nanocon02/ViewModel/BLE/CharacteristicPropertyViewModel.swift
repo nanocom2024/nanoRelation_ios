@@ -7,28 +7,29 @@
 
 import Foundation
 
-class CharacteristicPropertyViewModel: ObservableObject {
+actor CharacteristicPropertyViewModel: ObservableObject {
     @Published var errorString = ""
     
-    func generate_writeString(device_id: String) async -> String? {
+    func generate_writeString(device_id: String, pairingType: PairingType) async -> String? {
         do {
             if let (_, _, major, minor) = try await generate_major_minor(device_id: device_id),
-               let token = Auth.getToken(),
-               try await register_pairing(token: token, major: major, minor: minor)
+               let token = await Auth.getToken(),
+               try await register_pairing(token: token, major: major, minor: minor, pairingType: pairingType)
             {
 //                let res = private_key + "," + public_key + "," + major + "," + minor
+                if pairingType == .lost {
+                    let res = major + "," + minor + ",lost"
+                    return res
+                }
                 let res = major + "," + minor
                 return res
+                
             } else {
-                DispatchQueue.main.async {
-                    self.errorString = "Pairing fail"
-                }
+                self.errorString = "Pairing fail"
                 print("Pairing fail")
             }
         } catch {
-            DispatchQueue.main.async {
-                self.errorString = error.localizedDescription
-            }
+            self.errorString = error.localizedDescription
             print("Error: \(error.localizedDescription)")
         }
         return nil
@@ -67,8 +68,9 @@ class CharacteristicPropertyViewModel: ObservableObject {
         }
     }
 
-    private func register_pairing(token: String, major: String, minor: String) async throws -> Bool {
-        let url = URL(string: BaseUrl.url + "/pairing/register_pairing")!
+    private func register_pairing(token: String, major: String, minor: String, pairingType: PairingType) async throws -> Bool {
+        let url = pairingType == .lost ? URL(string: BaseUrl.url + "/pairing/register_lost_pairing")! :
+                                            URL(string: BaseUrl.url + "/pairing/register_pairing")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

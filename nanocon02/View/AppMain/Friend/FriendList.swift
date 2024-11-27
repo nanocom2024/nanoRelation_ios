@@ -33,6 +33,17 @@ struct FriendList: View {
                 
                 Spacer().frame(width: 10)
                 
+                // plus mark
+                Button(action: {
+                    navigationModel.path.append("friend add")
+                }) {
+                    Image(systemName: "person.badge.plus")
+                        .font(Font.system(size: 30, weight: .light))
+                        .foregroundColor(.black)
+                }
+                
+                Spacer().frame(width: 20)
+                
                 // setting mark
                 Button(action: {
                     // test viewへ
@@ -59,7 +70,8 @@ struct FriendList: View {
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading){
-                                Text(friend.name + " " + friend.name_id)
+//                                Text(friend.name + " " + friend.name_id)
+                                Text(friend.name)
                                     .font(.subheadline)
                                     .foregroundColor(.black)
 //                                Text("2024年10月20日 18時23分")

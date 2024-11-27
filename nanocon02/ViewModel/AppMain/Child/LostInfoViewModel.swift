@@ -1,22 +1,23 @@
 //
-//  MyChildrenListViewModel.swift
+//  LostInfoViewModel.swift
 //  nanocon02
 //
-//  Created by k22036kk on 2024/09/19.
+//  Created by k22036kk on 2024/11/26.
 //
 
 import Foundation
 
-actor MyChildrenListViewModel: ObservableObject {
+actor LostInfoViewModel: ObservableObject {
     @Published var errorString = ""
     
-    func getChildren() async -> [Child] {
+    func getLostInfo() async -> [LostInfo]? {
         do {
-            var res: [Child] = []
-            let childrenResponse = try await fetch_children()
-            for child in childrenResponse?.children ?? [] {
-                let one_child = Child(id: child.uid, name: child.name, name_id: child.name_id)
-                res.append(one_child)
+            var res: [LostInfo] = []
+            let infoResponse = try await fetch_info()
+            for info in infoResponse?.info ?? [] {
+                let date = Date(timeIntervalSince1970: info.timestamp)
+                let one_info = LostInfo(latitude: info.latitude, longitude: info.longitude, timestamp: date)
+                res.append(one_info)
             }
             return res
         } catch {
@@ -26,8 +27,8 @@ actor MyChildrenListViewModel: ObservableObject {
     }
     
     
-    private func fetch_children() async throws -> ChildrenResponse? {
-        let url = URL(string: BaseUrl.url + "/child/fetch_children")!
+    private func fetch_info() async throws -> LostInfoResponse? {
+        let url = URL(string: BaseUrl.url + "/lost_child/fetch_info")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -47,17 +48,18 @@ actor MyChildrenListViewModel: ObservableObject {
         }
         
         let (data, _) = try await URLSession.shared.data(for: request)
-        let response = try JSONDecoder().decode(ChildrenResponse.self, from: data)
+        let response = try JSONDecoder().decode(LostInfoResponse.self, from: data)
         return response
     }
-}
-
-struct ChildrenResponse: Codable {
-    let children: [ChildResponse]
-}
-
-struct ChildResponse: Codable {
-    let uid: String
-    let name: String
-    let name_id: String
+    
+    
+    struct LostInfoResponse: Codable {
+        let info: [Response]
+    }
+    
+    struct Response: Codable {
+        let latitude: Double
+        let longitude: Double
+        let timestamp: Double
+    }
 }

@@ -18,51 +18,17 @@ struct DeviceDetailView: View {
     
     var body: some View {
         Group {
-            
             Text(oneDev.name)
             Spacer().frame(height: 20)
             
             if oneDev.userPeripheral.state == CBPeripheralState.connected {
                 Text("connected")
                 
-                ForEach(bleViewModel.connectedUserBlePeripheral?.userServices ?? []) { item in
-                    GroupBox(
-                        label:
-                            VStack {
-                                Text("Service: \(item.serviceName)")
-                                Text("\(item.uuid.uuidString) \n").font(.subheadline)
-                            }
-                    ) {
-                        ForEach (item.userCharacteristics) { userChar in
-                            Divider().padding(.vertical, 2)
-                            NavigationLink(destination: CharacteristicPropertyView(
-                                oneChar: userChar,
-                                oneDevPeri: bleViewModel.connectedUserBlePeripheral!,
-                                oneService: item)
-                                .environmentObject(bleViewModel)
-                            ) {
-                                    CharacteristicCell(onePeri: bleViewModel.connectedUserBlePeripheral!,
-                                                       oneChar: userChar)
-                            }
-                        }
-                    }
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.blue, lineWidth: 1)
-                    ).padding(.horizontal, 10)  // padding border
-                }
+                ServiceListView()
+                    .environmentObject(bleViewModel)
+                    .environmentObject(navigationModel)
             } else {
-                
                 Text("\(connectionStatus)")
-                
-                var count = 0
-                let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                    if (count >= 3) {
-                        connectionStatus = "Cannot connect"
-                        timer.invalidate()
-                    }
-                    count += 1
-                }
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -76,40 +42,116 @@ struct DeviceDetailView: View {
                         .background(Color.purple)
                         .cornerRadius(8)
                 }
-                                
-                )
-        .onAppear{
-            
-            bleViewModel.centralManager?.connect(oneDev.userPeripheral)
-//            print("Connecting")
+        )
+        .onAppear {
+            if oneDev.userPeripheral.state != CBPeripheralState.connected {
+                bleViewModel.centralManager?.connect(oneDev.userPeripheral)
+            }
+            if oneDev.userPeripheral.state != CBPeripheralState.connected {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    if oneDev.userPeripheral.state != CBPeripheralState.connected {
+                        connectionStatus = "Cannot connect"
+                    }
+                }
+            }
         }
     }
     
-    func goBack(){
+    func goBack() {
         self.dismiss()
         bleViewModel.centralManager?.cancelPeripheralConnection(oneDev.userPeripheral)
     }
+}
+
+struct ServiceListView: View {
+    @EnvironmentObject private var bleViewModel: BleCommViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
     
-    struct CharacteristicCell: View {
-        @ObservedObject var onePeri: UserBlePeripheral
-        @ObservedObject var oneChar: UserBleCharacteristic
-        
-        var body: some View {
-            LabeledContent {
-                
-                HStack {
-//                    Image(systemName: "arrow.right.circle")
-                }
-                
-            } label: {
-                
-                Text("Chars: \(oneChar.characteristicName)")
-                Text(oneChar.uuid.uuidString)
-                
+    var body: some View {
+        ForEach(bleViewModel.connectedUserBlePeripheral?.userServices ?? []) { service in
+            ServiceView(service: service)
+                .environmentObject(bleViewModel)
+                .environmentObject(navigationModel)
+        }
+    }
+}
+    
+struct ServiceView: View {
+    @EnvironmentObject private var bleViewModel: BleCommViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
+    @ObservedObject var service: UserBleService
+    
+    var body: some View {
+        GroupBox(
+            label: VStack {
+                Text("Service: \(service.serviceName)")
+                Text("\(service.uuid.uuidString)").font(.subheadline)
             }
-            .font(.subheadline)
+        ) {
+            ForEach(service.userCharacteristics) { userChar in
+                if let connectedUserBlePeripheral = bleViewModel.connectedUserBlePeripheral {
+                    Divider().padding(.vertical, 2)
+                    CharacteristicNavigationLink(userChar: userChar, service: service, peripheral: connectedUserBlePeripheral)
+                        .environmentObject(bleViewModel)
+                        .environmentObject(navigationModel)
+                } else {
+                    Text("No connected device")
+                }
+            }
+        }
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.blue, lineWidth: 1)
+        )
+        .padding(.horizontal, 10)
+        .onAppear {
+            print("ServiceView onAppear")
+        }
+    }
+}
+
+struct CharacteristicNavigationLink: View {
+    @EnvironmentObject private var bleViewModel: BleCommViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
+    var userChar: UserBleCharacteristic
+    var service: UserBleService
+    var peripheral: UserBlePeripheral
+
+    var body: some View {
+        NavigationLink(
+            destination: CharacteristicPropertyView(
+                oneChar: userChar,
+                oneDevPeri: peripheral,
+                oneService: service
+            )
+            .environmentObject(bleViewModel)
+            .environmentObject(navigationModel)
+        ) {
+            CharacteristicCell(
+                oneChar: userChar
+            )
+        }
+    }
+}
+
+struct CharacteristicCell: View {
+    @ObservedObject var oneChar: UserBleCharacteristic
+    
+    var body: some View {
+        LabeledContent {
+            
+            HStack {
+//                    Image(systemName: "arrow.right.circle")
+            }
+            
+        } label: {
+            
+            Text("Chars: \(oneChar.characteristicName)")
+            Text(oneChar.uuid.uuidString)
             
         }
+        .font(.subheadline)
+        
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SignupViewModel: ObservableObject {
+actor SignupViewModel: ObservableObject {
     @Published var signupSuccess = false
     @Published var errorMessage: String? = nil
     @Published var isLoading = false
@@ -28,20 +28,16 @@ class SignupViewModel: ObservableObject {
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         }catch{
-            DispatchQueue.main.async {
-                self.isLoading = false
-                self.errorMessage = "Invalid JSON format."
-            }
+            self.isLoading = false
+            self.errorMessage = "Invalid JSON format."
             print("Invalid JSON format.")
             return
         }
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.errorMessage = "No data received."
-                }
+                self.isLoading = false
+                self.errorMessage = "No data received."
                 print("No data received.")
                 return
             }
@@ -58,10 +54,13 @@ class SignupViewModel: ObservableObject {
             do {
                 // JSONデータを辞書形式に変換
                 if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let token = object["token"] as? String { // トークンを取得
+                   let token = object["token"] as? String,
+                   let user_uid = object["user_uid"] as? String,
+                   let name = object["name"] as? String,
+                   let name_id = object["name_id"] as? String {
                         
                     // クッキーを設定
-                    Auth.setToken(token: token)
+                    Auth.setToken(token: token, user_uid: user_uid, name: name, name_id: name_id)
                     
                     // 成功を通知
                     DispatchQueue.main.async {

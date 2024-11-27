@@ -7,21 +7,19 @@
 
 import Foundation
 
-class ChildLoginViewModel: ObservableObject {
+actor ChildLoginViewModel: ObservableObject {
     @Published var loginSuccess = false
     @Published var errorMessage: String? = nil
     @Published var isLoading = false
     
     // TODO: signin -> register child
-    func register_child(email: String, password: String) {
+    func register_child(email: String, password: String) async {
         self.isLoading = true
         self.loginSuccess = false
         
-        guard let token = Auth.getToken() else {
-            DispatchQueue.main.async {
-                self.isLoading = false
-                self.errorMessage = "missing token"
-            }
+        guard let token = await Auth.getToken() else {
+            self.isLoading = false
+            self.errorMessage = "missing token"
             return
         }
         
@@ -34,20 +32,16 @@ class ChildLoginViewModel: ObservableObject {
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         }catch{
-            DispatchQueue.main.async {
-                self.isLoading = false
-                self.errorMessage = "Invalid JSON format."
-            }
+            self.isLoading = false
+            self.errorMessage = "Invalid JSON format."
             print("Invalid JSON format.")
             return
         }
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.errorMessage = "No data received."
-                }
+                self.isLoading = false
+                self.errorMessage = "No data received."
                 print("No data received.")
                 return
             }

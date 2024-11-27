@@ -6,30 +6,44 @@
 //
 
 import Foundation
+import SwiftData
 
 class Auth {
-    static private let cookieManager = CookieManager()
+    @MainActor static private let cookieManager = CookieManager()
     static private let url = URL(string: BaseUrl.url + "/auth")!
 
-    static func getToken() -> String? {
-        if cookieManager.isCookieSet(name: "authtoken", url: url) {
-            return cookieManager.getCookie(name: "authtoken", url: url)
+//    @MainActor static func getToken() -> String? {
+//        if cookieManager.isCookieSet(name: "authtoken", url: url) {
+//            return cookieManager.getCookie(name: "authtoken", url: url)
+//        }
+//        return nil
+//    }
+    @MainActor static func getToken() -> String? {
+        let token = AuthTokenDatastore.shared?.getToken()
+        if token == "" {
+            return nil
         }
-        return nil
+        return token
     }
 
-    static func setToken(token: String) {
-        cookieManager.setCookie(url: url, key: "authtoken", value: token)
-        AppDelegate.storeCookies()
+//    @MainActor static func setToken(token: String) {
+//        cookieManager.setCookie(url: url, key: "authtoken", value: token)
+//        AppDelegate.storeCookies()
+//        Account.name = "no-name"
+//        Account.name_id = "#xxxx"
+//    }
+    @MainActor static func setToken(token: String, user_uid: String, name: String, name_id: String) {
+        AuthTokenDatastore.shared?.setToken(token: token, user_uid: user_uid, name: name, name_id: name_id)
         Account.name = "no-name"
         Account.name_id = "#xxxx"
     }
+        
 
-    static func deleteToken() {
+    @MainActor static func deleteToken() {
         cookieManager.removeCookie(name: "authtoken", url: url)
     }
 
-    static func auth_check(completion: @escaping (Bool) -> Void) {
+    @MainActor static func auth_check(completion: @escaping (Bool) -> Void){
         var done = false
         let auth_check_url = URL(string: BaseUrl.url + "/pairing/auth_check")!
         var request = URLRequest(url: auth_check_url)
@@ -72,10 +86,13 @@ class Auth {
             do {
                 // JSONデータを辞書形式に変換
                 if let object = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let token = object["token"] as? String { // トークンを取得
+                   let token = object["token"] as? String,
+                   let user_uid = object["user_uid"] as? String,
+                   let name = object["name"] as? String,
+                   let name_id = object["name_id"] as? String {
                     // クッキーを設定
                     Task {
-                        Auth.setToken(token: token)
+                        await Auth.setToken(token: token, user_uid: user_uid, name: name, name_id: name_id)
                     }
                     done = true
                     completion(true)

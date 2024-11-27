@@ -1,33 +1,28 @@
 //
-//  MyChildrenListViewModel.swift
+//  MyQrCodeViewModel.swift
 //  nanocon02
 //
-//  Created by k22036kk on 2024/09/19.
+//  Created by k22036kk on 2024/11/24.
 //
 
 import Foundation
 
-actor MyChildrenListViewModel: ObservableObject {
+actor MyQrCodeViewModel: ObservableObject {
     @Published var errorString = ""
     
-    func getChildren() async -> [Child] {
+    func getData() async -> String? {
         do {
-            var res: [Child] = []
-            let childrenResponse = try await fetch_children()
-            for child in childrenResponse?.children ?? [] {
-                let one_child = Child(id: child.uid, name: child.name, name_id: child.name_id)
-                res.append(one_child)
-            }
-            return res
+            let dataResponse = try await fetch_data()
+            return dataResponse?.data
         } catch {
             self.errorString = error.localizedDescription
-            return []
+            return nil
         }
     }
     
     
-    private func fetch_children() async throws -> ChildrenResponse? {
-        let url = URL(string: BaseUrl.url + "/child/fetch_children")!
+    private func fetch_data() async throws -> DataResponse? {
+        let url = URL(string: BaseUrl.url + "/friend/fetch_qr_data")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -47,17 +42,13 @@ actor MyChildrenListViewModel: ObservableObject {
         }
         
         let (data, _) = try await URLSession.shared.data(for: request)
-        let response = try JSONDecoder().decode(ChildrenResponse.self, from: data)
+        let response = try JSONDecoder().decode(DataResponse.self, from: data)
         return response
     }
-}
+    
+    
+    struct DataResponse: Codable {
+        let data: String
+    }
 
-struct ChildrenResponse: Codable {
-    let children: [ChildResponse]
-}
-
-struct ChildResponse: Codable {
-    let uid: String
-    let name: String
-    let name_id: String
 }

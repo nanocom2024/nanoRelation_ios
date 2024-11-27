@@ -30,8 +30,8 @@ struct MyProfile: View {
 //                    .fontWeight(.black)
                     .padding(.top, 10.0)
                 // 名前のid
-                Text(name_id)
-                Spacer().frame(height: 20)
+//                Text(name_id)
+//                Spacer().frame(height: 20)
                 
                 // 子供追加ボタン
                 Button(action: {
@@ -57,18 +57,20 @@ struct MyProfile: View {
             
         }
         .onAppear {
-            if Account.name == "no-name" && Account.name_id == "#xxxx" {
-                Task {
-                    let (name_res, name_id_res) = await Account.get_name()
-                    DispatchQueue.main.async {
-                        name = name_res
-                        name_id = name_id_res
-                    }
-                }
-            } else {
-                name = Account.name
-                name_id = Account.name_id
-            }
+            (name, name_id) = AuthTokenDatastore.shared?.getName() ?? ("no-name", "#xxxx")
+            
+//            if Account.name == "no-name" && Account.name_id == "#xxxx" {
+//                Task {
+//                    let (name_res, name_id_res) = await Account.get_name()
+//                    DispatchQueue.main.async {
+//                        name = name_res
+//                        name_id = name_id_res
+//                    }
+//                }
+//            } else {
+//                name = Account.name
+//                name_id = Account.name_id
+//            }
         }
         .padding(EdgeInsets(top: -15, leading: 20, bottom: -20, trailing:20))
 

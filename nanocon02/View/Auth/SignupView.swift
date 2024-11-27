@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SignupView: View {
     @StateObject private var signupViewModel = SignupViewModel()
@@ -16,6 +17,7 @@ struct SignupView: View {
     @State private var errorMessage: String = ""
     @State private var isCreateButtonDisabled = false
     @EnvironmentObject private var navigationModel: NavigationModel
+    
 
     var body: some View {
         VStack(alignment: .center) {
@@ -122,6 +124,8 @@ struct SignupView: View {
         .onChange(of: signupViewModel.signupSuccess) { _, success in
             navigationModel.path.append("Friend")
             isCreateButtonDisabled = false
+            PairingDatastore.shared?.syncPairings()
+            FriendDatastore.shared?.syncFriends()
         }
         .onChange(of: signupViewModel.errorMessage ?? "") { _, msg in
             if !msg.isEmpty {

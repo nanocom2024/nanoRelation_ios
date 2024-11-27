@@ -20,23 +20,28 @@ class BleCommViewModel: NSObject, ObservableObject {
     @Published var recValueData: Data?
     @Published var initWriteSuccess = false
     
-    static var isScanning = false
+    @MainActor static var isScanning = false
+    @MainActor static var isObservingChild = false
         
     override init() {
         print("init BleCommViewModel")
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: .main)
+        
+        // 通知の許可
+        let notificationManager = NotificationManager()
+        notificationManager.requestNotificationAuthorization()
     }
     
     var NO_CHARS_NAME = "NO_CHARS_NAME"
 }
 
-extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
+extension BleCommViewModel: @preconcurrency CBCentralManagerDelegate, @preconcurrency CBPeripheralDelegate {
  
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    @MainActor func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("step 1")
         if(central.state == .poweredOn) {
-            startScanning()
+//            startScanning()
             print("step 2")
         }
         
@@ -67,7 +72,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    func startScanning() {
+    @MainActor func startScanning() {
         if !BleCommViewModel.isScanning {
             print("Starting scan")
             self.centralManager?.scanForPeripherals(withServices: [DeviceConfig.init_service_uuid])
@@ -75,7 +80,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    func stopScanning() {
+    @MainActor func stopScanning() {
         if BleCommViewModel.isScanning {
             print("Stopping scan")
             self.centralManager?.stopScan()
@@ -116,8 +121,18 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         return false
     }
     
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {
+    @MainActor func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {
         print("Disconnected device")
+        print("- Error: \(error?.localizedDescription ?? "no error")")
+        
+        let notificationManager = NotificationManager()
+        if BleCommViewModel.isObservingChild {
+            notificationManager.sendLostNotification(peripheralName: peripheral.name ?? "no name")
+            BleCommViewModel.isObservingChild = false
+        } else {
+            notificationManager.sendDisconnectedNotification(peripheralName: peripheral.name ?? "no name")
+        }
+        
         resetConfigure()
     }
     
@@ -136,6 +151,14 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         
         peripheral.discoverServices([DeviceConfig.init_service_uuid])
         print("Getting services")
+    }
+    
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: (any Error)?) {
+        if let error = error {
+            print("Failed to connect to device: \(error.localizedDescription)")
+        } else {
+            print("Failed to connect to device", "不明なエラー")
+        }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: (any Error)?) {
@@ -163,7 +186,7 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
             connectedUserBlePeripheral?.userServices.append(oneUserBleService)
             
             print("Found one service: \(foundOneService.uuid.uuidString)")
-            peripheral.discoverCharacteristics([DeviceConfig.init_characteristic_read_uuid, DeviceConfig.init_characteristic_write_uuid], for: foundOneService.service)
+            peripheral.discoverCharacteristics([DeviceConfig.init_characteristic_read_uuid, DeviceConfig.init_characteristic_write_uuid, DeviceConfig.init_characteristic_notify_uuid], for: foundOneService.service)
         }
     }
     
@@ -233,6 +256,17 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
+    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: (any Error)?) {
+        if let error = error {
+            print("Notify state update failed with error: \(error.localizedDescription)")
+        } else {
+            if !characteristic.isNotifying && characteristic.uuid.uuidString == DeviceConfig.init_characteristic_notify_uuid.uuidString {
+                // disconnect
+                self.centralManager?.cancelPeripheralConnection(peripheral)
+            }
+        }
+    }
+    
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: (any Error)?) {
         guard let recData = characteristic.value else {
             // no data transmitted, handle if needed
@@ -251,12 +285,12 @@ extension BleCommViewModel: CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: (any Error)?) {
+    @MainActor func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: (any Error)?) {
         if let error = error {
             print("Write failed with error: \(error.localizedDescription)")
         } else {
-            DispatchQueue.main.async {
-                self.initWriteSuccess = true
+            self.initWriteSuccess = true
+            if !BleCommViewModel.isObservingChild {
                 self.centralManager?.cancelPeripheralConnection(peripheral)
             }
             print("Write successful for characteristic: \(characteristic.uuid)")

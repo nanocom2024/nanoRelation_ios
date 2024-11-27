@@ -7,12 +7,12 @@
 
 import Foundation
 
-class DeleteViewModel: ObservableObject {
+actor DeleteViewModel: ObservableObject {
     @Published var deleteSuccess = false
     @Published var errorMessage: String? = nil
     @Published var isLoading = false
     
-    func delete_account(password: String, confirmPassword: String) {
+    func delete_account(password: String, confirmPassword: String) async {
         self.isLoading = true
         self.deleteSuccess = false
         
@@ -22,11 +22,9 @@ class DeleteViewModel: ObservableObject {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         var params = Dictionary<String, String>()
-        guard let token = Auth.getToken() else {
-            DispatchQueue.main.async {
-                self.isLoading = false
-                self.errorMessage = "Invalid token"
-            }
+        guard let token = await Auth.getToken() else {
+            self.isLoading = false
+            self.errorMessage = "Invalid token"
             print("Invalid token")
             return
         }
@@ -36,20 +34,16 @@ class DeleteViewModel: ObservableObject {
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: params)
         }catch{
-            DispatchQueue.main.async {
-                self.isLoading = false
-                self.errorMessage = "Invalid JSON format."
-            }
+            self.isLoading = false
+            self.errorMessage = "Invalid JSON format."
             print("Invalid JSON format.")
             return
         }
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.errorMessage = "No data received."
-                }
+                self.isLoading = false
+                self.errorMessage = "No data received."
                 print("No data received.")
                 return
             }
